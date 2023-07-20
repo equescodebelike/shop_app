@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shop_app/navigation/app_router.dart';
+import 'package:shop_app/pages/catalog_page/catalog_page.dart';
 import 'package:shop_app/pages/onboarding_page/onboarding_page.dart';
 
 class ShopApp extends StatelessWidget {
-  const ShopApp({super.key});
+  ShopApp({super.key});
+
+  final AppRouter _router = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: _router.config(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
@@ -58,7 +63,7 @@ class ShopApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const OnBoardingPage(),
+      // home: const CatalogPage(),
     );
   }
 }

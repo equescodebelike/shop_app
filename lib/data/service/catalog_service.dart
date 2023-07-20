@@ -3,27 +3,28 @@ import 'package:dio/dio.dart';
 import 'package:shop_app/model/catalog/get/categories/categories_model.dart';
 import 'package:shop_app/model/catalog/get/product/product_model.dart';
 import 'package:shop_app/model/catalog/post/catalog_products/catalog_products.dart';
+import 'package:shop_app/url/catalog_url.dart';
 
-part 'service.g.dart';
+part 'catalog_service.g.dart';
 
 @RestApi()
-abstract class AppClient {
-  factory AppClient(Dio dio, {String baseUrl}) = _AppClient;
+abstract class CatalogService {
+  factory CatalogService(Dio dio, {String baseUrl}) = _CatalogService;
 
-  @POST("/catalog/products/")
-  Future<ProductModel> catalogProductsCreate({
+  @POST(CatalogUrl.catalogProducts)
+  Future<Products> catalogProductsCreate({
     @Body() ProductsSerializerRequest? productsSerializerRequest,
   });
 
-  @GET("/catalog/categories/")
+  @GET(CatalogUrl.catalogCategories)
   Future<List<Category>> catalogCategoriesList({
     @Query("parent_id") int? parentId,
     @Query("only_leaf") bool onlyLeaf = false,
   });
 
-  @GET("/catalog/product/")
-  Future<ProductModel> catalogProductRead({
-    @Query("product_id") required int productId,
-    @Query("city_fias") String? cityFias,
+  @GET(CatalogUrl.catalogProduct)
+  Future<ProductModel> getProduct({
+    @Query('product_id') int? productId,
+    @Query('city_fias') String? cityFias,
   });
 }

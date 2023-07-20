@@ -7,7 +7,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DioUtil().init();
   runApp(
-    const AppDependencies(
+    AppDependencies(
       child: ShopApp(),
     ),
   );

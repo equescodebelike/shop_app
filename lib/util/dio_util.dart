@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:shop_app/data/service/service.dart';
+import 'package:shop_app/data/service/catalog_service.dart';
 
 class DioUtil {
   static final DioUtil _instance = DioUtil._internal();
@@ -11,7 +11,7 @@ class DioUtil {
 
   final Dio dio = Dio();
   // TODO: Add api
-  late final AppClient restService;
+  late final CatalogService restService;
   // late final CharacterRepository characterRepository  = CharacterRepository(restService);
   // late final EpisodeRepository episodeRepository = EpisodeRepository(restService);
   // late final LocationRepository locationRepository = LocationRepository(restService);
@@ -26,6 +26,6 @@ class DioUtil {
       ..sendTimeout = timeout;
     dio.interceptors.add(PrettyDioLogger());
 
-    restService = AppClient(dio);
+    restService = CatalogService(dio);
   }
 }

@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/navigation/app_router.dart';
 import 'package:shop_app/pages/widgets/filled_button_widget.dart';
 import 'package:shop_app/pages/widgets/onboarding_card_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+@RoutePage()
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});
 
@@ -53,7 +56,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.router.popAndPush(ShowCaseRoute());
+              },
               icon: Icon(
                 Icons.close,
                 color: theme.colorScheme.primary,

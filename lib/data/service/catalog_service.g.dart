@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'service.dart';
+part of 'catalog_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _AppClient implements AppClient {
-  _AppClient(
+class _CatalogService implements CatalogService {
+  _CatalogService(
     this._dio, {
     this.baseUrl,
   });
@@ -19,15 +19,15 @@ class _AppClient implements AppClient {
   String? baseUrl;
 
   @override
-  Future<ProductModel> catalogProductsCreate(
+  Future<Products> catalogProductsCreate(
       {ProductsSerializerRequest? productsSerializerRequest}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = productsSerializerRequest;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ProductModel>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Products>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -43,7 +43,7 @@ class _AppClient implements AppClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ProductModel.fromJson(_result.data!);
+    final value = Products.fromJson(_result.data!);
     return value;
   }
 
@@ -84,8 +84,8 @@ class _AppClient implements AppClient {
   }
 
   @override
-  Future<ProductModel> catalogProductRead({
-    required int productId,
+  Future<ProductModel> getProduct({
+    int? productId,
     String? cityFias,
   }) async {
     const _extra = <String, dynamic>{};
