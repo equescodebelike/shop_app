@@ -9,17 +9,14 @@ class CustomFilledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: 360,
       child: FilledButton(
         style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                const RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
-        ))),
+            shape: MaterialStateProperty.all(const RoundedRectangleBorder())),
         onPressed: onTap,
         child: Center(
           child: Text(
-            text,
+            text.toUpperCase(),
             style: Theme.of(context)
                 .textTheme
                 .labelMedium

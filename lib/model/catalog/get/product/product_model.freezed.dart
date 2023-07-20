@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Product _$ProductFromJson(Map<String, dynamic> json) {
+ProductModel _$ProductModelFromJson(Map<String, dynamic> json) {
   return _ProductModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Product {
+mixin _$ProductModel {
   int? get id => throw _privateConstructorUsedError;
   ProductProperty? get parameters => throw _privateConstructorUsedError;
   String? get picture => throw _privateConstructorUsedError;
@@ -45,13 +45,15 @@ mixin _$Product {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
+  $ProductModelCopyWith<ProductModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ProductCopyWith<$Res> {
-  factory $ProductCopyWith(Product value, $Res Function(Product) then) =
-      _$ProductCopyWithImpl<$Res, Product>;
+abstract class $ProductModelCopyWith<$Res> {
+  factory $ProductModelCopyWith(
+          ProductModel value, $Res Function(ProductModel) then) =
+      _$ProductModelCopyWithImpl<$Res, ProductModel>;
   @useResult
   $Res call(
       {int? id,
@@ -78,9 +80,9 @@ abstract class $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductCopyWithImpl<$Res, $Val extends Product>
-    implements $ProductCopyWith<$Res> {
-  _$ProductCopyWithImpl(this._value, this._then);
+class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
+    implements $ProductModelCopyWith<$Res> {
+  _$ProductModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -212,7 +214,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
 
 /// @nodoc
 abstract class _$$_ProductModelCopyWith<$Res>
-    implements $ProductCopyWith<$Res> {
+    implements $ProductModelCopyWith<$Res> {
   factory _$$_ProductModelCopyWith(
           _$_ProductModel value, $Res Function(_$_ProductModel) then) =
       __$$_ProductModelCopyWithImpl<$Res>;
@@ -246,7 +248,7 @@ abstract class _$$_ProductModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_ProductModelCopyWithImpl<$Res>
-    extends _$ProductCopyWithImpl<$Res, _$_ProductModel>
+    extends _$ProductModelCopyWithImpl<$Res, _$_ProductModel>
     implements _$$_ProductModelCopyWith<$Res> {
   __$$_ProductModelCopyWithImpl(
       _$_ProductModel _value, $Res Function(_$_ProductModel) _then)
@@ -427,7 +429,7 @@ class _$_ProductModel implements _ProductModel {
 
   @override
   String toString() {
-    return 'Product(id: $id, parameters: $parameters, picture: $picture, categories: $categories, badges: $badges, price: $price, oldPrice: $oldPrice, brand: $brand, article: $article, name: $name, description: $description, avaliable: $avaliable, discount: $discount, sort: $sort, rating: $rating, reviewsCount: $reviewsCount, needBuyToWholesale: $needBuyToWholesale, wholesaleDiscount: $wholesaleDiscount)';
+    return 'ProductModel(id: $id, parameters: $parameters, picture: $picture, categories: $categories, badges: $badges, price: $price, oldPrice: $oldPrice, brand: $brand, article: $article, name: $name, description: $description, avaliable: $avaliable, discount: $discount, sort: $sort, rating: $rating, reviewsCount: $reviewsCount, needBuyToWholesale: $needBuyToWholesale, wholesaleDiscount: $wholesaleDiscount)';
   }
 
   @override
@@ -501,7 +503,7 @@ class _$_ProductModel implements _ProductModel {
   }
 }
 
-abstract class _ProductModel implements Product {
+abstract class _ProductModel implements ProductModel {
   const factory _ProductModel(
           {final int? id,
           final ProductProperty? parameters,
@@ -771,7 +773,9 @@ Badge _$BadgeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Badge {
   int get id => throw _privateConstructorUsedError;
+  @JsonValue('text_color')
   String? get textColor => throw _privateConstructorUsedError;
+  @JsonValue('bg_color')
   String? get bgColor => throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
   String? get picture => throw _privateConstructorUsedError;
@@ -788,8 +792,8 @@ abstract class $BadgeCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String? textColor,
-      String? bgColor,
+      @JsonValue('text_color') String? textColor,
+      @JsonValue('bg_color') String? bgColor,
       String? text,
       String? picture});
 }
@@ -846,8 +850,8 @@ abstract class _$$_BadgeCopyWith<$Res> implements $BadgeCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String? textColor,
-      String? bgColor,
+      @JsonValue('text_color') String? textColor,
+      @JsonValue('bg_color') String? bgColor,
       String? text,
       String? picture});
 }
@@ -897,8 +901,8 @@ class __$$_BadgeCopyWithImpl<$Res> extends _$BadgeCopyWithImpl<$Res, _$_Badge>
 class _$_Badge implements _Badge {
   const _$_Badge(
       {required this.id,
-      this.textColor,
-      this.bgColor,
+      @JsonValue('text_color') this.textColor,
+      @JsonValue('bg_color') this.bgColor,
       this.text,
       this.picture});
 
@@ -908,8 +912,10 @@ class _$_Badge implements _Badge {
   @override
   final int id;
   @override
+  @JsonValue('text_color')
   final String? textColor;
   @override
+  @JsonValue('bg_color')
   final String? bgColor;
   @override
   final String? text;
@@ -956,8 +962,8 @@ class _$_Badge implements _Badge {
 abstract class _Badge implements Badge {
   const factory _Badge(
       {required final int id,
-      final String? textColor,
-      final String? bgColor,
+      @JsonValue('text_color') final String? textColor,
+      @JsonValue('bg_color') final String? bgColor,
       final String? text,
       final String? picture}) = _$_Badge;
 
@@ -966,8 +972,10 @@ abstract class _Badge implements Badge {
   @override
   int get id;
   @override
+  @JsonValue('text_color')
   String? get textColor;
   @override
+  @JsonValue('bg_color')
   String? get bgColor;
   @override
   String? get text;

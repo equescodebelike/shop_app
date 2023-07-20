@@ -5,16 +5,15 @@ part 'product_model.freezed.dart';
 part 'product_model.g.dart';
 
 @freezed
-abstract class Product with _$Product {
-  const factory Product({
+abstract class ProductModel with _$ProductModel {
+  const factory ProductModel({
     int? id,
     ProductProperty? parameters,
     String? picture,
     Category? categories,
     required List<Badge> badges,
     required String price,
-    @JsonKey(name: 'old_price')
-    String? oldPrice,
+    @JsonKey(name: 'old_price') String? oldPrice,
     required String brand,
     String? article,
     String? name,
@@ -23,17 +22,14 @@ abstract class Product with _$Product {
     num? discount,
     int? sort,
     num? rating,
-    @JsonKey(name: 'reviews_count')
-    int? reviewsCount,
-    @JsonKey(name: 'need_buy_to_wholesale')
-    int? needBuyToWholesale,
-    @JsonKey(name: 'wholesale_discount')
-    int? wholesaleDiscount,
+    @JsonKey(name: 'reviews_count') int? reviewsCount,
+    @JsonKey(name: 'need_buy_to_wholesale') int? needBuyToWholesale,
+    @JsonKey(name: 'wholesale_discount') int? wholesaleDiscount,
     // city_fias?
   }) = _ProductModel;
 
-  factory Product.fromJson(Map<String, dynamic> json) =>
-      _$ProductFromJson(json);
+  factory ProductModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductModelFromJson(json);
 }
 
 @freezed
@@ -53,8 +49,8 @@ abstract class ProductProperty with _$ProductProperty {
 abstract class Badge with _$Badge {
   const factory Badge({
     required int id,
-    String? textColor,
-    String? bgColor,
+    @JsonValue('text_color') String? textColor,
+    @JsonValue('bg_color') String? bgColor,
     String? text,
     String? picture,
   }) = _Badge;
