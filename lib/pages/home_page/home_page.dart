@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:shop_app/assets_icons/app_icons.g.dart';
 import 'package:shop_app/navigation/app_router.dart';
 

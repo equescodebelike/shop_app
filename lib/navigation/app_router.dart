@@ -1,26 +1,28 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/pages/catalog_page/catalog_page.dart';
+import 'package:shop_app/pages/auth_code_page/auth_code_page_widget.dart';
+import 'package:shop_app/pages/auth_code_page/auth_code_page_wm.dart';
+import 'package:shop_app/pages/auth_page/auth_page_widget.dart';
+import 'package:shop_app/pages/auth_page/auth_page_wm.dart';
 import 'package:shop_app/pages/catalog_page_update/catalog_page_widget.dart';
 import 'package:shop_app/pages/catalog_page_update/catalog_page_wm.dart';
 import 'package:shop_app/pages/favorites_page/favorites_page.dart';
 import 'package:shop_app/pages/home_page/home_page.dart';
 import 'package:shop_app/pages/onboarding_page/onboarding_page.dart';
 import 'package:shop_app/pages/product_page/product_page.dart';
-import 'package:shop_app/pages/profile_page/profile_page.dart';
 import 'package:shop_app/pages/shopping_cart_page/shopping_cart_page.dart';
 import 'package:shop_app/pages/show_case_page/show_case_page.dart';
 
+import '../model/catalog/get/product/product.dart';
+
 part 'app_router.gr.dart';
 
-//TODO: Initial change flag
 @AutoRouterConfig()
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
-          // initial: true,
           page: OnBoardingRoute.page,
         ),
         AutoRoute(
@@ -37,12 +39,14 @@ class AppRouter extends _$AppRouter {
               ],
             ),
             AutoRoute(
-              
               page: CatalogTab.page,
               children: [
                 AutoRoute(
                   initial: true,
                   page: CatalogRouteWidget.page,
+                ),
+                AutoRoute(
+                  page: ProductRoute.page,
                 ),
               ],
             ),
@@ -69,7 +73,10 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(
                   initial: true,
-                  page: ProfileRoute.page,
+                  page: AuthRouteWidget.page,
+                ),
+                AutoRoute(
+                  page: AuthCodeRouteWidget.page,
                 ),
               ],
             ),

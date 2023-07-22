@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app/navigation/app_router.dart';
-import 'package:shop_app/pages/catalog_page/catalog_page.dart';
-import 'package:shop_app/pages/onboarding_page/onboarding_page.dart';
 
 class ShopApp extends StatelessWidget {
   ShopApp({super.key});
@@ -42,9 +40,8 @@ class ShopApp extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
           bodyMedium: GoogleFonts.montserrat(
-            fontSize: 12,
-            letterSpacing: 1.4,
-            fontWeight: FontWeight.w500,
+            fontSize: 13,
+            fontWeight: FontWeight.w400,
           ),
           bodySmall: GoogleFonts.montserrat(
             fontSize: 12,

@@ -1,21 +1,19 @@
-
-
-// TODO: cover with documentation
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/navigation/app_router.dart';
 import 'package:shop_app/pages/catalog_page_update/catalog_page_wm.dart';
-import 'package:shop_app/pages/widgets/product_card.dart';
+import 'package:shop_app/pages/widgets/catalog_card_widget.dart';
 
-/// Main widget for CatalogPage module
+//TODO: Do comments
 @RoutePage()
 class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
   const CatalogPageWidget({
     Key? key,
     @queryParam this.title,
     @queryParam this.categotyId,
-    @queryParam this.productIds = const [],
+    @queryParam this.productIds = const <int>[],
     WidgetModelFactory wmFactory = defaultCatalogPageWidgetModelFactory,
   }) : super(wmFactory, key: key);
 
@@ -52,8 +50,7 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
             child: CircularProgressIndicator(),
           );
         },
-        builder: (context, data) {
-          // final localizations = AppLocalizations.of(context);
+        builder: (context, data) {;
           final products = data ?? [];
 
           if (products.isEmpty) {
@@ -97,12 +94,19 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
                   ),
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) {
-              return ProductCard(
-                product: products[index],
-                favourite: index.isOdd,
-                onFavoutiteTap: () {},
-                onTap: () => wm.openProduct(
+              return GestureDetector(
+                onTap: () {
+                  context.router.navigate(
+                    ProductRoute(product: products[index], productId: products[index].id)
+                  );
+                },
+                child: CatalogCardWidget(
                   product: products[index],
+                  // favourite: index.isOdd,
+                  // onFavoutiteTap: () {},
+                  // onTap: () => wm.openProduct(
+                  //   product: products[index],
+                  // ),
                 ),
               );
             },

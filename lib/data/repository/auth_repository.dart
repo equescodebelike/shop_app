@@ -81,14 +81,4 @@ class AuthRepository {
     }
   }
 
-  // @override
-  // Future<void> registerBrand({required RegisterBrandRequest request}) async {
-  //   try {
-  //     await _authService.registerBrand(profile: request);
-  //   } on DioError catch (error) {
-  //     throw Exception(
-  //       error.response?.data['message'],
-  //     );
-  //   }
-  // }
 }

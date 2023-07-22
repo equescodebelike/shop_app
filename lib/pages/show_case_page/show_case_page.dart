@@ -20,14 +20,16 @@ class ShowCasePage extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(25, 60, 1, 0),
-            child: CustomFilledButton(
-              onTap: () {
-                context.router.navigate(
-                  const BasketTab(),
-                );
-              },
-              text: 'В корзину',
+            padding: const EdgeInsets.only(top: 25),
+            child: Center(
+              child: CustomFilledButton(
+                onTap: () {
+                  context.router.navigate(
+                    const BasketTab(),
+                  );
+                },
+                text: 'В корзину',
+              ),
             ),
           )
         ],

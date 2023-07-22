@@ -85,19 +85,3 @@ Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>
       'reviews_count': instance.reviewsCount,
       'city_fias': instance.cityFias,
     };
-
-_$_Badge _$$_BadgeFromJson(Map<String, dynamic> json) => _$_Badge(
-      id: json['id'] as int,
-      textColor: json['textColor'] as String?,
-      bgColor: json['bgColor'] as String?,
-      text: json['text'] as String?,
-      picture: json['picture'] as String?,
-    );
-
-Map<String, dynamic> _$$_BadgeToJson(_$_Badge instance) => <String, dynamic>{
-      'id': instance.id,
-      'textColor': instance.textColor,
-      'bgColor': instance.bgColor,
-      'text': instance.text,
-      'picture': instance.picture,
-    };

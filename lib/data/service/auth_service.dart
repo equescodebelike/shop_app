@@ -38,8 +38,4 @@ abstract class AuthService {
   @POST(AuthUrl.authRegister)
   Future<void> register({@Body() required Profile profile});
 
-  // @POST(AuthUrl.authFarmRegister)
-  // Future<void> registerBrand({
-  //   @Body() required RegisterBrandRequest profile,
-  // });
 }

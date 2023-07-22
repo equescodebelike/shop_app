@@ -57,7 +57,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         actions: [
           IconButton(
               onPressed: () {
-                context.router.popAndPush(ShowCaseRoute());
+                context.router.popAndPush(const ShowCaseRoute());
               },
               icon: Icon(
                 Icons.close,

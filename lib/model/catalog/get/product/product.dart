@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shop_app/model/catalog/get/product/product_model.dart';
 
@@ -11,8 +12,8 @@ class Product with _$Product {
     required int id,
     required String picture,
     required List<Badge> badges,
-    required String price,
-    @JsonKey(name: "old_price") String? oldPrice,
+    required Decimal price,
+    @JsonKey(name: "old_price") Decimal? oldPrice,
     required String name,
     String? article,
     double? rating,

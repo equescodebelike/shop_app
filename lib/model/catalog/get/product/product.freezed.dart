@@ -23,9 +23,9 @@ mixin _$Product {
   int get id => throw _privateConstructorUsedError;
   String get picture => throw _privateConstructorUsedError;
   List<Badge> get badges => throw _privateConstructorUsedError;
-  String get price => throw _privateConstructorUsedError;
+  Decimal get price => throw _privateConstructorUsedError;
   @JsonKey(name: "old_price")
-  String? get oldPrice => throw _privateConstructorUsedError;
+  Decimal? get oldPrice => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get article => throw _privateConstructorUsedError;
   double? get rating => throw _privateConstructorUsedError;
@@ -48,8 +48,8 @@ abstract class $ProductCopyWith<$Res> {
       {int id,
       String picture,
       List<Badge> badges,
-      String price,
-      @JsonKey(name: "old_price") String? oldPrice,
+      Decimal price,
+      @JsonKey(name: "old_price") Decimal? oldPrice,
       String name,
       String? article,
       double? rating,
@@ -97,11 +97,11 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Decimal,
       oldPrice: freezed == oldPrice
           ? _value.oldPrice
           : oldPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Decimal?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -137,8 +137,8 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       {int id,
       String picture,
       List<Badge> badges,
-      String price,
-      @JsonKey(name: "old_price") String? oldPrice,
+      Decimal price,
+      @JsonKey(name: "old_price") Decimal? oldPrice,
       String name,
       String? article,
       double? rating,
@@ -183,11 +183,11 @@ class __$$_ProductCopyWithImpl<$Res>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Decimal,
       oldPrice: freezed == oldPrice
           ? _value.oldPrice
           : oldPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Decimal?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -244,10 +244,10 @@ class _$_Product implements _Product {
   }
 
   @override
-  final String price;
+  final Decimal price;
   @override
   @JsonKey(name: "old_price")
-  final String? oldPrice;
+  final Decimal? oldPrice;
   @override
   final String name;
   @override
@@ -320,8 +320,8 @@ abstract class _Product implements Product {
       {required final int id,
       required final String picture,
       required final List<Badge> badges,
-      required final String price,
-      @JsonKey(name: "old_price") final String? oldPrice,
+      required final Decimal price,
+      @JsonKey(name: "old_price") final Decimal? oldPrice,
       required final String name,
       final String? article,
       final double? rating,
@@ -337,10 +337,10 @@ abstract class _Product implements Product {
   @override
   List<Badge> get badges;
   @override
-  String get price;
+  Decimal get price;
   @override
   @JsonKey(name: "old_price")
-  String? get oldPrice;
+  Decimal? get oldPrice;
   @override
   String get name;
   @override

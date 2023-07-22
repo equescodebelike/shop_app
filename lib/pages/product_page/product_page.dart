@@ -1,21 +1,23 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/model/catalog/get/product/product.dart';
+import 'package:shop_app/pages/widgets/extensions/money_extension.dart';
+import 'package:shop_app/pages/widgets/filled_button_widget.dart';
 
-
+@RoutePage()
 class ProductPage extends StatefulWidget {
-  const ProductPage({super.key});
+  const ProductPage(
+      {super.key, required this.product, @pathParam required this.productId});
+
+  final Product product;
+  final int productId;
 
   @override
   State<ProductPage> createState() => _ProductPageState();
 }
 
 class _ProductPageState extends State<ProductPage> {
-  List<Image> pictures = [
-    Image.asset('assets/images/empty_photo.png'),
-    Image.asset('assets/images/logo.png'),
-  ];
-
   bool checked = false;
 
   @override
@@ -64,19 +66,43 @@ class _ProductPageState extends State<ProductPage> {
                 child: SizedBox(
                   height: 250,
                   width: 250,
-                  child: PageView.builder(
-                    itemCount: pictures.length,
-                    itemBuilder: (_, index) {
-                      final picture = pictures[index];
-                      return picture;
+                  child: CachedNetworkImage(
+                    fit: BoxFit.fill,
+                    imageUrl: widget.product.picture,
+                    progressIndicatorBuilder: (_, __, ___) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                    errorWidget: (_, __, ___) {
+                      return Image.asset(
+                        'assets/images/empty_photo.png',
+                        fit: BoxFit.fill,
+                      );
                     },
                   ),
                 ),
               ),
-              Text(
-                'Название товара Название товара Название товара Название товара Название товара Название товара ',
-                style: theme.textTheme.bodyLarge?.copyWith(fontSize: 20),
-              )
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  widget.product.name,
+                  style: theme.textTheme.bodyLarge?.copyWith(fontSize: 20),
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  widget.product.price.formatMoney(),
+                  style: theme.textTheme.bodyLarge?.copyWith(fontSize: 20),
+                ),
+              ),
+              const SizedBox(height: 10),
+              CustomFilledButton(
+                //TODO: Navigation
+                text: 'В корзину',
+                onTap: () {},
+              ),
             ],
           ),
         ),

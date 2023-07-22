@@ -1,6 +1,5 @@
 name: shop_app
 description: Fittin Graduate App
-publish_to: 'none'
 version: 1.0.0+1
 
 environment:
@@ -25,6 +24,8 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   elementary: ^2.0.0
   pinput: ^2.2.31
+  decimal: ^2.3.3
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

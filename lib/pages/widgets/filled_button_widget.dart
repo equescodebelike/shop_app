@@ -9,7 +9,7 @@ class CustomFilledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 360,
+      width: 387,
       child: FilledButton(
         style: ButtonStyle(
             shape: MaterialStateProperty.all(const RoundedRectangleBorder())),

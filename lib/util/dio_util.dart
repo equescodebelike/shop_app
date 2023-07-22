@@ -14,6 +14,7 @@ class DioUtil {
 
   final Dio dio = Dio();
   // TODO: Add api
+  // ..contentType = 'application/json' check!
   late final AuthService authService = AuthService(dio);
   late final CatalogService catalogService = CatalogService(dio);
   final TokenRepository tokenRepository = TokenRepository();
@@ -25,6 +26,7 @@ class DioUtil {
       ..baseUrl = 'https://farm.fbtw.ru/'
       ..connectTimeout = timeout
       ..receiveTimeout = timeout
+      ..contentType = 'application/json'
       ..sendTimeout = timeout;
     dio.interceptors.add(PrettyDioLogger());
 

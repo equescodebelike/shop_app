@@ -1,15 +1,18 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/assets_icons/app_icons.g.dart';
-import 'package:shop_app/model/catalog/post/catalog_products/catalog_products.dart';
+import 'package:shop_app/model/catalog/get/product/product.dart';
+import 'package:shop_app/pages/widgets/extensions/money_extension.dart';
 
 class CatalogCardWidget extends StatefulWidget {
-  CatalogCardWidget({
+  const CatalogCardWidget({
     required this.product,
+    this.onTap,
     super.key,
   });
 
-  Product product;
+  final VoidCallback? onTap;
+  final Product product;
 
   @override
   State<CatalogCardWidget> createState() => _CatalogCardWidgetState();
@@ -35,11 +38,20 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
               aspectRatio: 1,
               child: Stack(
                 children: [
-                  Image.asset(
-                    'assets/images/empty_photo.png',
-                    width: _width,
-                    height: _width,
-                    fit: BoxFit.cover,
+                  CachedNetworkImage(
+                    fit: BoxFit.fill,
+                    imageUrl: widget.product.picture,
+                    progressIndicatorBuilder: (_, __, ___) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                    errorWidget: (_, __, ___) {
+                      return Image.asset(
+                        'assets/images/empty_photo.png',
+                        fit: BoxFit.fill,
+                      );
+                    },
                   ),
                   Align(
                     alignment: Alignment.topRight,
@@ -76,7 +88,7 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
                   width: _width,
                   height: 38,
                   child: Text(
-                    "Название товара Название товара...",
+                    widget.product.name,
                     style: Theme.of(context).textTheme.bodyMedium,
                     textAlign: TextAlign.left,
                   ),
@@ -86,13 +98,13 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
                   height: 48,
                   child: CupertinoListTile(
                     padding: EdgeInsets.zero,
-                    title: const Text(
-                      "1 990 ₽",
+                    title: Text(
+                      widget.product.price.formatMoney(),
                       textAlign: TextAlign.start,
                     ),
-                    subtitle: const Text(
-                      "2 990 ₽",
-                      style: TextStyle(
+                    subtitle: Text(
+                      widget.product.oldPrice?.formatMoney() ?? '',
+                      style: const TextStyle(
                         decoration: TextDecoration.lineThrough,
                       ),
                       textAlign: TextAlign.start,

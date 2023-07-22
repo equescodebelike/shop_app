@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shop_app/model/catalog/get/product/product_model.dart';
 
 part 'catalog_products.freezed.dart';
 
@@ -64,19 +65,4 @@ class Product with _$Product {
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
-}
-
-
-@freezed
-class Badge with _$Badge {
-  const factory Badge({
-    required int id,
-    @JsonValue('text_color') String? textColor,
-    @JsonValue('bg_color') String? bgColor,
-    String? text,
-    String? picture,
-  }) = _Badge;
-
-  factory Badge.fromJson(Map<String, Object?> json) =>
-      _$BadgeFromJson(json);
 }

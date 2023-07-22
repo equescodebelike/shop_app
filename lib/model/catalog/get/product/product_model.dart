@@ -5,34 +5,6 @@ part 'product_model.freezed.dart';
 part 'product_model.g.dart';
 
 @freezed
-abstract class ProductModel with _$ProductModel {
-  const factory ProductModel({
-    int? id,
-    ProductProperty? parameters,
-    String? picture,
-    Category? categories,
-    required List<Badge> badges,
-    required String price,
-    @JsonKey(name: 'old_price') String? oldPrice,
-    required String brand,
-    String? article,
-    String? name,
-    String? description,
-    bool? avaliable,
-    num? discount,
-    int? sort,
-    num? rating,
-    @JsonKey(name: 'reviews_count') int? reviewsCount,
-    @JsonKey(name: 'need_buy_to_wholesale') int? needBuyToWholesale,
-    @JsonKey(name: 'wholesale_discount') int? wholesaleDiscount,
-    // city_fias?
-  }) = _ProductModel;
-
-  factory ProductModel.fromJson(Map<String, dynamic> json) =>
-      _$ProductModelFromJson(json);
-}
-
-@freezed
 abstract class ProductProperty with _$ProductProperty {
   const factory ProductProperty({
     int? id,

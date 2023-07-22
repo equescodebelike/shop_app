@@ -118,40 +118,6 @@ class _CatalogService implements CatalogService {
     return value;
   }
 
-  @override
-  Future<ProductModel> getProduct({
-    int? productId,
-    String? cityFias,
-  }) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'product_id': productId,
-      r'city_fias': cityFias,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ProductModel>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/catalog/product/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = ProductModel.fromJson(_result.data!);
-    return value;
-  }
-
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

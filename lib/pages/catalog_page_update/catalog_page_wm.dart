@@ -1,9 +1,10 @@
-
+import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/data/service/catalog_service.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/catalog/post/catalog_products/catalog_products_request.dart';
+import 'package:shop_app/navigation/app_router.dart';
 import 'package:shop_app/pages/catalog_page_update/catalog_page_model.dart';
 import 'package:shop_app/pages/catalog_page_update/catalog_page_widget.dart';
 import 'package:shop_app/util/dio_util.dart';
@@ -32,8 +33,6 @@ CatalogPageWidgetModel defaultCatalogPageWidgetModelFactory(
   );
 }
 
-// TODO: cover with documentation
-/// Default widget model for CatalogPageWidget
 class CatalogPageWidgetModel
     extends WidgetModel<CatalogPageWidget, CatalogPageModel>
     with ThemeProvider
@@ -110,6 +109,7 @@ class CatalogPageWidgetModel
       _nextPage++;
       _hasNext = products.next != null;
     } catch (e, s) {
+      // TODO: StackTrace, Dispose
       throw Exception(e);
 
       // if (isMounted) {
@@ -120,17 +120,10 @@ class CatalogPageWidgetModel
 
   @override
   void dispose() {
-    // searchController.removeListener(loadProducts);
-    // searchController.dispose();
     productsState.dispose();
     super.dispose();
   }
-  
-  @override
-  void openProduct({required Product product}) {
-    // TODO: implement openProduct
-  }
-  
+
   @override
   void openSort() {
     // TODO: implement openSort
@@ -193,15 +186,15 @@ class CatalogPageWidgetModel
   //   context.router.root.pop();
   // }
 
-  // @override
-  // void openProduct({
-  //   required Product product,
-  // }) {
-  //   context.router.navigate(
-  //     ProductRoute(
-  //       productId: product.id,
-  //       product: product,
-  //     ),
-  //   );
-  // }
+  @override
+  void openProduct({
+    required Product product,
+  }) {
+    context.router.navigate(
+      ProductRoute(
+        productId: product.id,
+        product: product,
+      ),
+    );
+  }
 }

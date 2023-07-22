@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
-import 'package:shop_app/model/catalog/get/product/product_model.dart';
 
 part 'catalog_products_response.freezed.dart';
 
