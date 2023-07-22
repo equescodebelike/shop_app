@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/assets_icons/app_icons.g.dart';
 import 'package:shop_app/model/catalog/post/catalog_products/catalog_products.dart';
 
-class CatalogCardWidget extends StatelessWidget {
+class CatalogCardWidget extends StatefulWidget {
   CatalogCardWidget({
     required this.product,
     super.key,
@@ -10,8 +11,16 @@ class CatalogCardWidget extends StatelessWidget {
 
   Product product;
 
+  @override
+  State<CatalogCardWidget> createState() => _CatalogCardWidgetState();
+}
+
+class _CatalogCardWidgetState extends State<CatalogCardWidget> {
   final double _width = 164;
+
   final double _height = 250;
+
+  bool checked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +44,17 @@ class CatalogCardWidget extends StatelessWidget {
                   Align(
                     alignment: Alignment.topRight,
                     child: IconButton(
-                      icon: const Icon(Icons.favorite),
-                      onPressed: () {},
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      icon: checked
+                          ? const Icon(Icons.favorite, color: Colors.red)
+                          : const Icon(Icons.favorite_border,
+                              color: Color(0xFF7d7d7d)),
+                      onPressed: () {
+                        setState(() {
+                          checked = !checked;
+                        });
+                      },
                     ),
                   )
                 ],
@@ -84,7 +102,7 @@ class CatalogCardWidget extends StatelessWidget {
                       height: 48,
                       child: IconButton.filled(
                         icon: const Icon(
-                          CupertinoIcons.add,
+                          Icons.shopping_bag_outlined,
                         ),
                         onPressed: () {
                           //TODO: избранное

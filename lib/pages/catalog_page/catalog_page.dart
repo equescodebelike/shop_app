@@ -6,9 +6,10 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/data/service/catalog_service.dart';
 import 'package:shop_app/model/catalog/get/product/product_model.dart';
 import 'package:shop_app/model/catalog/post/catalog_products/catalog_products.dart';
+import 'package:shop_app/navigation/app_router.dart';
 import 'package:shop_app/pages/widgets/catalog_card_widget.dart';
 
-@RoutePage()
+
 class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});
 
@@ -17,25 +18,47 @@ class CatalogPage extends StatefulWidget {
 }
 
 class _CatalogPageState extends State<CatalogPage> {
-  CatalogService get appClient => context.read();
-  
+  CatalogService get catalogService => context.read();
+
+  Future<ProductModel> _loadProduct() async {
+    final product = await catalogService.getProduct(productId: 1);
+    return product;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.background,
-      child: SafeArea(
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
+          'Каталог',
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      ),
+      body: SafeArea(
         child: CustomScrollView(
           slivers: [
             SliverPadding(
               padding: const EdgeInsets.all(16),
               sliver: SliverGrid(
                 delegate: SliverChildBuilderDelegate((context, index) {
-                  return CatalogCardWidget(
-                    product: const Product(
-                      badges: [],
-                      brand: 'Бренд',
-                    ),
+                  return GestureDetector(
+                    // onTap: () {
+                    //   context.router.push(
+                    //     const ProductRoute(),
+                    //   );
+                    // },
+                    // child: CatalogCardWidget(
+                    //   product: const Product(
+                    //     badges: [],
+                    //     brand: 'Бренд',
+                    //   ),
+                    // ),
                   );
                 }, childCount: 20),
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

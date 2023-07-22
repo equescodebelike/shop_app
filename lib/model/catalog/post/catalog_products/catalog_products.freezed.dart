@@ -504,19 +504,19 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Product {
-  int? get id => throw _privateConstructorUsedError;
-  String? get price => throw _privateConstructorUsedError;
-  num? get discount => throw _privateConstructorUsedError;
-  @JsonValue("old_price")
-  String? get oldPrice => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get article => throw _privateConstructorUsedError;
-  String? get picture => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String get picture => throw _privateConstructorUsedError;
   List<Badge> get badges => throw _privateConstructorUsedError;
-  num? get rating => throw _privateConstructorUsedError;
-  @JsonValue("reviews_count")
+  String get price => throw _privateConstructorUsedError;
+  @JsonKey(name: "old_price")
+  String? get oldPrice => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String? get article => throw _privateConstructorUsedError;
+  double? get rating => throw _privateConstructorUsedError;
+  @JsonKey(name: "reviews_count")
   int? get reviewsCount => throw _privateConstructorUsedError;
-  String get brand => throw _privateConstructorUsedError;
+  @JsonKey(name: "city_fias")
+  String? get cityFias => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -529,17 +529,16 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {int? id,
-      String? price,
-      num? discount,
-      @JsonValue("old_price") String? oldPrice,
-      String? name,
-      String? article,
-      String? picture,
+      {int id,
+      String picture,
       List<Badge> badges,
-      num? rating,
-      @JsonValue("reviews_count") int? reviewsCount,
-      String brand});
+      String price,
+      @JsonKey(name: "old_price") String? oldPrice,
+      String name,
+      String? article,
+      double? rating,
+      @JsonKey(name: "reviews_count") int? reviewsCount,
+      @JsonKey(name: "city_fias") String? cityFias});
 }
 
 /// @nodoc
@@ -555,63 +554,58 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? price = freezed,
-    Object? discount = freezed,
-    Object? oldPrice = freezed,
-    Object? name = freezed,
-    Object? article = freezed,
-    Object? picture = freezed,
+    Object? id = null,
+    Object? picture = null,
     Object? badges = null,
+    Object? price = null,
+    Object? oldPrice = freezed,
+    Object? name = null,
+    Object? article = freezed,
     Object? rating = freezed,
     Object? reviewsCount = freezed,
-    Object? brand = null,
+    Object? cityFias = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      price: freezed == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String?,
-      discount: freezed == discount
-          ? _value.discount
-          : discount // ignore: cast_nullable_to_non_nullable
-              as num?,
-      oldPrice: freezed == oldPrice
-          ? _value.oldPrice
-          : oldPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      article: freezed == article
-          ? _value.article
-          : article // ignore: cast_nullable_to_non_nullable
-              as String?,
-      picture: freezed == picture
+              as int,
+      picture: null == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       badges: null == badges
           ? _value.badges
           : badges // ignore: cast_nullable_to_non_nullable
               as List<Badge>,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String,
+      oldPrice: freezed == oldPrice
+          ? _value.oldPrice
+          : oldPrice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      article: freezed == article
+          ? _value.article
+          : article // ignore: cast_nullable_to_non_nullable
+              as String?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as num?,
+              as double?,
       reviewsCount: freezed == reviewsCount
           ? _value.reviewsCount
           : reviewsCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as String,
+      cityFias: freezed == cityFias
+          ? _value.cityFias
+          : cityFias // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -624,17 +618,16 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int? id,
-      String? price,
-      num? discount,
-      @JsonValue("old_price") String? oldPrice,
-      String? name,
-      String? article,
-      String? picture,
+      {int id,
+      String picture,
       List<Badge> badges,
-      num? rating,
-      @JsonValue("reviews_count") int? reviewsCount,
-      String brand});
+      String price,
+      @JsonKey(name: "old_price") String? oldPrice,
+      String name,
+      String? article,
+      double? rating,
+      @JsonKey(name: "reviews_count") int? reviewsCount,
+      @JsonKey(name: "city_fias") String? cityFias});
 }
 
 /// @nodoc
@@ -647,63 +640,58 @@ class __$$_ProductCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? price = freezed,
-    Object? discount = freezed,
-    Object? oldPrice = freezed,
-    Object? name = freezed,
-    Object? article = freezed,
-    Object? picture = freezed,
+    Object? id = null,
+    Object? picture = null,
     Object? badges = null,
+    Object? price = null,
+    Object? oldPrice = freezed,
+    Object? name = null,
+    Object? article = freezed,
     Object? rating = freezed,
     Object? reviewsCount = freezed,
-    Object? brand = null,
+    Object? cityFias = freezed,
   }) {
     return _then(_$_Product(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      price: freezed == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as String?,
-      discount: freezed == discount
-          ? _value.discount
-          : discount // ignore: cast_nullable_to_non_nullable
-              as num?,
-      oldPrice: freezed == oldPrice
-          ? _value.oldPrice
-          : oldPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      article: freezed == article
-          ? _value.article
-          : article // ignore: cast_nullable_to_non_nullable
-              as String?,
-      picture: freezed == picture
+              as int,
+      picture: null == picture
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       badges: null == badges
           ? _value._badges
           : badges // ignore: cast_nullable_to_non_nullable
               as List<Badge>,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String,
+      oldPrice: freezed == oldPrice
+          ? _value.oldPrice
+          : oldPrice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      article: freezed == article
+          ? _value.article
+          : article // ignore: cast_nullable_to_non_nullable
+              as String?,
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as num?,
+              as double?,
       reviewsCount: freezed == reviewsCount
           ? _value.reviewsCount
           : reviewsCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      brand: null == brand
-          ? _value.brand
-          : brand // ignore: cast_nullable_to_non_nullable
-              as String,
+      cityFias: freezed == cityFias
+          ? _value.cityFias
+          : cityFias // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -712,37 +700,25 @@ class __$$_ProductCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Product implements _Product {
   const _$_Product(
-      {this.id,
-      this.price,
-      this.discount,
-      @JsonValue("old_price") this.oldPrice,
-      this.name,
-      this.article,
-      this.picture,
+      {required this.id,
+      required this.picture,
       required final List<Badge> badges,
+      required this.price,
+      @JsonKey(name: "old_price") this.oldPrice,
+      required this.name,
+      this.article,
       this.rating,
-      @JsonValue("reviews_count") this.reviewsCount,
-      required this.brand})
+      @JsonKey(name: "reviews_count") this.reviewsCount,
+      @JsonKey(name: "city_fias") this.cityFias})
       : _badges = badges;
 
   factory _$_Product.fromJson(Map<String, dynamic> json) =>
       _$$_ProductFromJson(json);
 
   @override
-  final int? id;
+  final int id;
   @override
-  final String? price;
-  @override
-  final num? discount;
-  @override
-  @JsonValue("old_price")
-  final String? oldPrice;
-  @override
-  final String? name;
-  @override
-  final String? article;
-  @override
-  final String? picture;
+  final String picture;
   final List<Badge> _badges;
   @override
   List<Badge> get badges {
@@ -752,16 +728,26 @@ class _$_Product implements _Product {
   }
 
   @override
-  final num? rating;
+  final String price;
   @override
-  @JsonValue("reviews_count")
+  @JsonKey(name: "old_price")
+  final String? oldPrice;
+  @override
+  final String name;
+  @override
+  final String? article;
+  @override
+  final double? rating;
+  @override
+  @JsonKey(name: "reviews_count")
   final int? reviewsCount;
   @override
-  final String brand;
+  @JsonKey(name: "city_fias")
+  final String? cityFias;
 
   @override
   String toString() {
-    return 'Product(id: $id, price: $price, discount: $discount, oldPrice: $oldPrice, name: $name, article: $article, picture: $picture, badges: $badges, rating: $rating, reviewsCount: $reviewsCount, brand: $brand)';
+    return 'Product(id: $id, picture: $picture, badges: $badges, price: $price, oldPrice: $oldPrice, name: $name, article: $article, rating: $rating, reviewsCount: $reviewsCount, cityFias: $cityFias)';
   }
 
   @override
@@ -770,19 +756,18 @@ class _$_Product implements _Product {
         (other.runtimeType == runtimeType &&
             other is _$_Product &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.picture, picture) || other.picture == picture) &&
+            const DeepCollectionEquality().equals(other._badges, _badges) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.discount, discount) ||
-                other.discount == discount) &&
             (identical(other.oldPrice, oldPrice) ||
                 other.oldPrice == oldPrice) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.article, article) || other.article == article) &&
-            (identical(other.picture, picture) || other.picture == picture) &&
-            const DeepCollectionEquality().equals(other._badges, _badges) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.reviewsCount, reviewsCount) ||
                 other.reviewsCount == reviewsCount) &&
-            (identical(other.brand, brand) || other.brand == brand));
+            (identical(other.cityFias, cityFias) ||
+                other.cityFias == cityFias));
   }
 
   @JsonKey(ignore: true)
@@ -790,16 +775,15 @@ class _$_Product implements _Product {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      picture,
+      const DeepCollectionEquality().hash(_badges),
       price,
-      discount,
       oldPrice,
       name,
       article,
-      picture,
-      const DeepCollectionEquality().hash(_badges),
       rating,
       reviewsCount,
-      brand);
+      cityFias);
 
   @JsonKey(ignore: true)
   @override
@@ -817,44 +801,42 @@ class _$_Product implements _Product {
 
 abstract class _Product implements Product {
   const factory _Product(
-      {final int? id,
-      final String? price,
-      final num? discount,
-      @JsonValue("old_price") final String? oldPrice,
-      final String? name,
-      final String? article,
-      final String? picture,
+      {required final int id,
+      required final String picture,
       required final List<Badge> badges,
-      final num? rating,
-      @JsonValue("reviews_count") final int? reviewsCount,
-      required final String brand}) = _$_Product;
+      required final String price,
+      @JsonKey(name: "old_price") final String? oldPrice,
+      required final String name,
+      final String? article,
+      final double? rating,
+      @JsonKey(name: "reviews_count") final int? reviewsCount,
+      @JsonKey(name: "city_fias") final String? cityFias}) = _$_Product;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
 
   @override
-  int? get id;
+  int get id;
   @override
-  String? get price;
-  @override
-  num? get discount;
-  @override
-  @JsonValue("old_price")
-  String? get oldPrice;
-  @override
-  String? get name;
-  @override
-  String? get article;
-  @override
-  String? get picture;
+  String get picture;
   @override
   List<Badge> get badges;
   @override
-  num? get rating;
+  String get price;
   @override
-  @JsonValue("reviews_count")
+  @JsonKey(name: "old_price")
+  String? get oldPrice;
+  @override
+  String get name;
+  @override
+  String? get article;
+  @override
+  double? get rating;
+  @override
+  @JsonKey(name: "reviews_count")
   int? get reviewsCount;
   @override
-  String get brand;
+  @JsonKey(name: "city_fias")
+  String? get cityFias;
   @override
   @JsonKey(ignore: true)
   _$$_ProductCopyWith<_$_Product> get copyWith =>

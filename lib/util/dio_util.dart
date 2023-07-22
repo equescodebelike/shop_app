@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:shop_app/data/interceptor.dart';
+import 'package:shop_app/data/repository/token_repository.dart';
+import 'package:shop_app/data/service/auth_service.dart';
 import 'package:shop_app/data/service/catalog_service.dart';
 
 class DioUtil {
@@ -11,10 +14,9 @@ class DioUtil {
 
   final Dio dio = Dio();
   // TODO: Add api
-  late final CatalogService restService;
-  // late final CharacterRepository characterRepository  = CharacterRepository(restService);
-  // late final EpisodeRepository episodeRepository = EpisodeRepository(restService);
-  // late final LocationRepository locationRepository = LocationRepository(restService);
+  late final AuthService authService = AuthService(dio);
+  late final CatalogService catalogService = CatalogService(dio);
+  final TokenRepository tokenRepository = TokenRepository();
 
   Future<void> init() async {
     const timeout = Duration(seconds: 60);
@@ -26,6 +28,14 @@ class DioUtil {
       ..sendTimeout = timeout;
     dio.interceptors.add(PrettyDioLogger());
 
-    restService = CatalogService(dio);
+    await tokenRepository.initTokens();
+
+    dio.interceptors.add(
+      JWTInterceptor(
+        repository: tokenRepository,
+        dio: dio,
+      ),
+    );
+
   }
 }

@@ -37,9 +37,9 @@ class ShopApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
           bodyLarge: GoogleFonts.montserrat(
-            fontSize: 15,
+            fontSize: 16,
             height: 20 / 16,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           ),
           bodyMedium: GoogleFonts.montserrat(
             fontSize: 12,

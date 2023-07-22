@@ -5,11 +5,12 @@ part 'categories_model.freezed.dart';
 part 'categories_model.g.dart';
 
 @freezed
-abstract class Category with _$Category {
+class Category with _$Category {
   const factory Category({
     required int id,
     required String name,
     String? picture,
+    required List<Category>? subcategories,
   }) = _Category;
 
   factory Category.fromJson(Map<String, dynamic> json) =>
