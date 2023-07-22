@@ -35,7 +35,6 @@ class AuthRepository {
     }
   }
 
-  @override
   Future<Profile> getUser() async {
     try {
       final result = await _authService.getUser();
@@ -47,7 +46,6 @@ class AuthRepository {
     }
   }
 
-  @override
   Future<Profile> patchUser({required Profile request}) async {
     try {
       final result = await _authService.patchUser(request: request);
@@ -59,7 +57,6 @@ class AuthRepository {
     }
   }
 
-  @override
   Future<void> deleteUser() async {
     try {
       await _authService.deleteUser();
@@ -70,7 +67,6 @@ class AuthRepository {
     }
   }
 
-  @override
   Future<void> register({required Profile profile}) async {
     try {
       await _authService.register(profile: profile);

@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:shop_app/model/catalog/get/categories/categories_model.dart';
 
 part 'product_model.freezed.dart';
 part 'product_model.g.dart';

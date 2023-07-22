@@ -15,6 +15,8 @@ class OnBoardingPage extends StatefulWidget {
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
   final PageController controller = PageController();
+  bool isLastPage = false;
+
   @override
   void dispose() {
     controller.dispose();
@@ -73,18 +75,28 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             SizedBox(
               height: 405,
               child: PageView.builder(
+                onPageChanged: (index) {
+                  // TODO: допилить логику
+                  setState(() => isLastPage = index == 3);
+                },
                 controller: controller,
                 itemBuilder: (_, index) {
                   return pages[index % pages.length];
                 },
               ),
             ),
-            CustomFilledButton(
-                onTap: () => controller.nextPage(
-                    duration: const Duration(milliseconds: 600),
-                    curve: Curves.easeIn),
-                text: "Далее"),
-            //TODO: controller.page == pages.length - 1 ? "Начать" : "Далее"),
+            isLastPage
+                ? CustomFilledButton(
+                    onTap: () => context.router.push(
+                      const ShowCaseRoute(),
+                    ),
+                    text: "Начать",
+                  )
+                : CustomFilledButton(
+                    onTap: () => controller.nextPage(
+                        duration: const Duration(milliseconds: 600),
+                        curve: Curves.easeIn),
+                    text: "Далее"),
             SmoothPageIndicator(
               controller: controller,
               count: 4,
@@ -131,7 +143,7 @@ class OnboardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       Padding(
-        padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
+        padding: const EdgeInsets.fromLTRB(20, 23, 20, 0),
         child: CardWithText(
           text: text.toUpperCase(),
         ),

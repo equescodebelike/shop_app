@@ -51,6 +51,7 @@ class CatalogPageWidgetModel
   // final sortState = EntityStateNotifier();
 
   bool _hasNext = true;
+  // ignore: unused_field
   bool _loading = false;
   int _nextPage = 1;
 

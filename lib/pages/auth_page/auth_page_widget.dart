@@ -14,9 +14,6 @@ class AuthPageWidget extends ElementaryWidget<IAuthPageWidgetModel> {
   @override
   Widget build(IAuthPageWidgetModel wm) {
     final theme = wm.theme;
-    final textTheme = wm.textTheme;
-    final colorTheme = wm.colorScheme;
-    final router = wm.router;
 
     return Scaffold(
       appBar: AppBar(
