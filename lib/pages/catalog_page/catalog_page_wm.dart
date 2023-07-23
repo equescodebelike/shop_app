@@ -1,12 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/data/service/catalog_service.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/catalog/post/catalog_products/catalog_products_request.dart';
 import 'package:shop_app/navigation/app_router.dart';
-import 'package:shop_app/pages/catalog_page_update/catalog_page_model.dart';
-import 'package:shop_app/pages/catalog_page_update/catalog_page_widget.dart';
+import 'package:shop_app/pages/catalog_page/catalog_page_model.dart';
+import 'package:shop_app/pages/catalog_page/catalog_page_widget.dart';
 import 'package:shop_app/util/dio_util.dart';
 import 'package:shop_app/util/wm_extensions.dart';
 
@@ -14,9 +15,7 @@ abstract class ICatalogPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   EntityStateNotifier<List<Product>> get productsState;
 
-  // EntityStateNotifier<Sort> get sortState;
-
-  // TextEditingController get searchController;
+// TextEditingController get searchController;
 
   ScrollController get scrollController;
 
@@ -47,14 +46,6 @@ class CatalogPageWidgetModel
   // @override
   // final searchController = TextEditingController();
 
-  // @override
-  // final sortState = EntityStateNotifier();
-
-  bool _hasNext = true;
-  // ignore: unused_field
-  bool _loading = false;
-  int _nextPage = 1;
-
   List<int> get _categoryIds => widget.categotyId == null
       ? []
       : [
@@ -76,25 +67,13 @@ class CatalogPageWidgetModel
     loadProducts();
   }
 
-  Future<void> loadProducts([bool refresh = true]) async {
-    if (!_hasNext && !refresh) {
-      return;
-    }
+  Future<void> loadProducts() async {
+    
 
-    if (refresh) {
-      _nextPage = 1;
-      _hasNext = true;
-    }
-
-    final List<Product> currentProducts =
-        refresh ? [] : productsState.value?.data ?? [];
+    final List<Product> currentProducts = productsState.value?.data ?? [];
     // final selected = sortState.value?.data;
     try {
-      _loading = true;
-
       final products = await catalogService.getProducts(
-        page: _nextPage,
-        size: 4,
         request: CatalogProductsRequest(
           // sortBy: selected?.key,
           // search: searchController.text,
@@ -106,11 +85,10 @@ class CatalogPageWidgetModel
       productsState.content(
         List.of(currentProducts),
       );
-      _loading = false;
-      _nextPage++;
-      _hasNext = products.next != null;
     } catch (e, s) {
-      // TODO: StackTrace, Dispose
+      if (kDebugMode) {
+        print(s);
+      }
       throw Exception(e);
 
       // if (isMounted) {

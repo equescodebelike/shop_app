@@ -9,6 +9,7 @@ class CustomFilledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 50,
       width: 387,
       child: FilledButton(
         style: ButtonStyle(

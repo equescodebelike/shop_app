@@ -5,13 +5,16 @@ import 'package:shop_app/pages/auth_code_page/auth_code_page_widget.dart';
 import 'package:shop_app/pages/auth_code_page/auth_code_page_wm.dart';
 import 'package:shop_app/pages/auth_page/auth_page_widget.dart';
 import 'package:shop_app/pages/auth_page/auth_page_wm.dart';
-import 'package:shop_app/pages/catalog_page_update/catalog_page_widget.dart';
-import 'package:shop_app/pages/catalog_page_update/catalog_page_wm.dart';
-import 'package:shop_app/pages/favorites_page/favorites_page.dart';
+import 'package:shop_app/pages/catalog_page/catalog_page_widget.dart';
+import 'package:shop_app/pages/catalog_page/catalog_page_wm.dart';
+import 'package:shop_app/pages/favorites_page/favorite_page.dart';
 import 'package:shop_app/pages/home_page/home_page.dart';
 import 'package:shop_app/pages/onboarding_page/onboarding_page.dart';
 import 'package:shop_app/pages/product_page/product_page.dart';
-import 'package:shop_app/pages/shopping_cart_page/shopping_cart_page.dart';
+import 'package:shop_app/pages/profile_page/profile_page_widget.dart';
+import 'package:shop_app/pages/profile_page/profile_page_wm.dart';
+import 'package:shop_app/pages/shopping_cart_page/cart_page_widget.dart';
+import 'package:shop_app/pages/shopping_cart_page/cart_page_wm.dart';
 import 'package:shop_app/pages/show_case_page/show_case_page.dart';
 
 import '../model/catalog/get/product/product.dart';
@@ -55,7 +58,13 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(
                   initial: true,
-                  page: ShoppingCartRoute.page,
+                  page: CartRouteWidget.page,
+                ),
+                AutoRoute(
+                  page: AuthRouteWidget.page,
+                ),
+                AutoRoute(
+                  page: AuthCodeRouteWidget.page,
                 ),
               ],
             ),
@@ -64,8 +73,11 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(
                   initial: true,
-                  page: FavoritesRoute.page,
+                  page: FavoriteRouteUpdate.page,
                 ),
+                // AutoRoute(
+                //   page: ProductRoute.page,
+                // ),
               ],
             ),
             AutoRoute(
@@ -73,6 +85,9 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(
                   initial: true,
+                  page: ProfileRouteWidget.page,
+                ),
+                AutoRoute(
                   page: AuthRouteWidget.page,
                 ),
                 AutoRoute(

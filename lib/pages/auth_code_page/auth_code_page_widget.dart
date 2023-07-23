@@ -2,6 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shop_app/pages/widgets/filled_button_widget.dart';
 import 'auth_code_page_wm.dart';
 import 'package:pinput/pinput.dart';
 
@@ -17,16 +18,6 @@ class AuthCodePageWidget extends ElementaryWidget<IAuthCodePageWidgetModel> {
 
   @override
   Widget build(IAuthCodePageWidgetModel wm) {
-    final theme = wm.theme;
-    final textTheme = wm.textTheme;
-    final colorTheme = wm.colorScheme;
-    final router = wm.router;
-
-    const defaultPinTheme = PinTheme(
-      width: 33,
-      height: 56,
-      textStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
-    );
     final cursor = Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -53,9 +44,7 @@ class AuthCodePageWidget extends ElementaryWidget<IAuthCodePageWidgetModel> {
       appBar: AppBar(
         toolbarHeight: 54,
         centerTitle: true,
-        title: const Text(
-          'Войти'
-        ),
+        title: const Text('Войти'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -75,16 +64,11 @@ class AuthCodePageWidget extends ElementaryWidget<IAuthCodePageWidgetModel> {
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly]),
             SizedBox(
               height: 50,
-              child: FilledButton(
-                style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize:
-                        const MaterialStatePropertyAll(Size.fromHeight(50))),
-                onPressed: () {
+              child: CustomFilledButton(
+                onTap: () {
                   wm.confirmCode();
                 },
-                child: const Center(
-                  child: Text('Подтвердить'),
-                ),
+                text: 'Подтвердить',
               ),
             ),
           ],

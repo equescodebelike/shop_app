@@ -10,7 +10,6 @@ import 'package:shop_app/util/wm_extensions.dart';
 import 'auth_page_model.dart';
 import 'auth_page_widget.dart';
 
-//TODO: SnackBar
 abstract class IAuthPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   TextEditingController get emailController;
@@ -58,7 +57,6 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
         return;
       }
       if (error.response?.statusCode == 451) {
-        // router.push(RegisterRoute(email: emailController.text));
         context.showSnackBar('Пользователь с такой почтой не найден!');
         return;
       }

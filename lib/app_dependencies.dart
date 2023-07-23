@@ -13,8 +13,6 @@ class AppDependencies extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: Provider
-
     return MultiProvider(
       providers: [
         Provider(create: (context) => DioUtil().dio),

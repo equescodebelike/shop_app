@@ -60,7 +60,6 @@ class ShopApp extends StatelessWidget {
           ),
         ),
       ),
-      // home: const CatalogPage(),
     );
   }
 }

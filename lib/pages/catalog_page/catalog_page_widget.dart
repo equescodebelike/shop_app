@@ -2,8 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:shop_app/navigation/app_router.dart';
-import 'package:shop_app/pages/catalog_page_update/catalog_page_wm.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:shop_app/pages/catalog_page/catalog_page_wm.dart';
+import 'package:shop_app/pages/favorites_page/favorites.dart';
 import 'package:shop_app/pages/widgets/catalog_card_widget.dart';
 
 //TODO: Do comments
@@ -26,7 +27,7 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
     return Scaffold(
       appBar: AppBar(
         // automaticallyImplyLeading: !kIsWeb,
-        title: Text(title ?? 'Каталог'),
+        title: const Text('Каталог'),
         centerTitle: true,
         // bottom: PreferredSize(
         //   preferredSize: const Size.fromHeight(40),
@@ -50,7 +51,7 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
             child: CircularProgressIndicator(),
           );
         },
-        builder: (context, data) {;
+        builder: (context, data) {
           final products = data ?? [];
 
           if (products.isEmpty) {
@@ -60,7 +61,7 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
                   Expanded(
                     flex: 4,
                     child: Image.asset(
-                      'assets/images/products.png',
+                      'assets/images/empty_photo.png',
                     ),
                   ),
                   Flexible(
@@ -94,20 +95,30 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
                   ),
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  context.router.navigate(
-                    ProductRoute(product: products[index], productId: products[index].id)
+              return StoreConnector<Set<int>, bool>(
+                builder: (context, isFavorite) {
+                  return StoreConnector<Set<int>, VoidCallback>(
+                    builder: (context, callback) {
+                      return CatalogCardWidget(
+                        product: products[index],
+                        isFavorite: isFavorite,
+                        onFavoriteTap: callback,
+                        onTap: () => wm.openProduct(
+                          product: products[index],
+                        ),
+                      );
+                    },
+                    converter: (store) => () {
+                      final favorite = store.state.contains(products[index].id);
+                      if (favorite) {
+                        store.dispatch(RemoveAction(products[index].id));
+                      } else {
+                        store.dispatch(AddAction(products[index].id));
+                      }
+                    },
                   );
                 },
-                child: CatalogCardWidget(
-                  product: products[index],
-                  // favourite: index.isOdd,
-                  // onFavoutiteTap: () {},
-                  // onTap: () => wm.openProduct(
-                  //   product: products[index],
-                  // ),
-                ),
+                converter: (store) => store.state.contains(products[index].id),
               );
             },
           );

@@ -7,11 +7,15 @@ import 'package:shop_app/pages/widgets/extensions/money_extension.dart';
 class CatalogCardWidget extends StatefulWidget {
   const CatalogCardWidget({
     required this.product,
-    this.onTap,
     super.key,
+    required this.isFavorite,
+    this.onFavoriteTap,
+    this.onTap,
   });
 
+  final bool isFavorite;
   final VoidCallback? onTap;
+  final VoidCallback? onFavoriteTap;
   final Product product;
 
   @override
@@ -31,45 +35,44 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
       children: [
         Expanded(
           flex: _width.ceil(),
-          child: SizedBox(
-            width: _width,
-            height: _width,
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Stack(
-                children: [
-                  CachedNetworkImage(
-                    fit: BoxFit.fill,
-                    imageUrl: widget.product.picture,
-                    progressIndicatorBuilder: (_, __, ___) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    },
-                    errorWidget: (_, __, ___) {
-                      return Image.asset(
-                        'assets/images/empty_photo.png',
-                        fit: BoxFit.fill,
-                      );
-                    },
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: IconButton(
-                      splashColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      icon: checked
-                          ? const Icon(Icons.favorite, color: Colors.red)
-                          : const Icon(Icons.favorite_border,
-                              color: Color(0xFF7d7d7d)),
-                      onPressed: () {
-                        setState(() {
-                          checked = !checked;
-                        });
+          child: InkWell(
+            onTap: widget.onTap,
+            child: SizedBox(
+              width: _width,
+              height: _width,
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: Stack(
+                  children: [
+                    CachedNetworkImage(
+                      fit: BoxFit.fill,
+                      imageUrl: widget.product.picture,
+                      progressIndicatorBuilder: (_, __, ___) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                      errorWidget: (_, __, ___) {
+                        return Image.asset(
+                          'assets/images/empty_photo.png',
+                          fit: BoxFit.fill,
+                        );
                       },
                     ),
-                  )
-                ],
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: IconButton(
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        icon: widget.isFavorite
+                            ? Icon(Icons.favorite, color: Theme.of(context).colorScheme.error)
+                            : Icon(Icons.favorite_border,
+                                color: Theme.of(context).colorScheme.onSurface),
+                        onPressed: widget.onFavoriteTap,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -117,7 +120,7 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
                           Icons.shopping_bag_outlined,
                         ),
                         onPressed: () {
-                          //TODO: избранное
+                          //TODO: Cart
                         },
                       ),
                     ),

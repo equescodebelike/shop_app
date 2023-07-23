@@ -7,8 +7,11 @@ import 'package:shop_app/pages/widgets/filled_button_widget.dart';
 
 @RoutePage()
 class ProductPage extends StatefulWidget {
-  const ProductPage(
-      {super.key, required this.product, @pathParam required this.productId});
+  const ProductPage({
+    super.key,
+    required this.product,
+    @pathParam required this.productId,
+  });
 
   final Product product;
   final int productId;
@@ -19,7 +22,7 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   bool checked = false;
-
+  //TODO: favorite
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -45,20 +48,6 @@ class _ProductPageState extends State<ProductPage> {
                 children: [
                   Text('-146%',
                       style: theme.textTheme.bodySmall?.copyWith(fontSize: 18)),
-                  const Spacer(),
-                  IconButton(
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    icon: checked
-                        ? const Icon(Icons.favorite, color: Colors.red)
-                        : const Icon(Icons.favorite_border,
-                            color: Color(0xFF7d7d7d)),
-                    onPressed: () {
-                      setState(() {
-                        checked = !checked;
-                      });
-                    },
-                  ),
                 ],
               ),
               Padding(

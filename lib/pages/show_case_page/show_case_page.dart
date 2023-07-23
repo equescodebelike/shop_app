@@ -31,6 +31,16 @@ class ShowCasePage extends StatelessWidget {
                 text: 'В корзину',
               ),
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 50),
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                'Здесь скоро будут акции!',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            ),
           )
         ],
       ),

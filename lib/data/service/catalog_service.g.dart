@@ -19,82 +19,10 @@ class _CatalogService implements CatalogService {
   String? baseUrl;
 
   @override
-  Future<Products> catalogProductsCreate(
-      {ProductsSerializerRequest? productsSerializerRequest}) async {
+  Future<CatalogProductsResponse> getProducts(
+      {required CatalogProductsRequest request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final _data = productsSerializerRequest;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Products>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/catalog/products/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = Products.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<List<Category>> catalogCategoriesList({
-    int? parentId,
-    bool onlyLeaf = false,
-  }) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'parent_id': parentId,
-      r'only_leaf': onlyLeaf,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Category>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/catalog/categories/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    var value = _result.data!
-        .map((dynamic i) => Category.fromJson(i as Map<String, dynamic>))
-        .toList();
-    return value;
-  }
-
-  @override
-  Future<CatalogProductsResponse> getProducts({
-    int? page,
-    int? size,
-    required CatalogProductsRequest request,
-  }) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'page': page,
-      r'size': size,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = request;
     final _result = await _dio.fetch<Map<String, dynamic>>(

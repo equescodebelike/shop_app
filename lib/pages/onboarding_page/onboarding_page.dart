@@ -32,26 +32,26 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               "Покупайте продукты не выходя из дома или получайте бонусы за прогулку за ними.",
           controller: controller,
           onTap: () => controller.nextPage(
-              duration: const Duration(milliseconds: 600),
+              duration: const Duration(milliseconds: 300),
               curve: Curves.easeIn)),
       OnboardingPage(
           text:
               "Удобная навигация внутри магазина не позволит вам потеряться или что то забыть.",
           controller: controller,
           onTap: () => controller.nextPage(
-              duration: const Duration(milliseconds: 600),
+              duration: const Duration(milliseconds: 300),
               curve: Curves.easeIn)),
       OnboardingPage(
           text: "Делитесь корзиной с близкими и друзьями.",
           controller: controller,
           onTap: () => controller.nextPage(
-              duration: const Duration(milliseconds: 600),
+              duration: const Duration(milliseconds: 300),
               curve: Curves.easeIn)),
       OnboardingPage(
           text: "Приятной работы с приложением.",
           controller: controller,
           onTap: () => controller.nextPage(
-              duration: const Duration(milliseconds: 600),
+              duration: const Duration(milliseconds: 300),
               curve: Curves.easeIn)),
     ];
     return Scaffold(
