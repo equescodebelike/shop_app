@@ -22,7 +22,7 @@ class BasketCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final cartUseCase = DioUtil().cartRepository;
+    final cartRepository = DioUtil().cartRepository;
     final oldPrice = cartProduct.product.price;
     return ListTile(
       onTap: onTap,
@@ -48,12 +48,11 @@ class BasketCard extends StatelessWidget {
         ),
       ),
       title: Text(
-        '${cartProduct.product.name} (${cartProduct.count} ед.)',
+        cartProduct.product.name,
         style: theme.textTheme.bodyLarge?.copyWith(
           color: theme.colorScheme.onBackground,
         ),
       ),
-      //TODO: дичь
       subtitle: RichText(
         text: TextSpan(
           text: cartProduct.product.price.formatMoney(),
@@ -82,36 +81,32 @@ class BasketCard extends StatelessWidget {
               child: IconButton(
                 onPressed: () {
                   if (cartProduct.count != 1) {
-                    cartUseCase.addProductCount(
+                    cartRepository.addProductCount(
                       request: CartUpdateModel(
                         productId: cartProduct.product.id,
                         count: cartProduct.count - 1,
                       ),
                     );
                   } else {
-                    cartUseCase.deleteCart(
+                    cartRepository.deleteCart(
                       request: CartUpdateModel(
                         productId: cartProduct.product.id,
                       ),
                     );
                   }
                 },
-                icon: Icon(
-                  cartProduct.count == 1
-                      ? Icons.remove_shopping_cart
-                      : Icons.remove,
+                icon: const Icon(
+                  Icons.remove,
                 ),
               ),
             ),
-            Expanded(
-              child: Checkbox(
-                value: checked,
-                onChanged: onSelect,
-              ),
+            Text(
+              '${cartProduct.count}',
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             Expanded(
               child: IconButton(
-                onPressed: () => cartUseCase.addProductCount(
+                onPressed: () => cartRepository.addProductCount(
                   request: CartUpdateModel(
                     productId: cartProduct.product.id,
                     count: cartProduct.count + 1,

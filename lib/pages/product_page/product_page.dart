@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
+import 'package:shop_app/pages/widgets/add_to_basket_widget.dart';
 import 'package:shop_app/pages/widgets/extensions/money_extension.dart';
 import 'package:shop_app/pages/widgets/filled_button_widget.dart';
 
@@ -46,8 +47,29 @@ class _ProductPageState extends State<ProductPage> {
             children: [
               Row(
                 children: [
-                  Text('-146%',
-                      style: theme.textTheme.bodySmall?.copyWith(fontSize: 18)),
+                  Text(
+                    '-146%',
+                    style: theme.textTheme.bodySmall?.copyWith(fontSize: 18),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    icon: checked
+                        ? Icon(
+                            Icons.favorite,
+                            color: Theme.of(context).colorScheme.error,
+                          )
+                        : Icon(
+                            Icons.favorite_border,
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
+                    onPressed: () {
+                      setState(() {
+                        checked = !checked;
+                      });
+                    },
+                  ),
                 ],
               ),
               Padding(
@@ -87,10 +109,8 @@ class _ProductPageState extends State<ProductPage> {
                 ),
               ),
               const SizedBox(height: 10),
-              CustomFilledButton(
-                //TODO: Navigation
-                text: 'В корзину',
-                onTap: () {},
+              AddToBasket(
+                product: widget.product,
               ),
             ],
           ),

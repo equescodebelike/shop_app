@@ -47,9 +47,8 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
                   Flexible(
                     child: Text(
                       logIn
-                          ? 'Здесь пока пусто'
-                          : 'Что бы заказать товар, '
-                              'Вам необходимо авторизоваться',
+                          ? 'В Вашей корзине пока ничего нет'
+                          : 'Войдите, чтобы заказать товар',
                       textAlign: TextAlign.center,
                       style: wm.textTheme.bodyLarge?.copyWith(
                         color: wm.colorScheme.onBackground,
@@ -65,14 +64,31 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
                           child: CustomFilledButton(
                             onTap: () async {
                               await router.navigate(
-                                UserProfileTab(
-                                  children: [
-                                    AuthRouteWidget(),
-                                  ]
-                                ),
+                                UserProfileTab(children: [
+                                  AuthRouteWidget(),
+                                ]),
                               );
                             },
                             text: 'Войти',
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (logIn)
+                    Expanded(
+                      child: Center(
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          height: 50,
+                          child: CustomFilledButton(
+                            onTap: () async {
+                              await router.navigate(
+                                CatalogTab(children: [
+                                  CatalogRouteWidget(),
+                                ]),
+                              );
+                            },
+                            text: 'Перейти к покупкам',
                           ),
                         ),
                       ),
@@ -123,60 +139,47 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Card(
-                        margin: const EdgeInsets.symmetric(
-                          vertical: 10,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'К оплате',
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'ИТОГО',
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: theme.colorScheme.onBackground,
+                              ),
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                text: (data?.price ?? Decimal.zero)
+                                    .formatMoney(),
                                 style: theme.textTheme.bodyMedium?.copyWith(
                                   color: theme.colorScheme.onBackground,
                                 ),
-                              ),
-                              RichText(
-                                text: TextSpan(
-                                  text: (data?.price ?? Decimal.zero)
-                                      .formatMoney(),
-                                  style: theme.textTheme.bodyMedium?.copyWith(
-                                    color: theme.colorScheme.onBackground,
+                                children: [
+                                  const TextSpan(
+                                    text: ' ',
                                   ),
-                                  children: [
-                                    const TextSpan(
-                                      text: ' ',
-                                    ),
-                                    if (oldPrice != null)
-                                      TextSpan(
-                                        text: oldPrice.formatMoney(),
-                                        style: theme.textTheme.bodyMedium
-                                            ?.copyWith(
-                                          color: theme.colorScheme.onBackground,
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                        ),
+                                  if (oldPrice != null)
+                                    TextSpan(
+                                      text: oldPrice.formatMoney(),
+                                      style: theme.textTheme.bodyMedium
+                                          ?.copyWith(
+                                        color: theme.colorScheme.onBackground,
+                                        decoration:
+                                            TextDecoration.lineThrough,
                                       ),
-                                  ],
-                                ),
+                                    ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: val ? wm.order : null,
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: val
-                              ? const Text(
-                                  'Заказ',
-                                  textAlign: TextAlign.center,
-                                )
-                              : const CircularProgressIndicator(),
-                        ),
+                      CustomFilledButton(
+                        onTap: val ? wm.order : null,
+                        text: 'Оформить заказ'
                       ),
                     ],
                   ),
@@ -190,62 +193,3 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
   }
 }
 
-// TODO: implement or delete
-class SearchRow extends StatelessWidget implements PreferredSizeWidget {
-  const SearchRow({
-    Key? key,
-    required this.controller,
-    required this.height,
-    required this.onSort,
-    required this.active,
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  final double height;
-  final VoidCallback? onSort;
-  final bool active;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        height: height,
-        child: Row(
-          children: [
-            Expanded(
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Positioned.fill(
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.sort_rounded,
-                      ),
-                      onPressed: onSort,
-                    ),
-                  ),
-                  if (active)
-                    Positioned.fill(
-                      top: 5,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Icon(
-                          Icons.fiber_manual_record,
-                          size: 10,
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  @override
-  Size get preferredSize => Size.fromHeight(height);
-}
