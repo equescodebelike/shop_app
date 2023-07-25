@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/data/service/catalog_service.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/catalog/post/catalog_products/catalog_products_request.dart';
-import 'package:shop_app/pages/favorites_page/favorites.dart';
+import 'package:shop_app/pages/favorites_page/favorites_redux.dart';
 import 'package:shop_app/pages/widgets/catalog_card_widget.dart';
 
 @RoutePage()
@@ -81,13 +81,6 @@ class _FavoritePageUpdateState extends State<FavoritePageUpdate> {
                             product: favProduct,
                             isFavorite: isFavorite,
                             onFavoriteTap: callback,
-                            // TODO: Fix
-                            // onTap: () {
-                            //   ProductRoute(
-                            //     product: favProduct,
-                            //     productId: favProduct.id,
-                            //   );
-                            // }
                           );
                         },
                         converter: (store) => () {

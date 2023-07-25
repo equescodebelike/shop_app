@@ -120,7 +120,6 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
                           Icons.shopping_bag_outlined,
                         ),
                         onPressed: () {
-                          //TODO: Cart
                         },
                       ),
                     ),

@@ -15,11 +15,7 @@ abstract class ICatalogPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   EntityStateNotifier<List<Product>> get productsState;
 
-// TextEditingController get searchController;
-
   ScrollController get scrollController;
-
-  void openSort();
 
   void openProduct({required Product product});
 }
@@ -43,9 +39,6 @@ class CatalogPageWidgetModel
   @override
   final scrollController = ScrollController();
 
-  // @override
-  // final searchController = TextEditingController();
-
   List<int> get _categoryIds => widget.categotyId == null
       ? []
       : [
@@ -61,8 +54,6 @@ class CatalogPageWidgetModel
   void initWidgetModel() {
     super.initWidgetModel();
     productsState.loading();
-    // searchController.text = widget.search ?? '';
-    // searchController.addListener(loadProducts);
 
     loadProducts();
   }
@@ -71,12 +62,9 @@ class CatalogPageWidgetModel
     
 
     final List<Product> currentProducts = productsState.value?.data ?? [];
-    // final selected = sortState.value?.data;
     try {
       final products = await catalogService.getProducts(
         request: CatalogProductsRequest(
-          // sortBy: selected?.key,
-          // search: searchController.text,
           categoryIds: _categoryIds,
           productIds: widget.productIds,
         ),
@@ -90,10 +78,6 @@ class CatalogPageWidgetModel
         print(s);
       }
       throw Exception(e);
-
-      // if (isMounted) {
-      //   context.showSnackBar('Не удалось загрузить продукты');
-      // }
     }
   }
 
@@ -102,68 +86,6 @@ class CatalogPageWidgetModel
     productsState.dispose();
     super.dispose();
   }
-
-  @override
-  void openSort() {
-    // TODO: implement openSort
-  }
-
-  // @override
-  // void openSort() {
-  //   showModalBottomSheet(
-  //     context: router.root.navigatorKey.currentContext!,
-  //     shape: const RoundedRectangleBorder(
-  //       borderRadius: BorderRadius.only(
-  //         topRight: Radius.circular(25),
-  //         topLeft: Radius.circular(25),
-  //       ),
-  //     ),
-  //     builder: _buildContent,
-  //   );
-  // }
-
-  // Widget _buildContent(BuildContext context) {
-  //   final localizations = AppLocalizations.of(context);
-  //   final selected = sortState.value?.data;
-  //   return Column(
-  //     children: [
-  //       Padding(
-  //         padding: const EdgeInsets.all(10.0),
-  //         child: Text(
-  //           localizations.sort,
-  //           style: theme.textTheme.bodyLarge?.copyWith(
-  //               color: theme.colorScheme.onSurface,
-  //               overflow: TextOverflow.ellipsis),
-  //         ),
-  //       ),
-  //       ...Sort.sorts[localizations.localeName]!.map(
-  //         (s) => ListTile(
-  //           onTap: () {
-  //             _setSort(s, context);
-  //           },
-  //           leading: Checkbox.adaptive(
-  //             value: s == selected,
-  //             onChanged: (bool? value) {
-  //               _setSort(s, context);
-  //             },
-  //           ),
-  //           title: Text(
-  //             s.name,
-  //             style: theme.textTheme.bodyMedium?.copyWith(
-  //                 color: theme.colorScheme.onSurface,
-  //                 overflow: TextOverflow.ellipsis),
-  //           ),
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
-
-  // void _setSort(Sort s, BuildContext context) {
-  //   sortState.content(s);
-  //   loadProducts();
-  //   context.router.root.pop();
-  // }
 
   @override
   void openProduct({

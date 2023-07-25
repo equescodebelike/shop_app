@@ -24,7 +24,7 @@ class AuthBottomSheet extends StatelessWidget {
               color: theme.colorScheme.onSurface,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           CustomFilledButton(

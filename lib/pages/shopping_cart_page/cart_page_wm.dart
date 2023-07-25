@@ -8,6 +8,7 @@ import 'package:shop_app/model/cart/cart_calculated_model.dart';
 import 'package:shop_app/model/cart/cart_model.dart';
 import 'package:shop_app/model/cart/cart_product.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
+import 'package:shop_app/model/catalog/get/product/product_count.dart';
 import 'package:shop_app/navigation/app_router.dart';
 import 'package:shop_app/util/dio_util.dart';
 import 'package:shop_app/util/wm_extensions.dart';
@@ -24,8 +25,6 @@ abstract class ICartPageWidgetModel extends IWidgetModel
   EntityStateNotifier<Set<int>> get disabledCart;
 
   CartRepository get cartRepository;
-
-  void openSort();
 
   void openProduct({required Product product});
 
@@ -85,11 +84,6 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
   }
 
   @override
-  void openSort() {
-    //TODO: implement or delete
-  }
-
-  @override
   void openProduct({required Product product}) {
     context.router.navigate(
       ProductRoute(
@@ -100,16 +94,9 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
   }
 
   Future<void> loadCart() async {
-    const fias = 'city';
-    if (fias.isNotEmpty) {
-      await cartRepository.loadCart(
-        request: CalculatedCartModel(cityFias: fias),
-      );
-    } else {
-      await cartRepository.loadCart(
-        request: CalculatedCartModel(),
-      );
-    }
+    await cartRepository.loadCart(
+      request: CalculatedCartModel(),
+    );
   }
 
   @override
@@ -134,29 +121,27 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
     await profile.loadProfile();
     orderState.value = true;
 
-    //TODO: implement or delete
-
     final off = disabledCart.value?.data ?? {};
     final cartOffer = cartRepository.cart.valueOrNull?.products ?? [];
 
-    // if (isMounted) {
-    //   router.navigate(
-    //     OrderRoute(
-    //       productIds: cartOffer
-    //           .where(
-    //             (e) => !off.any(
-    //               (id) => e.product.id == id,
-    //             ),
-    //           )
-    //           .map(
-    //             (e) => ProductWithCount(
-    //               productId: e.product.id,
-    //               count: e.count,
-    //             ),
-    //           )
-    //           .toList(),
-    //     ),
-    //   );
-    // }
+    if (isMounted) {
+      router.navigate(
+        OrderRoute(
+          products: cartOffer
+              .where(
+                (e) => !off.any(
+                  (id) => e.product.id == id,
+                ),
+              )
+              .map(
+                (e) => ProductWithCount(
+                  productId: e.product.id,
+                  count: e.count,
+                ),
+              )
+              .toList(),
+        ),
+      );
+    }
   }
 }

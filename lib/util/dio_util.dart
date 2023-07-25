@@ -8,6 +8,9 @@ import 'package:shop_app/data/repository/token_repository.dart';
 import 'package:shop_app/data/service/auth_service.dart';
 import 'package:shop_app/data/service/cart_service.dart';
 import 'package:shop_app/data/service/catalog_service.dart';
+import 'package:shop_app/data/service/delivery_service.dart';
+import 'package:shop_app/data/service/order_service.dart';
+import 'package:shop_app/data/service/payment_service.dart';
 
 class DioUtil {
   static final DioUtil _instance = DioUtil._internal();
@@ -17,13 +20,17 @@ class DioUtil {
   DioUtil._internal();
 
   final Dio dio = Dio();
-  // TODO: Add api
   // ..contentType = 'application/json' check!
   late final AuthService authService = AuthService(dio);
   late final CartService _cartService = CartService(dio);
   late final CatalogService catalogService = CatalogService(dio);
-  late final ProfileRepository profileRepository =
-      ProfileRepository(tokenRepository, AuthRepository(authService));
+  late final DeliveryService deliveryService = DeliveryService(dio);
+  late final PaymentService paymentService = PaymentService(dio);
+  late final OrderService orderService = OrderService(dio);
+  late final ProfileRepository profileRepository = ProfileRepository(
+    tokenRepository,
+    AuthRepository(authService),
+  );
   late final CartRepository cartRepository = CartRepository(
     _cartService,
     profileRepository,

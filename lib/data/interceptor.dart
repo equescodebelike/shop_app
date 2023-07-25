@@ -9,18 +9,12 @@ class JWTInterceptor extends QueuedInterceptor {
   JWTInterceptor({
     required this.repository,
     required Dio dio,
-  }) : _dio = dio;
+  });
 
   final TokenRepository repository;
 
-  /// Http client.
-  final Dio _dio;
-
   /// JWT token.
   String? get _accessToken => repository.accessToken;
-
-  /// JWT refresh token.
-  String? get _refreshToken => repository.refreshToken;
 
   /// Add JWT authorization token to any request, if available.
   @override

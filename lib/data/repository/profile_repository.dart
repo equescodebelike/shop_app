@@ -32,19 +32,9 @@ class ProfileRepository {
     profile.add(null);
   }
 
-  Future<void> deleteAccount() async {
-    await authRepository.deleteUser();
-    await repository.deleteTokens();
-    profile.add(null);
-  }
-
   Future<void> loadProfile() async {
     final result = await authRepository.getUser();
     profile.add(result);
   }
 
-  Future<void> patchProfile(Profile newProfile) async {
-    final result = await authRepository.patchUser(request: newProfile);
-    profile.add(result);
-  }
 }

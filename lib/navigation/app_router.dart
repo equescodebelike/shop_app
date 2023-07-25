@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/model/catalog/get/product/product_count.dart';
 import 'package:shop_app/pages/auth_code_page/auth_code_page_widget.dart';
 import 'package:shop_app/pages/auth_code_page/auth_code_page_wm.dart';
 import 'package:shop_app/pages/auth_page/auth_page_widget.dart';
@@ -10,6 +11,7 @@ import 'package:shop_app/pages/catalog_page/catalog_page_wm.dart';
 import 'package:shop_app/pages/favorites_page/favorite_page.dart';
 import 'package:shop_app/pages/home_page/home_page.dart';
 import 'package:shop_app/pages/onboarding_page/onboarding_page.dart';
+import 'package:shop_app/pages/order_page/order_page.dart';
 import 'package:shop_app/pages/product_page/product_page.dart';
 import 'package:shop_app/pages/profile_page/profile_page_widget.dart';
 import 'package:shop_app/pages/profile_page/profile_page_wm.dart';
@@ -61,10 +63,7 @@ class AppRouter extends _$AppRouter {
                   page: CartRouteWidget.page,
                 ),
                 AutoRoute(
-                  page: AuthRouteWidget.page,
-                ),
-                AutoRoute(
-                  page: AuthCodeRouteWidget.page,
+                  page: OrderRoute.page,
                 ),
               ],
             ),
@@ -75,9 +74,6 @@ class AppRouter extends _$AppRouter {
                   initial: true,
                   page: FavoriteRouteUpdate.page,
                 ),
-                // AutoRoute(
-                //   page: ProductRoute.page,
-                // ),
               ],
             ),
             AutoRoute(

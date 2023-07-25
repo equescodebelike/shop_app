@@ -67,46 +67,6 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    HomeRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const HomePage(),
-      );
-    },
-    OnBoardingRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const OnBoardingPage(),
-      );
-    },
-    ProductRoute.name: (routeData) {
-      final args = routeData.argsAs<ProductRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ProductPage(
-          key: args.key,
-          product: args.product,
-          productId: args.productId,
-        ),
-      );
-    },
-    ProfileRouteWidget.name: (routeData) {
-      final args = routeData.argsAs<ProfileRouteWidgetArgs>(
-          orElse: () => const ProfileRouteWidgetArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: ProfilePageWidget(
-          key: args.key,
-          wmFactory: args.wmFactory,
-        ),
-      );
-    },
-    ShowCaseRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const ShowCasePage(),
-      );
-    },
     CatalogRouteWidget.name: (routeData) {
       final queryParams = routeData.queryParams;
       final args = routeData.argsAs<CatalogRouteWidgetArgs>(
@@ -135,6 +95,50 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const FavoritePageUpdate(),
       );
     },
+    HomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HomePage(),
+      );
+    },
+    OnBoardingRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OnBoardingPage(),
+      );
+    },
+    OrderRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OrderPage(
+          key: args.key,
+          products: args.products,
+        ),
+      );
+    },
+    ProductRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProductPage(
+          key: args.key,
+          product: args.product,
+          productId: args.productId,
+        ),
+      );
+    },
+    ProfileRouteWidget.name: (routeData) {
+      final args = routeData.argsAs<ProfileRouteWidgetArgs>(
+          orElse: () => const ProfileRouteWidgetArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProfilePageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
     CartRouteWidget.name: (routeData) {
       final args = routeData.argsAs<CartRouteWidgetArgs>(
           orElse: () => const CartRouteWidgetArgs());
@@ -144,6 +148,12 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           wmFactory: args.wmFactory,
         ),
+      );
+    },
+    ShowCaseRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ShowCasePage(),
       );
     },
   };
@@ -307,6 +317,81 @@ class AuthRouteWidgetArgs {
 }
 
 /// generated route for
+/// [CatalogPageWidget]
+class CatalogRouteWidget extends PageRouteInfo<CatalogRouteWidgetArgs> {
+  CatalogRouteWidget({
+    Key? key,
+    String? title,
+    int? categotyId,
+    List<int> productIds = const <int>[],
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultCatalogPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CatalogRouteWidget.name,
+          args: CatalogRouteWidgetArgs(
+            key: key,
+            title: title,
+            categotyId: categotyId,
+            productIds: productIds,
+            wmFactory: wmFactory,
+          ),
+          rawQueryParams: {
+            'title': title,
+            'categotyId': categotyId,
+            'productIds': productIds,
+          },
+          initialChildren: children,
+        );
+
+  static const String name = 'CatalogRouteWidget';
+
+  static const PageInfo<CatalogRouteWidgetArgs> page =
+      PageInfo<CatalogRouteWidgetArgs>(name);
+}
+
+class CatalogRouteWidgetArgs {
+  const CatalogRouteWidgetArgs({
+    this.key,
+    this.title,
+    this.categotyId,
+    this.productIds = const <int>[],
+    this.wmFactory = defaultCatalogPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final String? title;
+
+  final int? categotyId;
+
+  final List<int> productIds;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'CatalogRouteWidgetArgs{key: $key, title: $title, categotyId: $categotyId, productIds: $productIds, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [FavoritePageUpdate]
+class FavoriteRouteUpdate extends PageRouteInfo<void> {
+  const FavoriteRouteUpdate({List<PageRouteInfo>? children})
+      : super(
+          FavoriteRouteUpdate.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FavoriteRouteUpdate';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -332,6 +417,43 @@ class OnBoardingRoute extends PageRouteInfo<void> {
   static const String name = 'OnBoardingRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OrderPage]
+class OrderRoute extends PageRouteInfo<OrderRouteArgs> {
+  OrderRoute({
+    Key? key,
+    required List<ProductWithCount> products,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderRoute.name,
+          args: OrderRouteArgs(
+            key: key,
+            products: products,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderRoute';
+
+  static const PageInfo<OrderRouteArgs> page = PageInfo<OrderRouteArgs>(name);
+}
+
+class OrderRouteArgs {
+  const OrderRouteArgs({
+    this.key,
+    required this.products,
+  });
+
+  final Key? key;
+
+  final List<ProductWithCount> products;
+
+  @override
+  String toString() {
+    return 'OrderRouteArgs{key: $key, products: $products}';
+  }
 }
 
 /// generated route for
@@ -420,95 +542,6 @@ class ProfileRouteWidgetArgs {
 }
 
 /// generated route for
-/// [ShowCasePage]
-class ShowCaseRoute extends PageRouteInfo<void> {
-  const ShowCaseRoute({List<PageRouteInfo>? children})
-      : super(
-          ShowCaseRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ShowCaseRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [CatalogPageWidget]
-class CatalogRouteWidget extends PageRouteInfo<CatalogRouteWidgetArgs> {
-  CatalogRouteWidget({
-    Key? key,
-    String? title,
-    int? categotyId,
-    List<int> productIds = const <int>[],
-    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
-            BuildContext)
-        wmFactory = defaultCatalogPageWidgetModelFactory,
-    List<PageRouteInfo>? children,
-  }) : super(
-          CatalogRouteWidget.name,
-          args: CatalogRouteWidgetArgs(
-            key: key,
-            title: title,
-            categotyId: categotyId,
-            productIds: productIds,
-            wmFactory: wmFactory,
-          ),
-          rawQueryParams: {
-            'title': title,
-            'categotyId': categotyId,
-            'productIds': productIds,
-          },
-          initialChildren: children,
-        );
-
-  static const String name = 'CatalogRouteWidget';
-
-  static const PageInfo<CatalogRouteWidgetArgs> page =
-      PageInfo<CatalogRouteWidgetArgs>(name);
-}
-
-class CatalogRouteWidgetArgs {
-  const CatalogRouteWidgetArgs({
-    this.key,
-    this.title,
-    this.categotyId,
-    this.productIds = const <int>[],
-    this.wmFactory = defaultCatalogPageWidgetModelFactory,
-  });
-
-  final Key? key;
-
-  final String? title;
-
-  final int? categotyId;
-
-  final List<int> productIds;
-
-  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
-      BuildContext) wmFactory;
-
-  @override
-  String toString() {
-    return 'CatalogRouteWidgetArgs{key: $key, title: $title, categotyId: $categotyId, productIds: $productIds, wmFactory: $wmFactory}';
-  }
-}
-
-/// generated route for
-/// [FavoritePageUpdate]
-class FavoriteRouteUpdate extends PageRouteInfo<void> {
-  const FavoriteRouteUpdate({List<PageRouteInfo>? children})
-      : super(
-          FavoriteRouteUpdate.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'FavoriteRouteUpdate';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [CartPageWidget]
 class CartRouteWidget extends PageRouteInfo<CartRouteWidgetArgs> {
   CartRouteWidget({
@@ -547,4 +580,18 @@ class CartRouteWidgetArgs {
   String toString() {
     return 'CartRouteWidgetArgs{key: $key, wmFactory: $wmFactory}';
   }
+}
+
+/// generated route for
+/// [ShowCasePage]
+class ShowCaseRoute extends PageRouteInfo<void> {
+  const ShowCaseRoute({List<PageRouteInfo>? children})
+      : super(
+          ShowCaseRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ShowCaseRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }

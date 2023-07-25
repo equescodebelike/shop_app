@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/pages/widgets/add_to_basket_widget.dart';
 import 'package:shop_app/pages/widgets/extensions/money_extension.dart';
-import 'package:shop_app/pages/widgets/filled_button_widget.dart';
 
 @RoutePage()
 class ProductPage extends StatefulWidget {
@@ -23,7 +22,6 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   bool checked = false;
-  //TODO: favorite
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

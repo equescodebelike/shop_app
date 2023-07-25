@@ -76,7 +76,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               height: 405,
               child: PageView.builder(
                 onPageChanged: (index) {
-                  // TODO: допилить логику
                   setState(() => isLastPage = index == 3);
                 },
                 controller: controller,

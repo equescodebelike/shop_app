@@ -11,27 +11,9 @@ abstract class Delivery with _$Delivery {
     required String description,
     required String type,
     required String icon,
-    List<DeliveryPoint>? locations,
-    String? farmAdress,
+    @JsonKey(name: 'farm_address') String? farmAddress,
   }) = _Delivery;
 
   factory Delivery.fromJson(Map<String, dynamic> json) =>
       _$DeliveryFromJson(json);
-}
-
-@freezed
-abstract class DeliveryPoint with _$DeliveryPoint {
-  const factory DeliveryPoint({
-    required String id,
-    String? name,
-    String? adress,
-    String? phone,
-    required num lon,
-    required num lat,
-    String? workHours,
-    bool? paymentAllowed,
-  }) = _DeliveryPoint;
-
-  factory DeliveryPoint.fromJson(Map<String, dynamic> json) =>
-      _$DeliveryPointFromJson(json);
 }

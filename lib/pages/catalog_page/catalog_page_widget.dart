@@ -4,10 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:shop_app/pages/catalog_page/catalog_page_wm.dart';
-import 'package:shop_app/pages/favorites_page/favorites.dart';
+import 'package:shop_app/pages/favorites_page/favorites_redux.dart';
 import 'package:shop_app/pages/widgets/catalog_card_widget.dart';
 
-//TODO: Do comments
 @RoutePage()
 class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
   const CatalogPageWidget({
@@ -26,23 +25,8 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
   Widget build(ICatalogPageWidgetModel wm) {
     return Scaffold(
       appBar: AppBar(
-        // automaticallyImplyLeading: !kIsWeb,
         title: const Text('Каталог'),
         centerTitle: true,
-        // bottom: PreferredSize(
-        //   preferredSize: const Size.fromHeight(40),
-        //   child: EntityStateNotifierBuilder(
-        //     listenableEntityState: wm.sortState,
-        //     builder: (context, data) {
-        //       return SearchRow(
-        //         controller: wm.searchController,
-        //         onSort: wm.openSort,
-        //         height: 40,
-        //         active: data != null,
-        //       );
-        //     },
-        //   ),
-        // ),
       ),
       body: EntityStateNotifierBuilder(
         listenableEntityState: wm.productsState,
@@ -127,68 +111,3 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
     );
   }
 }
-
-// class SearchRow extends StatelessWidget implements PreferredSizeWidget {
-//   const SearchRow({
-//     Key? key,
-//     required this.controller,
-//     required this.height,
-//     required this.onSort,
-//     required this.active,
-//   }) : super(key: key);
-
-//   final TextEditingController controller;
-//   final double height;
-//   final VoidCallback? onSort;
-//   final bool active;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.all(8.0),
-//       child: SizedBox(
-//         height: height,
-//         child: Row(
-//           children: [
-//             Expanded(
-//               flex: 8,
-//               child: SearchWidget(
-//                 controller: controller,
-//               ),
-//             ),
-//             Expanded(
-//               child: Stack(
-//                 fit: StackFit.expand,
-//                 children: [
-//                   Positioned.fill(
-//                     child: IconButton(
-//                       icon: const Icon(
-//                         Icons.sort_rounded,
-//                       ),
-//                       onPressed: onSort,
-//                     ),
-//                   ),
-//                   if (active)
-//                     Positioned.fill(
-//                       top: 5,
-//                       child: Align(
-//                         alignment: Alignment.center,
-//                         child: Icon(
-//                           Icons.fiber_manual_record,
-//                           size: 10,
-//                           color: Theme.of(context).colorScheme.error,
-//                         ),
-//                       ),
-//                     ),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-//   @override
-//   Size get preferredSize => Size.fromHeight(height);
-// }

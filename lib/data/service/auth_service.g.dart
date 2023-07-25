@@ -71,33 +71,6 @@ class _AuthService implements AuthService {
   }
 
   @override
-  Future<Profile> patchUser({required Profile request}) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = request;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Profile>(Options(
-      method: 'PATCH',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/auth/user',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = Profile.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
   Future<Profile> getUser() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -122,54 +95,6 @@ class _AuthService implements AuthService {
             ))));
     final value = Profile.fromJson(_result.data!);
     return value;
-  }
-
-  @override
-  Future<void> deleteUser() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    await _dio.fetch<void>(_setStreamType<void>(Options(
-      method: 'DELETE',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/auth/user',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
-  }
-
-  @override
-  Future<void> register({required Profile profile}) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = profile;
-    await _dio.fetch<void>(_setStreamType<void>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/auth/register',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

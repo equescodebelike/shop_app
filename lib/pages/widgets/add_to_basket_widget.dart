@@ -41,7 +41,6 @@ class AddToBasket extends StatelessWidget {
                       topLeft: Radius.circular(25),
                     ),
                   ),
-                  // builder: (context) => const AuthBottomSheet(),
                   builder: (context) => const AuthBottomSheet(),
                 );
                 return;

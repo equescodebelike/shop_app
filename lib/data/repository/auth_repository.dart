@@ -46,35 +46,4 @@ class AuthRepository {
     }
   }
 
-  Future<Profile> patchUser({required Profile request}) async {
-    try {
-      final result = await _authService.patchUser(request: request);
-      return result;
-    } on DioException catch (error) {
-      throw Exception(
-        error.response?.data['message'],
-      );
-    }
-  }
-
-  Future<void> deleteUser() async {
-    try {
-      await _authService.deleteUser();
-    } on DioException catch (error) {
-      throw Exception(
-        error.response?.data['message'],
-      );
-    }
-  }
-
-  Future<void> register({required Profile profile}) async {
-    try {
-      await _authService.register(profile: profile);
-    } on DioException catch (error) {
-      throw Exception(
-        error.response?.data['message'],
-      );
-    }
-  }
-
 }

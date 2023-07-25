@@ -13,14 +13,6 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
 
   ProfileRepository get profileRepository;
 
-  void onEditProfileTap();
-
-  // void onBasketTap();
-
-  // TextEditingController get brandController;
-
-  // TextEditingController get addressController;
-
 }
 
 ProfilePageWidgetModel defaultProfilePageWidgetModelFactory(
@@ -53,9 +45,4 @@ class ProfilePageWidgetModel
     DioUtil().authService,
   );
 
-  
-  @override
-  void onEditProfileTap() {
-    // TODO: implement onEditProfileTap
-  }
 }

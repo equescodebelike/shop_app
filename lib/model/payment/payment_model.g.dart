@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'delivery_model.dart';
+part of 'payment_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Delivery _$$_DeliveryFromJson(Map<String, dynamic> json) => _$_Delivery(
+_$_Payment _$$_PaymentFromJson(Map<String, dynamic> json) => _$_Payment(
       id: json['id'] as String,
       title: json['title'] as String,
-      description: json['description'] as String,
       type: json['type'] as String,
-      icon: json['icon'] as String,
-      farmAddress: json['farm_address'] as String?,
+      description: json['description'] as String?,
+      icon: json['icon'] as String?,
+      link: json['link'] as String?,
     );
 
-Map<String, dynamic> _$$_DeliveryToJson(_$_Delivery instance) =>
+Map<String, dynamic> _$$_PaymentToJson(_$_Payment instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
-      'description': instance.description,
       'type': instance.type,
+      'description': instance.description,
       'icon': instance.icon,
-      'farm_address': instance.farmAddress,
+      'link': instance.link,
     };

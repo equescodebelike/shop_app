@@ -24,18 +24,7 @@ abstract class AuthService {
     @Body() required AuthEmailPart2Request request,
   });
 
-  @PATCH(AuthUrl.authUser)
-  Future<Profile> patchUser({
-    @Body() required Profile request,
-  });
-
   @GET(AuthUrl.authUser)
   Future<Profile> getUser();
-
-  @DELETE(AuthUrl.authUser)
-  Future<void> deleteUser();
-
-  @POST(AuthUrl.authRegister)
-  Future<void> register({@Body() required Profile profile});
 
 }
