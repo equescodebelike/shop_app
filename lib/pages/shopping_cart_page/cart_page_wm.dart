@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/data/repository/cart_repository.dart';
 import 'package:shop_app/model/cart/cart_calculated_model.dart';
 import 'package:shop_app/model/cart/cart_model.dart';
-import 'package:shop_app/model/cart/cart_product.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/catalog/get/product/product_count.dart';
 import 'package:shop_app/navigation/app_router.dart';
@@ -27,8 +26,6 @@ abstract class ICartPageWidgetModel extends IWidgetModel
   CartRepository get cartRepository;
 
   void openProduct({required Product product});
-
-  void onSelect(CartProduct product, bool? value);
 
   void order();
 }
@@ -84,7 +81,9 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
   }
 
   @override
-  void openProduct({required Product product}) {
+  void openProduct({
+    required Product product,
+  }) {
     context.router.navigate(
       ProductRoute(
         productId: product.id,
@@ -100,24 +99,9 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
   }
 
   @override
-  void onSelect(CartProduct product, bool? value) {
-    final ch = value ?? false;
-    final off = disabledCart.value?.data ?? {};
-
-    if (!ch) {
-      off.add(product.product.id);
-    } else {
-      off.remove(product.product.id);
-    }
-
-    disabledCart.content(Set.of(off));
-  }
-
-  @override
   Future<void> order() async {
     final profile = DioUtil().profileRepository;
 
-    orderState.value = false;
     await profile.loadProfile();
     orderState.value = true;
 

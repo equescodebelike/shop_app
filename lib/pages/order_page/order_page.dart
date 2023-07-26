@@ -38,9 +38,9 @@ class _OrderPageState extends State<OrderPage> {
     commentTextController = TextEditingController();
 
     //TODO
-    nameTextController.text = '';
-    phoneTextController.text = '';
-    emailTextController.text = '';
+    nameTextController.text = 'Arkhip';
+    phoneTextController.text = '9056500686';
+    emailTextController.text = 'nep3600@gmail.com';
   }
 
   @override
@@ -67,7 +67,22 @@ class _OrderPageState extends State<OrderPage> {
             body: BlocBuilder<OrderBloc, OrderState>(builder: (context, state) {
               if (state is InitOrderState) {} //TODO
               if (state is DeliveriesOrderState) {} //TODO
-              if (state is PaymentsOrderState) {} //TODO
+              if (state is PaymentsOrderState) {
+                CustomFilledButton(
+                  onTap: () {
+                    context.read<OrderBloc>().add(
+                          OrderCreateOrderEvent(
+                            products: widget.products,
+                            userName: nameTextController.text,
+                            userPhone: phoneTextController.text,
+                            userEmail: emailTextController.text,
+                            comment: commentTextController.text,
+                          ),
+                        );
+                  },
+                  text: 'Оформить заказ',
+                );
+              } //TODO
               if (state is CreatedOrderState) {
                 return Center(
                   child: Column(

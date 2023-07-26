@@ -11,7 +11,7 @@ import 'auth_page_model.dart';
 import 'auth_page_widget.dart';
 
 abstract class IAuthPageWidgetModel extends IWidgetModel
-    implements IThemeProvider {
+    implements IThemeProvider { 
   TextEditingController get emailController;
 
   AuthRepository get authRepository;

@@ -63,6 +63,9 @@ class AppRouter extends _$AppRouter {
                   page: CartRouteWidget.page,
                 ),
                 AutoRoute(
+                  page: ProductRoute.page,
+                ),
+                AutoRoute(
                   page: OrderRoute.page,
                 ),
               ],

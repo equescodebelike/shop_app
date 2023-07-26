@@ -28,9 +28,9 @@ class AuthBottomSheet extends StatelessWidget {
             height: 50,
           ),
           CustomFilledButton(
-            onTap: () async {
+            onTap: () {
               context.router.root.pop();
-              await context.router.navigate(
+              context.router.navigate(
                 UserProfileTab(children: [
                   AuthRouteWidget(),
                 ]),

@@ -101,7 +101,6 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
           return EntityStateNotifierBuilder(
             listenableEntityState: wm.disabledCart,
             builder: (context, data) {
-              final off = data ?? {};
               return ListView.builder(
                 itemCount: products.length,
                 itemBuilder: (context, index) {
@@ -110,8 +109,6 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
                     onTap: () => wm.openProduct(
                       product: products[index].product,
                     ),
-                    onSelect: (value) => wm.onSelect(products[index], value),
-                    checked: !off.contains(products[index].product.id),
                   );
                 },
               );

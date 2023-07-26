@@ -9,14 +9,10 @@ class BasketCard extends StatelessWidget {
   const BasketCard({
     Key? key,
     required this.cartProduct,
-    this.onSelect,
-    required this.checked,
     required this.onTap,
   }) : super(key: key);
 
   final CartProduct cartProduct;
-  final bool checked;
-  final ValueChanged<bool?>? onSelect;
   final VoidCallback onTap;
 
   @override
