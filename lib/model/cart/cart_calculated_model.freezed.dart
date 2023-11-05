@@ -72,11 +72,11 @@ class _$CalculatedCartModelCopyWithImpl<$Res, $Val extends CalculatedCartModel>
 }
 
 /// @nodoc
-abstract class _$$_CalculatedCartModelCopyWith<$Res>
+abstract class _$$CalculatedCartModelImplCopyWith<$Res>
     implements $CalculatedCartModelCopyWith<$Res> {
-  factory _$$_CalculatedCartModelCopyWith(_$_CalculatedCartModel value,
-          $Res Function(_$_CalculatedCartModel) then) =
-      __$$_CalculatedCartModelCopyWithImpl<$Res>;
+  factory _$$CalculatedCartModelImplCopyWith(_$CalculatedCartModelImpl value,
+          $Res Function(_$CalculatedCartModelImpl) then) =
+      __$$CalculatedCartModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -85,11 +85,11 @@ abstract class _$$_CalculatedCartModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CalculatedCartModelCopyWithImpl<$Res>
-    extends _$CalculatedCartModelCopyWithImpl<$Res, _$_CalculatedCartModel>
-    implements _$$_CalculatedCartModelCopyWith<$Res> {
-  __$$_CalculatedCartModelCopyWithImpl(_$_CalculatedCartModel _value,
-      $Res Function(_$_CalculatedCartModel) _then)
+class __$$CalculatedCartModelImplCopyWithImpl<$Res>
+    extends _$CalculatedCartModelCopyWithImpl<$Res, _$CalculatedCartModelImpl>
+    implements _$$CalculatedCartModelImplCopyWith<$Res> {
+  __$$CalculatedCartModelImplCopyWithImpl(_$CalculatedCartModelImpl _value,
+      $Res Function(_$CalculatedCartModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,7 +98,7 @@ class __$$_CalculatedCartModelCopyWithImpl<$Res>
     Object? promocode = freezed,
     Object? cityFias = freezed,
   }) {
-    return _then(_$_CalculatedCartModel(
+    return _then(_$CalculatedCartModelImpl(
       promocode: freezed == promocode
           ? _value.promocode
           : promocode // ignore: cast_nullable_to_non_nullable
@@ -113,13 +113,13 @@ class __$$_CalculatedCartModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CalculatedCartModel implements _CalculatedCartModel {
-  _$_CalculatedCartModel(
+class _$CalculatedCartModelImpl implements _CalculatedCartModel {
+  _$CalculatedCartModelImpl(
       {@JsonKey(name: 'promocode', includeIfNull: false) this.promocode,
       @JsonKey(name: 'city_fias', includeIfNull: false) this.cityFias});
 
-  factory _$_CalculatedCartModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CalculatedCartModelFromJson(json);
+  factory _$CalculatedCartModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CalculatedCartModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'promocode', includeIfNull: false)
@@ -137,7 +137,7 @@ class _$_CalculatedCartModel implements _CalculatedCartModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CalculatedCartModel &&
+            other is _$CalculatedCartModelImpl &&
             (identical(other.promocode, promocode) ||
                 other.promocode == promocode) &&
             (identical(other.cityFias, cityFias) ||
@@ -151,13 +151,13 @@ class _$_CalculatedCartModel implements _CalculatedCartModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CalculatedCartModelCopyWith<_$_CalculatedCartModel> get copyWith =>
-      __$$_CalculatedCartModelCopyWithImpl<_$_CalculatedCartModel>(
+  _$$CalculatedCartModelImplCopyWith<_$CalculatedCartModelImpl> get copyWith =>
+      __$$CalculatedCartModelImplCopyWithImpl<_$CalculatedCartModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CalculatedCartModelToJson(
+    return _$$CalculatedCartModelImplToJson(
       this,
     );
   }
@@ -168,10 +168,10 @@ abstract class _CalculatedCartModel implements CalculatedCartModel {
       {@JsonKey(name: 'promocode', includeIfNull: false)
       final String? promocode,
       @JsonKey(name: 'city_fias', includeIfNull: false)
-      final String? cityFias}) = _$_CalculatedCartModel;
+      final String? cityFias}) = _$CalculatedCartModelImpl;
 
   factory _CalculatedCartModel.fromJson(Map<String, dynamic> json) =
-      _$_CalculatedCartModel.fromJson;
+      _$CalculatedCartModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'promocode', includeIfNull: false)
@@ -181,6 +181,6 @@ abstract class _CalculatedCartModel implements CalculatedCartModel {
   String? get cityFias;
   @override
   @JsonKey(ignore: true)
-  _$$_CalculatedCartModelCopyWith<_$_CalculatedCartModel> get copyWith =>
+  _$$CalculatedCartModelImplCopyWith<_$CalculatedCartModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -69,22 +69,22 @@ class _$ProductWithCountCopyWithImpl<$Res, $Val extends ProductWithCount>
 }
 
 /// @nodoc
-abstract class _$$_ProductWithCountCopyWith<$Res>
+abstract class _$$ProductWithCountImplCopyWith<$Res>
     implements $ProductWithCountCopyWith<$Res> {
-  factory _$$_ProductWithCountCopyWith(
-          _$_ProductWithCount value, $Res Function(_$_ProductWithCount) then) =
-      __$$_ProductWithCountCopyWithImpl<$Res>;
+  factory _$$ProductWithCountImplCopyWith(_$ProductWithCountImpl value,
+          $Res Function(_$ProductWithCountImpl) then) =
+      __$$ProductWithCountImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: "product_id") int productId, int count});
 }
 
 /// @nodoc
-class __$$_ProductWithCountCopyWithImpl<$Res>
-    extends _$ProductWithCountCopyWithImpl<$Res, _$_ProductWithCount>
-    implements _$$_ProductWithCountCopyWith<$Res> {
-  __$$_ProductWithCountCopyWithImpl(
-      _$_ProductWithCount _value, $Res Function(_$_ProductWithCount) _then)
+class __$$ProductWithCountImplCopyWithImpl<$Res>
+    extends _$ProductWithCountCopyWithImpl<$Res, _$ProductWithCountImpl>
+    implements _$$ProductWithCountImplCopyWith<$Res> {
+  __$$ProductWithCountImplCopyWithImpl(_$ProductWithCountImpl _value,
+      $Res Function(_$ProductWithCountImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_ProductWithCountCopyWithImpl<$Res>
     Object? productId = null,
     Object? count = null,
   }) {
-    return _then(_$_ProductWithCount(
+    return _then(_$ProductWithCountImpl(
       productId: null == productId
           ? _value.productId
           : productId // ignore: cast_nullable_to_non_nullable
@@ -108,13 +108,13 @@ class __$$_ProductWithCountCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProductWithCount implements _ProductWithCount {
-  _$_ProductWithCount(
+class _$ProductWithCountImpl implements _ProductWithCount {
+  _$ProductWithCountImpl(
       {@JsonKey(name: "product_id") required this.productId,
       required this.count});
 
-  factory _$_ProductWithCount.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductWithCountFromJson(json);
+  factory _$ProductWithCountImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductWithCountImplFromJson(json);
 
   @override
   @JsonKey(name: "product_id")
@@ -131,7 +131,7 @@ class _$_ProductWithCount implements _ProductWithCount {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductWithCount &&
+            other is _$ProductWithCountImpl &&
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
             (identical(other.count, count) || other.count == count));
@@ -144,12 +144,13 @@ class _$_ProductWithCount implements _ProductWithCount {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductWithCountCopyWith<_$_ProductWithCount> get copyWith =>
-      __$$_ProductWithCountCopyWithImpl<_$_ProductWithCount>(this, _$identity);
+  _$$ProductWithCountImplCopyWith<_$ProductWithCountImpl> get copyWith =>
+      __$$ProductWithCountImplCopyWithImpl<_$ProductWithCountImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductWithCountToJson(
+    return _$$ProductWithCountImplToJson(
       this,
     );
   }
@@ -158,10 +159,10 @@ class _$_ProductWithCount implements _ProductWithCount {
 abstract class _ProductWithCount implements ProductWithCount {
   factory _ProductWithCount(
       {@JsonKey(name: "product_id") required final int productId,
-      required final int count}) = _$_ProductWithCount;
+      required final int count}) = _$ProductWithCountImpl;
 
   factory _ProductWithCount.fromJson(Map<String, dynamic> json) =
-      _$_ProductWithCount.fromJson;
+      _$ProductWithCountImpl.fromJson;
 
   @override
   @JsonKey(name: "product_id")
@@ -170,6 +171,6 @@ abstract class _ProductWithCount implements ProductWithCount {
   int get count;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductWithCountCopyWith<_$_ProductWithCount> get copyWith =>
+  _$$ProductWithCountImplCopyWith<_$ProductWithCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

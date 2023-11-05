@@ -6,15 +6,15 @@ part of 'auth_email_part1_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AuthEmailPart1Request _$$_AuthEmailPart1RequestFromJson(
+_$AuthEmailPart1RequestImpl _$$AuthEmailPart1RequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$_AuthEmailPart1Request(
+    _$AuthEmailPart1RequestImpl(
       email: json['email'] as String,
       digits: json['digits'] as int,
     );
 
-Map<String, dynamic> _$$_AuthEmailPart1RequestToJson(
-        _$_AuthEmailPart1Request instance) =>
+Map<String, dynamic> _$$AuthEmailPart1RequestImplToJson(
+        _$AuthEmailPart1RequestImpl instance) =>
     <String, dynamic>{
       'email': instance.email,
       'digits': instance.digits,

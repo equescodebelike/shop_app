@@ -4,4 +4,4 @@ favorite page - redux
 
 order page - bloc
 
-main pages - elementary
+main pages - elementary (UPD: kind of...)

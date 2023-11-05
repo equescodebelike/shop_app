@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/data/service/catalog_service.dart';
+import 'package:shop_app/data/service/favorite_service.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/catalog/post/catalog_products/catalog_products_request.dart';
 import 'package:shop_app/pages/favorites_page/favorites_redux.dart';
@@ -19,6 +20,7 @@ class FavoritePageUpdate extends StatefulWidget {
 
 class _FavoritePageUpdateState extends State<FavoritePageUpdate> {
   CatalogService get catalogClient => context.read();
+  FavoriteService get favoriteClient => context.read();
 
   Future<List<Product>> _loadFavorites(List<int> favorites) async {
     final ids = favorites;

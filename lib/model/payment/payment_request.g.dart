@@ -6,8 +6,8 @@ part of 'payment_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PaymentRequest _$$_PaymentRequestFromJson(Map<String, dynamic> json) =>
-    _$_PaymentRequest(
+_$PaymentRequestImpl _$$PaymentRequestImplFromJson(Map<String, dynamic> json) =>
+    _$PaymentRequestImpl(
       cityFias: json['city_fias'] as String?,
       products: (json['products'] as List<dynamic>?)
           ?.map((e) => ProductWithCount.fromJson(e as Map<String, dynamic>))
@@ -15,7 +15,8 @@ _$_PaymentRequest _$$_PaymentRequestFromJson(Map<String, dynamic> json) =>
       deliveryId: json['delivery_id'] as String?,
     );
 
-Map<String, dynamic> _$$_PaymentRequestToJson(_$_PaymentRequest instance) =>
+Map<String, dynamic> _$$PaymentRequestImplToJson(
+        _$PaymentRequestImpl instance) =>
     <String, dynamic>{
       'city_fias': instance.cityFias,
       'products': instance.products,

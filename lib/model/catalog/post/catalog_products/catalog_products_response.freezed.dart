@@ -76,23 +76,25 @@ class _$CatalogProductsResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CatalogProductsResponseCopyWith<$Res>
+abstract class _$$CatalogProductsResponseImplCopyWith<$Res>
     implements $CatalogProductsResponseCopyWith<$Res> {
-  factory _$$_CatalogProductsResponseCopyWith(_$_CatalogProductsResponse value,
-          $Res Function(_$_CatalogProductsResponse) then) =
-      __$$_CatalogProductsResponseCopyWithImpl<$Res>;
+  factory _$$CatalogProductsResponseImplCopyWith(
+          _$CatalogProductsResponseImpl value,
+          $Res Function(_$CatalogProductsResponseImpl) then) =
+      __$$CatalogProductsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Product> results, int count, String? next});
 }
 
 /// @nodoc
-class __$$_CatalogProductsResponseCopyWithImpl<$Res>
+class __$$CatalogProductsResponseImplCopyWithImpl<$Res>
     extends _$CatalogProductsResponseCopyWithImpl<$Res,
-        _$_CatalogProductsResponse>
-    implements _$$_CatalogProductsResponseCopyWith<$Res> {
-  __$$_CatalogProductsResponseCopyWithImpl(_$_CatalogProductsResponse _value,
-      $Res Function(_$_CatalogProductsResponse) _then)
+        _$CatalogProductsResponseImpl>
+    implements _$$CatalogProductsResponseImplCopyWith<$Res> {
+  __$$CatalogProductsResponseImplCopyWithImpl(
+      _$CatalogProductsResponseImpl _value,
+      $Res Function(_$CatalogProductsResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,7 +104,7 @@ class __$$_CatalogProductsResponseCopyWithImpl<$Res>
     Object? count = null,
     Object? next = freezed,
   }) {
-    return _then(_$_CatalogProductsResponse(
+    return _then(_$CatalogProductsResponseImpl(
       results: null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
@@ -121,15 +123,15 @@ class __$$_CatalogProductsResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CatalogProductsResponse implements _CatalogProductsResponse {
-  _$_CatalogProductsResponse(
+class _$CatalogProductsResponseImpl implements _CatalogProductsResponse {
+  _$CatalogProductsResponseImpl(
       {required final List<Product> results,
       required this.count,
       required this.next})
       : _results = results;
 
-  factory _$_CatalogProductsResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_CatalogProductsResponseFromJson(json);
+  factory _$CatalogProductsResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CatalogProductsResponseImplFromJson(json);
 
   final List<Product> _results;
   @override
@@ -153,7 +155,7 @@ class _$_CatalogProductsResponse implements _CatalogProductsResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CatalogProductsResponse &&
+            other is _$CatalogProductsResponseImpl &&
             const DeepCollectionEquality().equals(other._results, _results) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.next, next) || other.next == next));
@@ -167,14 +169,13 @@ class _$_CatalogProductsResponse implements _CatalogProductsResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CatalogProductsResponseCopyWith<_$_CatalogProductsResponse>
-      get copyWith =>
-          __$$_CatalogProductsResponseCopyWithImpl<_$_CatalogProductsResponse>(
-              this, _$identity);
+  _$$CatalogProductsResponseImplCopyWith<_$CatalogProductsResponseImpl>
+      get copyWith => __$$CatalogProductsResponseImplCopyWithImpl<
+          _$CatalogProductsResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CatalogProductsResponseToJson(
+    return _$$CatalogProductsResponseImplToJson(
       this,
     );
   }
@@ -184,10 +185,10 @@ abstract class _CatalogProductsResponse implements CatalogProductsResponse {
   factory _CatalogProductsResponse(
       {required final List<Product> results,
       required final int count,
-      required final String? next}) = _$_CatalogProductsResponse;
+      required final String? next}) = _$CatalogProductsResponseImpl;
 
   factory _CatalogProductsResponse.fromJson(Map<String, dynamic> json) =
-      _$_CatalogProductsResponse.fromJson;
+      _$CatalogProductsResponseImpl.fromJson;
 
   @override
   List<Product> get results;
@@ -197,6 +198,6 @@ abstract class _CatalogProductsResponse implements CatalogProductsResponse {
   String? get next;
   @override
   @JsonKey(ignore: true)
-  _$$_CatalogProductsResponseCopyWith<_$_CatalogProductsResponse>
+  _$$CatalogProductsResponseImplCopyWith<_$CatalogProductsResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

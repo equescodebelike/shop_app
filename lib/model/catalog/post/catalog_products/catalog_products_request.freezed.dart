@@ -108,11 +108,12 @@ class _$CatalogProductsRequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CatalogProductsRequestCopyWith<$Res>
+abstract class _$$CatalogProductsRequestImplCopyWith<$Res>
     implements $CatalogProductsRequestCopyWith<$Res> {
-  factory _$$_CatalogProductsRequestCopyWith(_$_CatalogProductsRequest value,
-          $Res Function(_$_CatalogProductsRequest) then) =
-      __$$_CatalogProductsRequestCopyWithImpl<$Res>;
+  factory _$$CatalogProductsRequestImplCopyWith(
+          _$CatalogProductsRequestImpl value,
+          $Res Function(_$CatalogProductsRequestImpl) then) =
+      __$$CatalogProductsRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -127,12 +128,13 @@ abstract class _$$_CatalogProductsRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CatalogProductsRequestCopyWithImpl<$Res>
+class __$$CatalogProductsRequestImplCopyWithImpl<$Res>
     extends _$CatalogProductsRequestCopyWithImpl<$Res,
-        _$_CatalogProductsRequest>
-    implements _$$_CatalogProductsRequestCopyWith<$Res> {
-  __$$_CatalogProductsRequestCopyWithImpl(_$_CatalogProductsRequest _value,
-      $Res Function(_$_CatalogProductsRequest) _then)
+        _$CatalogProductsRequestImpl>
+    implements _$$CatalogProductsRequestImplCopyWith<$Res> {
+  __$$CatalogProductsRequestImplCopyWithImpl(
+      _$CatalogProductsRequestImpl _value,
+      $Res Function(_$CatalogProductsRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -145,7 +147,7 @@ class __$$_CatalogProductsRequestCopyWithImpl<$Res>
     Object? categoryIds = freezed,
     Object? productIds = freezed,
   }) {
-    return _then(_$_CatalogProductsRequest(
+    return _then(_$CatalogProductsRequestImpl(
       cityFias: freezed == cityFias
           ? _value.cityFias
           : cityFias // ignore: cast_nullable_to_non_nullable
@@ -176,8 +178,8 @@ class __$$_CatalogProductsRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CatalogProductsRequest implements _CatalogProductsRequest {
-  _$_CatalogProductsRequest(
+class _$CatalogProductsRequestImpl implements _CatalogProductsRequest {
+  _$CatalogProductsRequestImpl(
       {@JsonKey(name: 'city_fias', includeIfNull: false) this.cityFias,
       @JsonKey(name: 'sort_by', includeIfNull: false) this.sortBy,
       @JsonKey(name: 'search', includeIfNull: false) this.search,
@@ -189,8 +191,8 @@ class _$_CatalogProductsRequest implements _CatalogProductsRequest {
       : _categoryIds = categoryIds,
         _productIds = productIds;
 
-  factory _$_CatalogProductsRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_CatalogProductsRequestFromJson(json);
+  factory _$CatalogProductsRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CatalogProductsRequestImplFromJson(json);
 
   @override
   @JsonKey(name: 'city_fias', includeIfNull: false)
@@ -235,7 +237,7 @@ class _$_CatalogProductsRequest implements _CatalogProductsRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CatalogProductsRequest &&
+            other is _$CatalogProductsRequestImpl &&
             (identical(other.cityFias, cityFias) ||
                 other.cityFias == cityFias) &&
             (identical(other.sortBy, sortBy) || other.sortBy == sortBy) &&
@@ -261,13 +263,13 @@ class _$_CatalogProductsRequest implements _CatalogProductsRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CatalogProductsRequestCopyWith<_$_CatalogProductsRequest> get copyWith =>
-      __$$_CatalogProductsRequestCopyWithImpl<_$_CatalogProductsRequest>(
-          this, _$identity);
+  _$$CatalogProductsRequestImplCopyWith<_$CatalogProductsRequestImpl>
+      get copyWith => __$$CatalogProductsRequestImplCopyWithImpl<
+          _$CatalogProductsRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CatalogProductsRequestToJson(
+    return _$$CatalogProductsRequestImplToJson(
       this,
     );
   }
@@ -282,10 +284,10 @@ abstract class _CatalogProductsRequest implements CatalogProductsRequest {
       @JsonKey(name: 'category_ids', includeIfNull: false)
       final List<dynamic>? categoryIds,
       @JsonKey(name: 'product_ids', includeIfNull: false)
-      final List<dynamic>? productIds}) = _$_CatalogProductsRequest;
+      final List<dynamic>? productIds}) = _$CatalogProductsRequestImpl;
 
   factory _CatalogProductsRequest.fromJson(Map<String, dynamic> json) =
-      _$_CatalogProductsRequest.fromJson;
+      _$CatalogProductsRequestImpl.fromJson;
 
   @override
   @JsonKey(name: 'city_fias', includeIfNull: false)
@@ -307,6 +309,6 @@ abstract class _CatalogProductsRequest implements CatalogProductsRequest {
   List<dynamic>? get productIds;
   @override
   @JsonKey(ignore: true)
-  _$$_CatalogProductsRequestCopyWith<_$_CatalogProductsRequest> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CatalogProductsRequestImplCopyWith<_$CatalogProductsRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

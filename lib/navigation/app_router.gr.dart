@@ -15,36 +15,6 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    CatalogTab.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CatalogTabPage(),
-      );
-    },
-    FavoritesTab.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const FavoritesTabPage(),
-      );
-    },
-    ShowCaseTab.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const ShowCaseTabPage(),
-      );
-    },
-    BasketTab.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const BasketTabPage(),
-      );
-    },
-    UserProfileTab.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const UserProfileTabPage(),
-      );
-    },
     AuthCodeRouteWidget.name: (routeData) {
       final args = routeData.argsAs<AuthCodeRouteWidgetArgs>();
       return AutoRoutePage<dynamic>(
@@ -62,6 +32,23 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: AuthPageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    BasketTab.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const BasketTabPage(),
+      );
+    },
+    CartRouteWidget.name: (routeData) {
+      final args = routeData.argsAs<CartRouteWidgetArgs>(
+          orElse: () => const CartRouteWidgetArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CartPageWidget(
           key: args.key,
           wmFactory: args.wmFactory,
         ),
@@ -89,10 +76,22 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    CatalogTab.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CatalogTabPage(),
+      );
+    },
     FavoriteRouteUpdate.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const FavoritePageUpdate(),
+      );
+    },
+    FavoritesTab.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FavoritesTabPage(),
       );
     },
     HomeRoute.name: (routeData) {
@@ -139,94 +138,25 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    CartRouteWidget.name: (routeData) {
-      final args = routeData.argsAs<CartRouteWidgetArgs>(
-          orElse: () => const CartRouteWidgetArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: CartPageWidget(
-          key: args.key,
-          wmFactory: args.wmFactory,
-        ),
-      );
-    },
     ShowCaseRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ShowCasePage(),
       );
     },
+    ShowCaseTab.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ShowCaseTabPage(),
+      );
+    },
+    UserProfileTab.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const UserProfileTabPage(),
+      );
+    },
   };
-}
-
-/// generated route for
-/// [CatalogTabPage]
-class CatalogTab extends PageRouteInfo<void> {
-  const CatalogTab({List<PageRouteInfo>? children})
-      : super(
-          CatalogTab.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CatalogTab';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [FavoritesTabPage]
-class FavoritesTab extends PageRouteInfo<void> {
-  const FavoritesTab({List<PageRouteInfo>? children})
-      : super(
-          FavoritesTab.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'FavoritesTab';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [ShowCaseTabPage]
-class ShowCaseTab extends PageRouteInfo<void> {
-  const ShowCaseTab({List<PageRouteInfo>? children})
-      : super(
-          ShowCaseTab.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ShowCaseTab';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [BasketTabPage]
-class BasketTab extends PageRouteInfo<void> {
-  const BasketTab({List<PageRouteInfo>? children})
-      : super(
-          BasketTab.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'BasketTab';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [UserProfileTabPage]
-class UserProfileTab extends PageRouteInfo<void> {
-  const UserProfileTab({List<PageRouteInfo>? children})
-      : super(
-          UserProfileTab.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UserProfileTab';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -317,6 +247,61 @@ class AuthRouteWidgetArgs {
 }
 
 /// generated route for
+/// [BasketTabPage]
+class BasketTab extends PageRouteInfo<void> {
+  const BasketTab({List<PageRouteInfo>? children})
+      : super(
+          BasketTab.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BasketTab';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CartPageWidget]
+class CartRouteWidget extends PageRouteInfo<CartRouteWidgetArgs> {
+  CartRouteWidget({
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultCartPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CartRouteWidget.name,
+          args: CartRouteWidgetArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CartRouteWidget';
+
+  static const PageInfo<CartRouteWidgetArgs> page =
+      PageInfo<CartRouteWidgetArgs>(name);
+}
+
+class CartRouteWidgetArgs {
+  const CartRouteWidgetArgs({
+    this.key,
+    this.wmFactory = defaultCartPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'CartRouteWidgetArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [CatalogPageWidget]
 class CatalogRouteWidget extends PageRouteInfo<CatalogRouteWidgetArgs> {
   CatalogRouteWidget({
@@ -378,6 +363,20 @@ class CatalogRouteWidgetArgs {
 }
 
 /// generated route for
+/// [CatalogTabPage]
+class CatalogTab extends PageRouteInfo<void> {
+  const CatalogTab({List<PageRouteInfo>? children})
+      : super(
+          CatalogTab.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CatalogTab';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [FavoritePageUpdate]
 class FavoriteRouteUpdate extends PageRouteInfo<void> {
   const FavoriteRouteUpdate({List<PageRouteInfo>? children})
@@ -387,6 +386,20 @@ class FavoriteRouteUpdate extends PageRouteInfo<void> {
         );
 
   static const String name = 'FavoriteRouteUpdate';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FavoritesTabPage]
+class FavoritesTab extends PageRouteInfo<void> {
+  const FavoritesTab({List<PageRouteInfo>? children})
+      : super(
+          FavoritesTab.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FavoritesTab';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -542,47 +555,6 @@ class ProfileRouteWidgetArgs {
 }
 
 /// generated route for
-/// [CartPageWidget]
-class CartRouteWidget extends PageRouteInfo<CartRouteWidgetArgs> {
-  CartRouteWidget({
-    Key? key,
-    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
-            BuildContext)
-        wmFactory = defaultCartPageWidgetModelFactory,
-    List<PageRouteInfo>? children,
-  }) : super(
-          CartRouteWidget.name,
-          args: CartRouteWidgetArgs(
-            key: key,
-            wmFactory: wmFactory,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'CartRouteWidget';
-
-  static const PageInfo<CartRouteWidgetArgs> page =
-      PageInfo<CartRouteWidgetArgs>(name);
-}
-
-class CartRouteWidgetArgs {
-  const CartRouteWidgetArgs({
-    this.key,
-    this.wmFactory = defaultCartPageWidgetModelFactory,
-  });
-
-  final Key? key;
-
-  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
-      BuildContext) wmFactory;
-
-  @override
-  String toString() {
-    return 'CartRouteWidgetArgs{key: $key, wmFactory: $wmFactory}';
-  }
-}
-
-/// generated route for
 /// [ShowCasePage]
 class ShowCaseRoute extends PageRouteInfo<void> {
   const ShowCaseRoute({List<PageRouteInfo>? children})
@@ -592,6 +564,34 @@ class ShowCaseRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ShowCaseRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ShowCaseTabPage]
+class ShowCaseTab extends PageRouteInfo<void> {
+  const ShowCaseTab({List<PageRouteInfo>? children})
+      : super(
+          ShowCaseTab.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ShowCaseTab';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [UserProfileTabPage]
+class UserProfileTab extends PageRouteInfo<void> {
+  const UserProfileTab({List<PageRouteInfo>? children})
+      : super(
+          UserProfileTab.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserProfileTab';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

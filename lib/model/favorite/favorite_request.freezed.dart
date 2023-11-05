@@ -62,22 +62,22 @@ class _$FavoriteRequestCopyWithImpl<$Res, $Val extends FavoriteRequest>
 }
 
 /// @nodoc
-abstract class _$$_FavoriteRequestCopyWith<$Res>
+abstract class _$$FavoriteRequestImplCopyWith<$Res>
     implements $FavoriteRequestCopyWith<$Res> {
-  factory _$$_FavoriteRequestCopyWith(
-          _$_FavoriteRequest value, $Res Function(_$_FavoriteRequest) then) =
-      __$$_FavoriteRequestCopyWithImpl<$Res>;
+  factory _$$FavoriteRequestImplCopyWith(_$FavoriteRequestImpl value,
+          $Res Function(_$FavoriteRequestImpl) then) =
+      __$$FavoriteRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int product});
 }
 
 /// @nodoc
-class __$$_FavoriteRequestCopyWithImpl<$Res>
-    extends _$FavoriteRequestCopyWithImpl<$Res, _$_FavoriteRequest>
-    implements _$$_FavoriteRequestCopyWith<$Res> {
-  __$$_FavoriteRequestCopyWithImpl(
-      _$_FavoriteRequest _value, $Res Function(_$_FavoriteRequest) _then)
+class __$$FavoriteRequestImplCopyWithImpl<$Res>
+    extends _$FavoriteRequestCopyWithImpl<$Res, _$FavoriteRequestImpl>
+    implements _$$FavoriteRequestImplCopyWith<$Res> {
+  __$$FavoriteRequestImplCopyWithImpl(
+      _$FavoriteRequestImpl _value, $Res Function(_$FavoriteRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_FavoriteRequestCopyWithImpl<$Res>
   $Res call({
     Object? product = null,
   }) {
-    return _then(_$_FavoriteRequest(
+    return _then(_$FavoriteRequestImpl(
       product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_FavoriteRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_FavoriteRequest implements _FavoriteRequest {
-  const _$_FavoriteRequest({required this.product});
+class _$FavoriteRequestImpl implements _FavoriteRequest {
+  const _$FavoriteRequestImpl({required this.product});
 
-  factory _$_FavoriteRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_FavoriteRequestFromJson(json);
+  factory _$FavoriteRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FavoriteRequestImplFromJson(json);
 
   @override
   final int product;
@@ -114,7 +114,7 @@ class _$_FavoriteRequest implements _FavoriteRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FavoriteRequest &&
+            other is _$FavoriteRequestImpl &&
             (identical(other.product, product) || other.product == product));
   }
 
@@ -125,12 +125,13 @@ class _$_FavoriteRequest implements _FavoriteRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FavoriteRequestCopyWith<_$_FavoriteRequest> get copyWith =>
-      __$$_FavoriteRequestCopyWithImpl<_$_FavoriteRequest>(this, _$identity);
+  _$$FavoriteRequestImplCopyWith<_$FavoriteRequestImpl> get copyWith =>
+      __$$FavoriteRequestImplCopyWithImpl<_$FavoriteRequestImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FavoriteRequestToJson(
+    return _$$FavoriteRequestImplToJson(
       this,
     );
   }
@@ -138,15 +139,15 @@ class _$_FavoriteRequest implements _FavoriteRequest {
 
 abstract class _FavoriteRequest implements FavoriteRequest {
   const factory _FavoriteRequest({required final int product}) =
-      _$_FavoriteRequest;
+      _$FavoriteRequestImpl;
 
   factory _FavoriteRequest.fromJson(Map<String, dynamic> json) =
-      _$_FavoriteRequest.fromJson;
+      _$FavoriteRequestImpl.fromJson;
 
   @override
   int get product;
   @override
   @JsonKey(ignore: true)
-  _$$_FavoriteRequestCopyWith<_$_FavoriteRequest> get copyWith =>
+  _$$FavoriteRequestImplCopyWith<_$FavoriteRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

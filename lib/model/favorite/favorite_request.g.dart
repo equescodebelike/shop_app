@@ -6,12 +6,14 @@ part of 'favorite_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_FavoriteRequest _$$_FavoriteRequestFromJson(Map<String, dynamic> json) =>
-    _$_FavoriteRequest(
+_$FavoriteRequestImpl _$$FavoriteRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$FavoriteRequestImpl(
       product: json['product'] as int,
     );
 
-Map<String, dynamic> _$$_FavoriteRequestToJson(_$_FavoriteRequest instance) =>
+Map<String, dynamic> _$$FavoriteRequestImplToJson(
+        _$FavoriteRequestImpl instance) =>
     <String, dynamic>{
       'product': instance.product,
     };

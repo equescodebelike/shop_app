@@ -6,13 +6,15 @@ part of 'product_count.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProductWithCount _$$_ProductWithCountFromJson(Map<String, dynamic> json) =>
-    _$_ProductWithCount(
+_$ProductWithCountImpl _$$ProductWithCountImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ProductWithCountImpl(
       productId: json['product_id'] as int,
       count: json['count'] as int,
     );
 
-Map<String, dynamic> _$$_ProductWithCountToJson(_$_ProductWithCount instance) =>
+Map<String, dynamic> _$$ProductWithCountImplToJson(
+        _$ProductWithCountImpl instance) =>
     <String, dynamic>{
       'product_id': instance.productId,
       'count': instance.count,
