@@ -6,8 +6,8 @@ part of 'order_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OrderRequest _$$_OrderRequestFromJson(Map<String, dynamic> json) =>
-    _$_OrderRequest(
+_$OrderRequestImpl _$$OrderRequestImplFromJson(Map<String, dynamic> json) =>
+    _$OrderRequestImpl(
       cityFias: json['city_fias'] as String?,
       promocode: json['promocode'] as String?,
       products: (json['products'] as List<dynamic>?)
@@ -30,7 +30,7 @@ _$_OrderRequest _$$_OrderRequestFromJson(Map<String, dynamic> json) =>
       repeatedDays: json['repeated_days'] as int?,
     );
 
-Map<String, dynamic> _$$_OrderRequestToJson(_$_OrderRequest instance) {
+Map<String, dynamic> _$$OrderRequestImplToJson(_$OrderRequestImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

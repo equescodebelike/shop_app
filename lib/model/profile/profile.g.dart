@@ -6,7 +6,8 @@ part of 'profile.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Profile _$$_ProfileFromJson(Map<String, dynamic> json) => _$_Profile(
+_$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
+    _$ProfileImpl(
       email: json['email'] as String,
       firstName: json['first_name'] as String?,
       secondName: json['second_name'] as String?,
@@ -18,7 +19,7 @@ _$_Profile _$$_ProfileFromJson(Map<String, dynamic> json) => _$_Profile(
       tgChatStartLink: json['tg_chat_start_link'] as String?,
     );
 
-Map<String, dynamic> _$$_ProfileToJson(_$_Profile instance) {
+Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) {
   final val = <String, dynamic>{
     'email': instance.email,
   };

@@ -6,7 +6,8 @@ part of 'cart_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CartModel _$$_CartModelFromJson(Map<String, dynamic> json) => _$_CartModel(
+_$CartModelImpl _$$CartModelImplFromJson(Map<String, dynamic> json) =>
+    _$CartModelImpl(
       price: Decimal.fromJson(json['price'] as String),
       count: json['count'] as int,
       products: (json['products'] as List<dynamic>)
@@ -18,7 +19,7 @@ _$_CartModel _$$_CartModelFromJson(Map<String, dynamic> json) => _$_CartModel(
       applied: json['applied'] as bool?,
     );
 
-Map<String, dynamic> _$$_CartModelToJson(_$_CartModel instance) =>
+Map<String, dynamic> _$$CartModelImplToJson(_$CartModelImpl instance) =>
     <String, dynamic>{
       'price': instance.price,
       'count': instance.count,

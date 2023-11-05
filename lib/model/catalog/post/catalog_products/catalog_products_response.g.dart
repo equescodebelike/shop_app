@@ -6,9 +6,9 @@ part of 'catalog_products_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CatalogProductsResponse _$$_CatalogProductsResponseFromJson(
+_$CatalogProductsResponseImpl _$$CatalogProductsResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CatalogProductsResponse(
+    _$CatalogProductsResponseImpl(
       results: (json['results'] as List<dynamic>)
           .map((e) => Product.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -16,8 +16,8 @@ _$_CatalogProductsResponse _$$_CatalogProductsResponseFromJson(
       next: json['next'] as String?,
     );
 
-Map<String, dynamic> _$$_CatalogProductsResponseToJson(
-        _$_CatalogProductsResponse instance) =>
+Map<String, dynamic> _$$CatalogProductsResponseImplToJson(
+        _$CatalogProductsResponseImpl instance) =>
     <String, dynamic>{
       'results': instance.results,
       'count': instance.count,

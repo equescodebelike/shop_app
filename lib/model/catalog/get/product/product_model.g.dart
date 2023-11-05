@@ -6,15 +6,17 @@ part of 'product_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProductProperty _$$_ProductPropertyFromJson(Map<String, dynamic> json) =>
-    _$_ProductProperty(
+_$ProductPropertyImpl _$$ProductPropertyImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ProductPropertyImpl(
       id: json['id'] as int?,
       name: json['name'] as String,
       value: json['value'] as String,
       product: json['product'] as int,
     );
 
-Map<String, dynamic> _$$_ProductPropertyToJson(_$_ProductProperty instance) =>
+Map<String, dynamic> _$$ProductPropertyImplToJson(
+        _$ProductPropertyImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -22,7 +24,7 @@ Map<String, dynamic> _$$_ProductPropertyToJson(_$_ProductProperty instance) =>
       'product': instance.product,
     };
 
-_$_Badge _$$_BadgeFromJson(Map<String, dynamic> json) => _$_Badge(
+_$BadgeImpl _$$BadgeImplFromJson(Map<String, dynamic> json) => _$BadgeImpl(
       id: json['id'] as int,
       textColor: json['textColor'] as String?,
       bgColor: json['bgColor'] as String?,
@@ -30,7 +32,8 @@ _$_Badge _$$_BadgeFromJson(Map<String, dynamic> json) => _$_Badge(
       picture: json['picture'] as String?,
     );
 
-Map<String, dynamic> _$$_BadgeToJson(_$_Badge instance) => <String, dynamic>{
+Map<String, dynamic> _$$BadgeImplToJson(_$BadgeImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'textColor': instance.textColor,
       'bgColor': instance.bgColor,

@@ -6,7 +6,7 @@ part of 'order_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
+_$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
       id: json['id'] as int?,
       items: (json['items'] as List<dynamic>)
           .map((e) => OrderItem.fromJson(e as Map<String, dynamic>))
@@ -35,7 +35,8 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
       repeatedDays: json['repeated_days'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
+Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'items': instance.items,
       'user_id': instance.userId,
@@ -62,7 +63,8 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'repeated_days': instance.repeatedDays,
     };
 
-_$_OrderItem _$$_OrderItemFromJson(Map<String, dynamic> json) => _$_OrderItem(
+_$OrderItemImpl _$$OrderItemImplFromJson(Map<String, dynamic> json) =>
+    _$OrderItemImpl(
       id: json['id'] as int?,
       name: json['name'] as String,
       picture: json['picture'] as String,
@@ -73,7 +75,7 @@ _$_OrderItem _$$_OrderItemFromJson(Map<String, dynamic> json) => _$_OrderItem(
       product: json['product'] as int?,
     );
 
-Map<String, dynamic> _$$_OrderItemToJson(_$_OrderItem instance) =>
+Map<String, dynamic> _$$OrderItemImplToJson(_$OrderItemImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

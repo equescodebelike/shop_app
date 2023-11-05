@@ -202,11 +202,11 @@ class _$OrderRequestCopyWithImpl<$Res, $Val extends OrderRequest>
 }
 
 /// @nodoc
-abstract class _$$_OrderRequestCopyWith<$Res>
+abstract class _$$OrderRequestImplCopyWith<$Res>
     implements $OrderRequestCopyWith<$Res> {
-  factory _$$_OrderRequestCopyWith(
-          _$_OrderRequest value, $Res Function(_$_OrderRequest) then) =
-      __$$_OrderRequestCopyWithImpl<$Res>;
+  factory _$$OrderRequestImplCopyWith(
+          _$OrderRequestImpl value, $Res Function(_$OrderRequestImpl) then) =
+      __$$OrderRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -233,11 +233,11 @@ abstract class _$$_OrderRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OrderRequestCopyWithImpl<$Res>
-    extends _$OrderRequestCopyWithImpl<$Res, _$_OrderRequest>
-    implements _$$_OrderRequestCopyWith<$Res> {
-  __$$_OrderRequestCopyWithImpl(
-      _$_OrderRequest _value, $Res Function(_$_OrderRequest) _then)
+class __$$OrderRequestImplCopyWithImpl<$Res>
+    extends _$OrderRequestCopyWithImpl<$Res, _$OrderRequestImpl>
+    implements _$$OrderRequestImplCopyWith<$Res> {
+  __$$OrderRequestImplCopyWithImpl(
+      _$OrderRequestImpl _value, $Res Function(_$OrderRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -262,7 +262,7 @@ class __$$_OrderRequestCopyWithImpl<$Res>
     Object? comment = freezed,
     Object? repeatedDays = freezed,
   }) {
-    return _then(_$_OrderRequest(
+    return _then(_$OrderRequestImpl(
       cityFias: freezed == cityFias
           ? _value.cityFias
           : cityFias // ignore: cast_nullable_to_non_nullable
@@ -341,8 +341,8 @@ class __$$_OrderRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderRequest implements _OrderRequest {
-  const _$_OrderRequest(
+class _$OrderRequestImpl implements _OrderRequest {
+  const _$OrderRequestImpl(
       {@JsonKey(name: 'city_fias', includeIfNull: false) this.cityFias,
       @JsonKey(includeIfNull: false) this.promocode,
       @JsonKey(includeIfNull: false) final List<ProductWithCount>? products,
@@ -363,8 +363,8 @@ class _$_OrderRequest implements _OrderRequest {
       @JsonKey(name: 'repeated_days', includeIfNull: false) this.repeatedDays})
       : _products = products;
 
-  factory _$_OrderRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderRequestFromJson(json);
+  factory _$OrderRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderRequestImplFromJson(json);
 
   @override
   @JsonKey(name: 'city_fias', includeIfNull: false)
@@ -438,7 +438,7 @@ class _$_OrderRequest implements _OrderRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderRequest &&
+            other is _$OrderRequestImpl &&
             (identical(other.cityFias, cityFias) ||
                 other.cityFias == cityFias) &&
             (identical(other.promocode, promocode) ||
@@ -500,12 +500,12 @@ class _$_OrderRequest implements _OrderRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderRequestCopyWith<_$_OrderRequest> get copyWith =>
-      __$$_OrderRequestCopyWithImpl<_$_OrderRequest>(this, _$identity);
+  _$$OrderRequestImplCopyWith<_$OrderRequestImpl> get copyWith =>
+      __$$OrderRequestImplCopyWithImpl<_$OrderRequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderRequestToJson(
+    return _$$OrderRequestImplToJson(
       this,
     );
   }
@@ -536,10 +536,10 @@ abstract class _OrderRequest implements OrderRequest {
       @JsonKey(includeIfNull: false) final String? address,
       @JsonKey(includeIfNull: false) final String? comment,
       @JsonKey(name: 'repeated_days', includeIfNull: false)
-      final int? repeatedDays}) = _$_OrderRequest;
+      final int? repeatedDays}) = _$OrderRequestImpl;
 
   factory _OrderRequest.fromJson(Map<String, dynamic> json) =
-      _$_OrderRequest.fromJson;
+      _$OrderRequestImpl.fromJson;
 
   @override
   @JsonKey(name: 'city_fias', includeIfNull: false)
@@ -597,6 +597,6 @@ abstract class _OrderRequest implements OrderRequest {
   int? get repeatedDays;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderRequestCopyWith<_$_OrderRequest> get copyWith =>
+  _$$OrderRequestImplCopyWith<_$OrderRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

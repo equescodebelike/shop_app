@@ -70,22 +70,22 @@ class _$AuthEmailPart2RequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AuthPart2RequestCopyWith<$Res>
+abstract class _$$AuthPart2RequestImplCopyWith<$Res>
     implements $AuthEmailPart2RequestCopyWith<$Res> {
-  factory _$$_AuthPart2RequestCopyWith(
-          _$_AuthPart2Request value, $Res Function(_$_AuthPart2Request) then) =
-      __$$_AuthPart2RequestCopyWithImpl<$Res>;
+  factory _$$AuthPart2RequestImplCopyWith(_$AuthPart2RequestImpl value,
+          $Res Function(_$AuthPart2RequestImpl) then) =
+      __$$AuthPart2RequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String email, String code});
 }
 
 /// @nodoc
-class __$$_AuthPart2RequestCopyWithImpl<$Res>
-    extends _$AuthEmailPart2RequestCopyWithImpl<$Res, _$_AuthPart2Request>
-    implements _$$_AuthPart2RequestCopyWith<$Res> {
-  __$$_AuthPart2RequestCopyWithImpl(
-      _$_AuthPart2Request _value, $Res Function(_$_AuthPart2Request) _then)
+class __$$AuthPart2RequestImplCopyWithImpl<$Res>
+    extends _$AuthEmailPart2RequestCopyWithImpl<$Res, _$AuthPart2RequestImpl>
+    implements _$$AuthPart2RequestImplCopyWith<$Res> {
+  __$$AuthPart2RequestImplCopyWithImpl(_$AuthPart2RequestImpl _value,
+      $Res Function(_$AuthPart2RequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +94,7 @@ class __$$_AuthPart2RequestCopyWithImpl<$Res>
     Object? email = null,
     Object? code = null,
   }) {
-    return _then(_$_AuthPart2Request(
+    return _then(_$AuthPart2RequestImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -110,11 +110,11 @@ class __$$_AuthPart2RequestCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class _$_AuthPart2Request implements _AuthPart2Request {
-  const _$_AuthPart2Request({required this.email, required this.code});
+class _$AuthPart2RequestImpl implements _AuthPart2Request {
+  const _$AuthPart2RequestImpl({required this.email, required this.code});
 
-  factory _$_AuthPart2Request.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthPart2RequestFromJson(json);
+  factory _$AuthPart2RequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthPart2RequestImplFromJson(json);
 
   @override
   final String email;
@@ -130,7 +130,7 @@ class _$_AuthPart2Request implements _AuthPart2Request {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthPart2Request &&
+            other is _$AuthPart2RequestImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.code, code) || other.code == code));
   }
@@ -142,12 +142,13 @@ class _$_AuthPart2Request implements _AuthPart2Request {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthPart2RequestCopyWith<_$_AuthPart2Request> get copyWith =>
-      __$$_AuthPart2RequestCopyWithImpl<_$_AuthPart2Request>(this, _$identity);
+  _$$AuthPart2RequestImplCopyWith<_$AuthPart2RequestImpl> get copyWith =>
+      __$$AuthPart2RequestImplCopyWithImpl<_$AuthPart2RequestImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthPart2RequestToJson(
+    return _$$AuthPart2RequestImplToJson(
       this,
     );
   }
@@ -156,10 +157,10 @@ class _$_AuthPart2Request implements _AuthPart2Request {
 abstract class _AuthPart2Request implements AuthEmailPart2Request {
   const factory _AuthPart2Request(
       {required final String email,
-      required final String code}) = _$_AuthPart2Request;
+      required final String code}) = _$AuthPart2RequestImpl;
 
   factory _AuthPart2Request.fromJson(Map<String, dynamic> json) =
-      _$_AuthPart2Request.fromJson;
+      _$AuthPart2RequestImpl.fromJson;
 
   @override
   String get email;
@@ -167,6 +168,6 @@ abstract class _AuthPart2Request implements AuthEmailPart2Request {
   String get code;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthPart2RequestCopyWith<_$_AuthPart2Request> get copyWith =>
+  _$$AuthPart2RequestImplCopyWith<_$AuthPart2RequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

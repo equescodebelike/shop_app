@@ -6,15 +6,15 @@ part of 'cart_calculated_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CalculatedCartModel _$$_CalculatedCartModelFromJson(
+_$CalculatedCartModelImpl _$$CalculatedCartModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CalculatedCartModel(
+    _$CalculatedCartModelImpl(
       promocode: json['promocode'] as String?,
       cityFias: json['city_fias'] as String?,
     );
 
-Map<String, dynamic> _$$_CalculatedCartModelToJson(
-    _$_CalculatedCartModel instance) {
+Map<String, dynamic> _$$CalculatedCartModelImplToJson(
+    _$CalculatedCartModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

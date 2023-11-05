@@ -95,10 +95,11 @@ class _$CartModelCopyWithImpl<$Res, $Val extends CartModel>
 }
 
 /// @nodoc
-abstract class _$$_CartModelCopyWith<$Res> implements $CartModelCopyWith<$Res> {
-  factory _$$_CartModelCopyWith(
-          _$_CartModel value, $Res Function(_$_CartModel) then) =
-      __$$_CartModelCopyWithImpl<$Res>;
+abstract class _$$CartModelImplCopyWith<$Res>
+    implements $CartModelCopyWith<$Res> {
+  factory _$$CartModelImplCopyWith(
+          _$CartModelImpl value, $Res Function(_$CartModelImpl) then) =
+      __$$CartModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +111,11 @@ abstract class _$$_CartModelCopyWith<$Res> implements $CartModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CartModelCopyWithImpl<$Res>
-    extends _$CartModelCopyWithImpl<$Res, _$_CartModel>
-    implements _$$_CartModelCopyWith<$Res> {
-  __$$_CartModelCopyWithImpl(
-      _$_CartModel _value, $Res Function(_$_CartModel) _then)
+class __$$CartModelImplCopyWithImpl<$Res>
+    extends _$CartModelCopyWithImpl<$Res, _$CartModelImpl>
+    implements _$$CartModelImplCopyWith<$Res> {
+  __$$CartModelImplCopyWithImpl(
+      _$CartModelImpl _value, $Res Function(_$CartModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -126,7 +127,7 @@ class __$$_CartModelCopyWithImpl<$Res>
     Object? oldPrice = freezed,
     Object? applied = freezed,
   }) {
-    return _then(_$_CartModel(
+    return _then(_$CartModelImpl(
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -153,8 +154,8 @@ class __$$_CartModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CartModel implements _CartModel {
-  _$_CartModel(
+class _$CartModelImpl implements _CartModel {
+  _$CartModelImpl(
       {@JsonKey(name: 'price') required this.price,
       @JsonKey(name: 'count') required this.count,
       @JsonKey(name: 'products') required final List<CartProduct> products,
@@ -162,8 +163,8 @@ class _$_CartModel implements _CartModel {
       @JsonKey(name: 'applied') this.applied})
       : _products = products;
 
-  factory _$_CartModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CartModelFromJson(json);
+  factory _$CartModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CartModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'price')
@@ -196,7 +197,7 @@ class _$_CartModel implements _CartModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CartModel &&
+            other is _$CartModelImpl &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.count, count) || other.count == count) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
@@ -213,12 +214,12 @@ class _$_CartModel implements _CartModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CartModelCopyWith<_$_CartModel> get copyWith =>
-      __$$_CartModelCopyWithImpl<_$_CartModel>(this, _$identity);
+  _$$CartModelImplCopyWith<_$CartModelImpl> get copyWith =>
+      __$$CartModelImplCopyWithImpl<_$CartModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CartModelToJson(
+    return _$$CartModelImplToJson(
       this,
     );
   }
@@ -230,10 +231,10 @@ abstract class _CartModel implements CartModel {
       @JsonKey(name: 'count') required final int count,
       @JsonKey(name: 'products') required final List<CartProduct> products,
       @JsonKey(name: 'old_price') final Decimal? oldPrice,
-      @JsonKey(name: 'applied') final bool? applied}) = _$_CartModel;
+      @JsonKey(name: 'applied') final bool? applied}) = _$CartModelImpl;
 
   factory _CartModel.fromJson(Map<String, dynamic> json) =
-      _$_CartModel.fromJson;
+      _$CartModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'price')
@@ -252,6 +253,6 @@ abstract class _CartModel implements CartModel {
   bool? get applied;
   @override
   @JsonKey(ignore: true)
-  _$$_CartModelCopyWith<_$_CartModel> get copyWith =>
+  _$$CartModelImplCopyWith<_$CartModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

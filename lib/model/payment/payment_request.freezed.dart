@@ -79,11 +79,11 @@ class _$PaymentRequestCopyWithImpl<$Res, $Val extends PaymentRequest>
 }
 
 /// @nodoc
-abstract class _$$_PaymentRequestCopyWith<$Res>
+abstract class _$$PaymentRequestImplCopyWith<$Res>
     implements $PaymentRequestCopyWith<$Res> {
-  factory _$$_PaymentRequestCopyWith(
-          _$_PaymentRequest value, $Res Function(_$_PaymentRequest) then) =
-      __$$_PaymentRequestCopyWithImpl<$Res>;
+  factory _$$PaymentRequestImplCopyWith(_$PaymentRequestImpl value,
+          $Res Function(_$PaymentRequestImpl) then) =
+      __$$PaymentRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -93,11 +93,11 @@ abstract class _$$_PaymentRequestCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentRequestCopyWithImpl<$Res>
-    extends _$PaymentRequestCopyWithImpl<$Res, _$_PaymentRequest>
-    implements _$$_PaymentRequestCopyWith<$Res> {
-  __$$_PaymentRequestCopyWithImpl(
-      _$_PaymentRequest _value, $Res Function(_$_PaymentRequest) _then)
+class __$$PaymentRequestImplCopyWithImpl<$Res>
+    extends _$PaymentRequestCopyWithImpl<$Res, _$PaymentRequestImpl>
+    implements _$$PaymentRequestImplCopyWith<$Res> {
+  __$$PaymentRequestImplCopyWithImpl(
+      _$PaymentRequestImpl _value, $Res Function(_$PaymentRequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,7 +107,7 @@ class __$$_PaymentRequestCopyWithImpl<$Res>
     Object? products = freezed,
     Object? deliveryId = freezed,
   }) {
-    return _then(_$_PaymentRequest(
+    return _then(_$PaymentRequestImpl(
       cityFias: freezed == cityFias
           ? _value.cityFias
           : cityFias // ignore: cast_nullable_to_non_nullable
@@ -126,15 +126,15 @@ class __$$_PaymentRequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaymentRequest implements _PaymentRequest {
-  const _$_PaymentRequest(
+class _$PaymentRequestImpl implements _PaymentRequest {
+  const _$PaymentRequestImpl(
       {@JsonKey(name: 'city_fias') this.cityFias,
       final List<ProductWithCount>? products,
       @JsonKey(name: 'delivery_id') this.deliveryId})
       : _products = products;
 
-  factory _$_PaymentRequest.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentRequestFromJson(json);
+  factory _$PaymentRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentRequestImplFromJson(json);
 
   @override
   @JsonKey(name: 'city_fias')
@@ -162,7 +162,7 @@ class _$_PaymentRequest implements _PaymentRequest {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentRequest &&
+            other is _$PaymentRequestImpl &&
             (identical(other.cityFias, cityFias) ||
                 other.cityFias == cityFias) &&
             const DeepCollectionEquality().equals(other._products, _products) &&
@@ -178,12 +178,13 @@ class _$_PaymentRequest implements _PaymentRequest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentRequestCopyWith<_$_PaymentRequest> get copyWith =>
-      __$$_PaymentRequestCopyWithImpl<_$_PaymentRequest>(this, _$identity);
+  _$$PaymentRequestImplCopyWith<_$PaymentRequestImpl> get copyWith =>
+      __$$PaymentRequestImplCopyWithImpl<_$PaymentRequestImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentRequestToJson(
+    return _$$PaymentRequestImplToJson(
       this,
     );
   }
@@ -194,10 +195,10 @@ abstract class _PaymentRequest implements PaymentRequest {
           {@JsonKey(name: 'city_fias') final String? cityFias,
           final List<ProductWithCount>? products,
           @JsonKey(name: 'delivery_id') final String? deliveryId}) =
-      _$_PaymentRequest;
+      _$PaymentRequestImpl;
 
   factory _PaymentRequest.fromJson(Map<String, dynamic> json) =
-      _$_PaymentRequest.fromJson;
+      _$PaymentRequestImpl.fromJson;
 
   @override
   @JsonKey(name: 'city_fias')
@@ -209,6 +210,6 @@ abstract class _PaymentRequest implements PaymentRequest {
   String? get deliveryId;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentRequestCopyWith<_$_PaymentRequest> get copyWith =>
+  _$$PaymentRequestImplCopyWith<_$PaymentRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

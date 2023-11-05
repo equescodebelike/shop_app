@@ -162,22 +162,22 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
 }
 
 /// @nodoc
-abstract class _$$InitOrderStateCopyWith<$Res>
+abstract class _$$InitOrderStateImplCopyWith<$Res>
     implements $OrderStateCopyWith<$Res> {
-  factory _$$InitOrderStateCopyWith(
-          _$InitOrderState value, $Res Function(_$InitOrderState) then) =
-      __$$InitOrderStateCopyWithImpl<$Res>;
+  factory _$$InitOrderStateImplCopyWith(_$InitOrderStateImpl value,
+          $Res Function(_$InitOrderStateImpl) then) =
+      __$$InitOrderStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<ProductWithCount> products});
 }
 
 /// @nodoc
-class __$$InitOrderStateCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$InitOrderState>
-    implements _$$InitOrderStateCopyWith<$Res> {
-  __$$InitOrderStateCopyWithImpl(
-      _$InitOrderState _value, $Res Function(_$InitOrderState) _then)
+class __$$InitOrderStateImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$InitOrderStateImpl>
+    implements _$$InitOrderStateImplCopyWith<$Res> {
+  __$$InitOrderStateImplCopyWithImpl(
+      _$InitOrderStateImpl _value, $Res Function(_$InitOrderStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -185,7 +185,7 @@ class __$$InitOrderStateCopyWithImpl<$Res>
   $Res call({
     Object? products = null,
   }) {
-    return _then(_$InitOrderState(
+    return _then(_$InitOrderStateImpl(
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -196,8 +196,8 @@ class __$$InitOrderStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitOrderState extends InitOrderState with DiagnosticableTreeMixin {
-  const _$InitOrderState({required final List<ProductWithCount> products})
+class _$InitOrderStateImpl extends InitOrderState with DiagnosticableTreeMixin {
+  const _$InitOrderStateImpl({required final List<ProductWithCount> products})
       : _products = products,
         super._();
 
@@ -226,7 +226,7 @@ class _$InitOrderState extends InitOrderState with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InitOrderState &&
+            other is _$InitOrderStateImpl &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
@@ -237,8 +237,9 @@ class _$InitOrderState extends InitOrderState with DiagnosticableTreeMixin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitOrderStateCopyWith<_$InitOrderState> get copyWith =>
-      __$$InitOrderStateCopyWithImpl<_$InitOrderState>(this, _$identity);
+  _$$InitOrderStateImplCopyWith<_$InitOrderStateImpl> get copyWith =>
+      __$$InitOrderStateImplCopyWithImpl<_$InitOrderStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -372,23 +373,23 @@ class _$InitOrderState extends InitOrderState with DiagnosticableTreeMixin {
 
 abstract class InitOrderState extends OrderState {
   const factory InitOrderState(
-      {required final List<ProductWithCount> products}) = _$InitOrderState;
+      {required final List<ProductWithCount> products}) = _$InitOrderStateImpl;
   const InitOrderState._() : super._();
 
   @override
   List<ProductWithCount> get products;
   @override
   @JsonKey(ignore: true)
-  _$$InitOrderStateCopyWith<_$InitOrderState> get copyWith =>
+  _$$InitOrderStateImplCopyWith<_$InitOrderStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DeliveriesOrderStateCopyWith<$Res>
+abstract class _$$DeliveriesOrderStateImplCopyWith<$Res>
     implements $OrderStateCopyWith<$Res> {
-  factory _$$DeliveriesOrderStateCopyWith(_$DeliveriesOrderState value,
-          $Res Function(_$DeliveriesOrderState) then) =
-      __$$DeliveriesOrderStateCopyWithImpl<$Res>;
+  factory _$$DeliveriesOrderStateImplCopyWith(_$DeliveriesOrderStateImpl value,
+          $Res Function(_$DeliveriesOrderStateImpl) then) =
+      __$$DeliveriesOrderStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -402,11 +403,11 @@ abstract class _$$DeliveriesOrderStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DeliveriesOrderStateCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$DeliveriesOrderState>
-    implements _$$DeliveriesOrderStateCopyWith<$Res> {
-  __$$DeliveriesOrderStateCopyWithImpl(_$DeliveriesOrderState _value,
-      $Res Function(_$DeliveriesOrderState) _then)
+class __$$DeliveriesOrderStateImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$DeliveriesOrderStateImpl>
+    implements _$$DeliveriesOrderStateImplCopyWith<$Res> {
+  __$$DeliveriesOrderStateImplCopyWithImpl(_$DeliveriesOrderStateImpl _value,
+      $Res Function(_$DeliveriesOrderStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -418,7 +419,7 @@ class __$$DeliveriesOrderStateCopyWithImpl<$Res>
     Object? deliveryDate = null,
     Object? deliveryName = freezed,
   }) {
-    return _then(_$DeliveriesOrderState(
+    return _then(_$DeliveriesOrderStateImpl(
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -453,9 +454,9 @@ class __$$DeliveriesOrderStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DeliveriesOrderState extends DeliveriesOrderState
+class _$DeliveriesOrderStateImpl extends DeliveriesOrderState
     with DiagnosticableTreeMixin {
-  const _$DeliveriesOrderState(
+  const _$DeliveriesOrderStateImpl(
       {required final List<ProductWithCount> products,
       required final List<Delivery> deliveries,
       required this.delivery,
@@ -509,7 +510,7 @@ class _$DeliveriesOrderState extends DeliveriesOrderState
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeliveriesOrderState &&
+            other is _$DeliveriesOrderStateImpl &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             const DeepCollectionEquality()
                 .equals(other._deliveries, _deliveries) &&
@@ -533,9 +534,10 @@ class _$DeliveriesOrderState extends DeliveriesOrderState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeliveriesOrderStateCopyWith<_$DeliveriesOrderState> get copyWith =>
-      __$$DeliveriesOrderStateCopyWithImpl<_$DeliveriesOrderState>(
-          this, _$identity);
+  _$$DeliveriesOrderStateImplCopyWith<_$DeliveriesOrderStateImpl>
+      get copyWith =>
+          __$$DeliveriesOrderStateImplCopyWithImpl<_$DeliveriesOrderStateImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -676,7 +678,7 @@ abstract class DeliveriesOrderState extends OrderState {
       required final List<Delivery> deliveries,
       required final Delivery delivery,
       required final DateTime deliveryDate,
-      final String? deliveryName}) = _$DeliveriesOrderState;
+      final String? deliveryName}) = _$DeliveriesOrderStateImpl;
   const DeliveriesOrderState._() : super._();
 
   @override
@@ -687,16 +689,16 @@ abstract class DeliveriesOrderState extends OrderState {
   String? get deliveryName;
   @override
   @JsonKey(ignore: true)
-  _$$DeliveriesOrderStateCopyWith<_$DeliveriesOrderState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DeliveriesOrderStateImplCopyWith<_$DeliveriesOrderStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PaymentsOrderStateCopyWith<$Res>
+abstract class _$$PaymentsOrderStateImplCopyWith<$Res>
     implements $OrderStateCopyWith<$Res> {
-  factory _$$PaymentsOrderStateCopyWith(_$PaymentsOrderState value,
-          $Res Function(_$PaymentsOrderState) then) =
-      __$$PaymentsOrderStateCopyWithImpl<$Res>;
+  factory _$$PaymentsOrderStateImplCopyWith(_$PaymentsOrderStateImpl value,
+          $Res Function(_$PaymentsOrderStateImpl) then) =
+      __$$PaymentsOrderStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -711,11 +713,11 @@ abstract class _$$PaymentsOrderStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PaymentsOrderStateCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$PaymentsOrderState>
-    implements _$$PaymentsOrderStateCopyWith<$Res> {
-  __$$PaymentsOrderStateCopyWithImpl(
-      _$PaymentsOrderState _value, $Res Function(_$PaymentsOrderState) _then)
+class __$$PaymentsOrderStateImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$PaymentsOrderStateImpl>
+    implements _$$PaymentsOrderStateImplCopyWith<$Res> {
+  __$$PaymentsOrderStateImplCopyWithImpl(_$PaymentsOrderStateImpl _value,
+      $Res Function(_$PaymentsOrderStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -727,7 +729,7 @@ class __$$PaymentsOrderStateCopyWithImpl<$Res>
     Object? payments = null,
     Object? payment = null,
   }) {
-    return _then(_$PaymentsOrderState(
+    return _then(_$PaymentsOrderStateImpl(
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -770,9 +772,9 @@ class __$$PaymentsOrderStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PaymentsOrderState extends PaymentsOrderState
+class _$PaymentsOrderStateImpl extends PaymentsOrderState
     with DiagnosticableTreeMixin {
-  const _$PaymentsOrderState(
+  const _$PaymentsOrderStateImpl(
       {required final List<ProductWithCount> products,
       required final List<Delivery> deliveries,
       required this.delivery,
@@ -833,7 +835,7 @@ class _$PaymentsOrderState extends PaymentsOrderState
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PaymentsOrderState &&
+            other is _$PaymentsOrderStateImpl &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             const DeepCollectionEquality()
                 .equals(other._deliveries, _deliveries) &&
@@ -855,8 +857,8 @@ class _$PaymentsOrderState extends PaymentsOrderState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PaymentsOrderStateCopyWith<_$PaymentsOrderState> get copyWith =>
-      __$$PaymentsOrderStateCopyWithImpl<_$PaymentsOrderState>(
+  _$$PaymentsOrderStateImplCopyWith<_$PaymentsOrderStateImpl> get copyWith =>
+      __$$PaymentsOrderStateImplCopyWithImpl<_$PaymentsOrderStateImpl>(
           this, _$identity);
 
   @override
@@ -996,7 +998,7 @@ abstract class PaymentsOrderState extends OrderState {
       required final List<Delivery> deliveries,
       required final Delivery delivery,
       required final List<Payment> payments,
-      required final Payment payment}) = _$PaymentsOrderState;
+      required final Payment payment}) = _$PaymentsOrderStateImpl;
   const PaymentsOrderState._() : super._();
 
   @override
@@ -1007,16 +1009,16 @@ abstract class PaymentsOrderState extends OrderState {
   Payment get payment;
   @override
   @JsonKey(ignore: true)
-  _$$PaymentsOrderStateCopyWith<_$PaymentsOrderState> get copyWith =>
+  _$$PaymentsOrderStateImplCopyWith<_$PaymentsOrderStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CreateOrderStateCopyWith<$Res>
+abstract class _$$CreateOrderStateImplCopyWith<$Res>
     implements $OrderStateCopyWith<$Res> {
-  factory _$$CreateOrderStateCopyWith(
-          _$CreateOrderState value, $Res Function(_$CreateOrderState) then) =
-      __$$CreateOrderStateCopyWithImpl<$Res>;
+  factory _$$CreateOrderStateImplCopyWith(_$CreateOrderStateImpl value,
+          $Res Function(_$CreateOrderStateImpl) then) =
+      __$$CreateOrderStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1031,11 +1033,11 @@ abstract class _$$CreateOrderStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CreateOrderStateCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$CreateOrderState>
-    implements _$$CreateOrderStateCopyWith<$Res> {
-  __$$CreateOrderStateCopyWithImpl(
-      _$CreateOrderState _value, $Res Function(_$CreateOrderState) _then)
+class __$$CreateOrderStateImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$CreateOrderStateImpl>
+    implements _$$CreateOrderStateImplCopyWith<$Res> {
+  __$$CreateOrderStateImplCopyWithImpl(_$CreateOrderStateImpl _value,
+      $Res Function(_$CreateOrderStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1047,7 +1049,7 @@ class __$$CreateOrderStateCopyWithImpl<$Res>
     Object? payments = null,
     Object? payment = null,
   }) {
-    return _then(_$CreateOrderState(
+    return _then(_$CreateOrderStateImpl(
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -1090,8 +1092,9 @@ class __$$CreateOrderStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CreateOrderState extends CreateOrderState with DiagnosticableTreeMixin {
-  const _$CreateOrderState(
+class _$CreateOrderStateImpl extends CreateOrderState
+    with DiagnosticableTreeMixin {
+  const _$CreateOrderStateImpl(
       {required final List<ProductWithCount> products,
       required final List<Delivery> deliveries,
       required this.delivery,
@@ -1152,7 +1155,7 @@ class _$CreateOrderState extends CreateOrderState with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateOrderState &&
+            other is _$CreateOrderStateImpl &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             const DeepCollectionEquality()
                 .equals(other._deliveries, _deliveries) &&
@@ -1174,8 +1177,9 @@ class _$CreateOrderState extends CreateOrderState with DiagnosticableTreeMixin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CreateOrderStateCopyWith<_$CreateOrderState> get copyWith =>
-      __$$CreateOrderStateCopyWithImpl<_$CreateOrderState>(this, _$identity);
+  _$$CreateOrderStateImplCopyWith<_$CreateOrderStateImpl> get copyWith =>
+      __$$CreateOrderStateImplCopyWithImpl<_$CreateOrderStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1313,7 +1317,7 @@ abstract class CreateOrderState extends OrderState {
       required final List<Delivery> deliveries,
       required final Delivery delivery,
       required final List<Payment> payments,
-      required final Payment payment}) = _$CreateOrderState;
+      required final Payment payment}) = _$CreateOrderStateImpl;
   const CreateOrderState._() : super._();
 
   @override
@@ -1324,27 +1328,27 @@ abstract class CreateOrderState extends OrderState {
   Payment get payment;
   @override
   @JsonKey(ignore: true)
-  _$$CreateOrderStateCopyWith<_$CreateOrderState> get copyWith =>
+  _$$CreateOrderStateImplCopyWith<_$CreateOrderStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CreatedOrderStateCopyWith<$Res>
+abstract class _$$CreatedOrderStateImplCopyWith<$Res>
     implements $OrderStateCopyWith<$Res> {
-  factory _$$CreatedOrderStateCopyWith(
-          _$CreatedOrderState value, $Res Function(_$CreatedOrderState) then) =
-      __$$CreatedOrderStateCopyWithImpl<$Res>;
+  factory _$$CreatedOrderStateImplCopyWith(_$CreatedOrderStateImpl value,
+          $Res Function(_$CreatedOrderStateImpl) then) =
+      __$$CreatedOrderStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<ProductWithCount> products});
 }
 
 /// @nodoc
-class __$$CreatedOrderStateCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$CreatedOrderState>
-    implements _$$CreatedOrderStateCopyWith<$Res> {
-  __$$CreatedOrderStateCopyWithImpl(
-      _$CreatedOrderState _value, $Res Function(_$CreatedOrderState) _then)
+class __$$CreatedOrderStateImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$CreatedOrderStateImpl>
+    implements _$$CreatedOrderStateImplCopyWith<$Res> {
+  __$$CreatedOrderStateImplCopyWithImpl(_$CreatedOrderStateImpl _value,
+      $Res Function(_$CreatedOrderStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1352,7 +1356,7 @@ class __$$CreatedOrderStateCopyWithImpl<$Res>
   $Res call({
     Object? products = null,
   }) {
-    return _then(_$CreatedOrderState(
+    return _then(_$CreatedOrderStateImpl(
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -1363,9 +1367,10 @@ class __$$CreatedOrderStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CreatedOrderState extends CreatedOrderState
+class _$CreatedOrderStateImpl extends CreatedOrderState
     with DiagnosticableTreeMixin {
-  const _$CreatedOrderState({required final List<ProductWithCount> products})
+  const _$CreatedOrderStateImpl(
+      {required final List<ProductWithCount> products})
       : _products = products,
         super._();
 
@@ -1394,7 +1399,7 @@ class _$CreatedOrderState extends CreatedOrderState
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreatedOrderState &&
+            other is _$CreatedOrderStateImpl &&
             const DeepCollectionEquality().equals(other._products, _products));
   }
 
@@ -1405,8 +1410,9 @@ class _$CreatedOrderState extends CreatedOrderState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CreatedOrderStateCopyWith<_$CreatedOrderState> get copyWith =>
-      __$$CreatedOrderStateCopyWithImpl<_$CreatedOrderState>(this, _$identity);
+  _$$CreatedOrderStateImplCopyWith<_$CreatedOrderStateImpl> get copyWith =>
+      __$$CreatedOrderStateImplCopyWithImpl<_$CreatedOrderStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1540,34 +1546,35 @@ class _$CreatedOrderState extends CreatedOrderState
 
 abstract class CreatedOrderState extends OrderState {
   const factory CreatedOrderState(
-      {required final List<ProductWithCount> products}) = _$CreatedOrderState;
+          {required final List<ProductWithCount> products}) =
+      _$CreatedOrderStateImpl;
   const CreatedOrderState._() : super._();
 
   @override
   List<ProductWithCount> get products;
   @override
   @JsonKey(ignore: true)
-  _$$CreatedOrderStateCopyWith<_$CreatedOrderState> get copyWith =>
+  _$$CreatedOrderStateImplCopyWith<_$CreatedOrderStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorOrderStateCopyWith<$Res>
+abstract class _$$ErrorOrderStateImplCopyWith<$Res>
     implements $OrderStateCopyWith<$Res> {
-  factory _$$ErrorOrderStateCopyWith(
-          _$ErrorOrderState value, $Res Function(_$ErrorOrderState) then) =
-      __$$ErrorOrderStateCopyWithImpl<$Res>;
+  factory _$$ErrorOrderStateImplCopyWith(_$ErrorOrderStateImpl value,
+          $Res Function(_$ErrorOrderStateImpl) then) =
+      __$$ErrorOrderStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<ProductWithCount> products, String message});
 }
 
 /// @nodoc
-class __$$ErrorOrderStateCopyWithImpl<$Res>
-    extends _$OrderStateCopyWithImpl<$Res, _$ErrorOrderState>
-    implements _$$ErrorOrderStateCopyWith<$Res> {
-  __$$ErrorOrderStateCopyWithImpl(
-      _$ErrorOrderState _value, $Res Function(_$ErrorOrderState) _then)
+class __$$ErrorOrderStateImplCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res, _$ErrorOrderStateImpl>
+    implements _$$ErrorOrderStateImplCopyWith<$Res> {
+  __$$ErrorOrderStateImplCopyWithImpl(
+      _$ErrorOrderStateImpl _value, $Res Function(_$ErrorOrderStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1576,7 +1583,7 @@ class __$$ErrorOrderStateCopyWithImpl<$Res>
     Object? products = null,
     Object? message = null,
   }) {
-    return _then(_$ErrorOrderState(
+    return _then(_$ErrorOrderStateImpl(
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -1591,8 +1598,9 @@ class __$$ErrorOrderStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorOrderState extends ErrorOrderState with DiagnosticableTreeMixin {
-  const _$ErrorOrderState(
+class _$ErrorOrderStateImpl extends ErrorOrderState
+    with DiagnosticableTreeMixin {
+  const _$ErrorOrderStateImpl(
       {required final List<ProductWithCount> products, this.message = 'Ошибка'})
       : _products = products,
         super._();
@@ -1627,7 +1635,7 @@ class _$ErrorOrderState extends ErrorOrderState with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorOrderState &&
+            other is _$ErrorOrderStateImpl &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -1639,8 +1647,9 @@ class _$ErrorOrderState extends ErrorOrderState with DiagnosticableTreeMixin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorOrderStateCopyWith<_$ErrorOrderState> get copyWith =>
-      __$$ErrorOrderStateCopyWithImpl<_$ErrorOrderState>(this, _$identity);
+  _$$ErrorOrderStateImplCopyWith<_$ErrorOrderStateImpl> get copyWith =>
+      __$$ErrorOrderStateImplCopyWithImpl<_$ErrorOrderStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1775,7 +1784,7 @@ class _$ErrorOrderState extends ErrorOrderState with DiagnosticableTreeMixin {
 abstract class ErrorOrderState extends OrderState {
   const factory ErrorOrderState(
       {required final List<ProductWithCount> products,
-      final String message}) = _$ErrorOrderState;
+      final String message}) = _$ErrorOrderStateImpl;
   const ErrorOrderState._() : super._();
 
   @override
@@ -1783,7 +1792,7 @@ abstract class ErrorOrderState extends OrderState {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$ErrorOrderStateCopyWith<_$ErrorOrderState> get copyWith =>
+  _$$ErrorOrderStateImplCopyWith<_$ErrorOrderStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1867,27 +1876,29 @@ class _$OrderEventCopyWithImpl<$Res, $Val extends OrderEvent>
 }
 
 /// @nodoc
-abstract class _$$LoadDeliveriesOrderEventCopyWith<$Res> {
-  factory _$$LoadDeliveriesOrderEventCopyWith(_$LoadDeliveriesOrderEvent value,
-          $Res Function(_$LoadDeliveriesOrderEvent) then) =
-      __$$LoadDeliveriesOrderEventCopyWithImpl<$Res>;
+abstract class _$$LoadDeliveriesOrderEventImplCopyWith<$Res> {
+  factory _$$LoadDeliveriesOrderEventImplCopyWith(
+          _$LoadDeliveriesOrderEventImpl value,
+          $Res Function(_$LoadDeliveriesOrderEventImpl) then) =
+      __$$LoadDeliveriesOrderEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadDeliveriesOrderEventCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$LoadDeliveriesOrderEvent>
-    implements _$$LoadDeliveriesOrderEventCopyWith<$Res> {
-  __$$LoadDeliveriesOrderEventCopyWithImpl(_$LoadDeliveriesOrderEvent _value,
-      $Res Function(_$LoadDeliveriesOrderEvent) _then)
+class __$$LoadDeliveriesOrderEventImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$LoadDeliveriesOrderEventImpl>
+    implements _$$LoadDeliveriesOrderEventImplCopyWith<$Res> {
+  __$$LoadDeliveriesOrderEventImplCopyWithImpl(
+      _$LoadDeliveriesOrderEventImpl _value,
+      $Res Function(_$LoadDeliveriesOrderEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadDeliveriesOrderEvent
+class _$LoadDeliveriesOrderEventImpl
     with DiagnosticableTreeMixin
     implements LoadDeliveriesOrderEvent {
-  const _$LoadDeliveriesOrderEvent();
+  const _$LoadDeliveriesOrderEventImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -1904,7 +1915,7 @@ class _$LoadDeliveriesOrderEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadDeliveriesOrderEvent);
+            other is _$LoadDeliveriesOrderEventImpl);
   }
 
   @override
@@ -1993,14 +2004,15 @@ class _$LoadDeliveriesOrderEvent
 }
 
 abstract class LoadDeliveriesOrderEvent implements OrderEvent {
-  const factory LoadDeliveriesOrderEvent() = _$LoadDeliveriesOrderEvent;
+  const factory LoadDeliveriesOrderEvent() = _$LoadDeliveriesOrderEventImpl;
 }
 
 /// @nodoc
-abstract class _$$SelectDeliveryOrderEventCopyWith<$Res> {
-  factory _$$SelectDeliveryOrderEventCopyWith(_$SelectDeliveryOrderEvent value,
-          $Res Function(_$SelectDeliveryOrderEvent) then) =
-      __$$SelectDeliveryOrderEventCopyWithImpl<$Res>;
+abstract class _$$SelectDeliveryOrderEventImplCopyWith<$Res> {
+  factory _$$SelectDeliveryOrderEventImplCopyWith(
+          _$SelectDeliveryOrderEventImpl value,
+          $Res Function(_$SelectDeliveryOrderEventImpl) then) =
+      __$$SelectDeliveryOrderEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Delivery delivery});
 
@@ -2008,11 +2020,12 @@ abstract class _$$SelectDeliveryOrderEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SelectDeliveryOrderEventCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$SelectDeliveryOrderEvent>
-    implements _$$SelectDeliveryOrderEventCopyWith<$Res> {
-  __$$SelectDeliveryOrderEventCopyWithImpl(_$SelectDeliveryOrderEvent _value,
-      $Res Function(_$SelectDeliveryOrderEvent) _then)
+class __$$SelectDeliveryOrderEventImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$SelectDeliveryOrderEventImpl>
+    implements _$$SelectDeliveryOrderEventImplCopyWith<$Res> {
+  __$$SelectDeliveryOrderEventImplCopyWithImpl(
+      _$SelectDeliveryOrderEventImpl _value,
+      $Res Function(_$SelectDeliveryOrderEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2020,7 +2033,7 @@ class __$$SelectDeliveryOrderEventCopyWithImpl<$Res>
   $Res call({
     Object? delivery = null,
   }) {
-    return _then(_$SelectDeliveryOrderEvent(
+    return _then(_$SelectDeliveryOrderEventImpl(
       delivery: null == delivery
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
@@ -2039,10 +2052,10 @@ class __$$SelectDeliveryOrderEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SelectDeliveryOrderEvent
+class _$SelectDeliveryOrderEventImpl
     with DiagnosticableTreeMixin
     implements SelectDeliveryOrderEvent {
-  const _$SelectDeliveryOrderEvent({required this.delivery});
+  const _$SelectDeliveryOrderEventImpl({required this.delivery});
 
   @override
   final Delivery delivery;
@@ -2064,7 +2077,7 @@ class _$SelectDeliveryOrderEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SelectDeliveryOrderEvent &&
+            other is _$SelectDeliveryOrderEventImpl &&
             (identical(other.delivery, delivery) ||
                 other.delivery == delivery));
   }
@@ -2075,10 +2088,9 @@ class _$SelectDeliveryOrderEvent
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SelectDeliveryOrderEventCopyWith<_$SelectDeliveryOrderEvent>
-      get copyWith =>
-          __$$SelectDeliveryOrderEventCopyWithImpl<_$SelectDeliveryOrderEvent>(
-              this, _$identity);
+  _$$SelectDeliveryOrderEventImplCopyWith<_$SelectDeliveryOrderEventImpl>
+      get copyWith => __$$SelectDeliveryOrderEventImplCopyWithImpl<
+          _$SelectDeliveryOrderEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2164,19 +2176,20 @@ class _$SelectDeliveryOrderEvent
 
 abstract class SelectDeliveryOrderEvent implements OrderEvent {
   const factory SelectDeliveryOrderEvent({required final Delivery delivery}) =
-      _$SelectDeliveryOrderEvent;
+      _$SelectDeliveryOrderEventImpl;
 
   Delivery get delivery;
   @JsonKey(ignore: true)
-  _$$SelectDeliveryOrderEventCopyWith<_$SelectDeliveryOrderEvent>
+  _$$SelectDeliveryOrderEventImplCopyWith<_$SelectDeliveryOrderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SelectPaymentOrderEventCopyWith<$Res> {
-  factory _$$SelectPaymentOrderEventCopyWith(_$SelectPaymentOrderEvent value,
-          $Res Function(_$SelectPaymentOrderEvent) then) =
-      __$$SelectPaymentOrderEventCopyWithImpl<$Res>;
+abstract class _$$SelectPaymentOrderEventImplCopyWith<$Res> {
+  factory _$$SelectPaymentOrderEventImplCopyWith(
+          _$SelectPaymentOrderEventImpl value,
+          $Res Function(_$SelectPaymentOrderEventImpl) then) =
+      __$$SelectPaymentOrderEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Delivery? delivery, Payment payment});
 
@@ -2185,11 +2198,12 @@ abstract class _$$SelectPaymentOrderEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SelectPaymentOrderEventCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$SelectPaymentOrderEvent>
-    implements _$$SelectPaymentOrderEventCopyWith<$Res> {
-  __$$SelectPaymentOrderEventCopyWithImpl(_$SelectPaymentOrderEvent _value,
-      $Res Function(_$SelectPaymentOrderEvent) _then)
+class __$$SelectPaymentOrderEventImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$SelectPaymentOrderEventImpl>
+    implements _$$SelectPaymentOrderEventImplCopyWith<$Res> {
+  __$$SelectPaymentOrderEventImplCopyWithImpl(
+      _$SelectPaymentOrderEventImpl _value,
+      $Res Function(_$SelectPaymentOrderEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2198,7 +2212,7 @@ class __$$SelectPaymentOrderEventCopyWithImpl<$Res>
     Object? delivery = freezed,
     Object? payment = null,
   }) {
-    return _then(_$SelectPaymentOrderEvent(
+    return _then(_$SelectPaymentOrderEventImpl(
       delivery: freezed == delivery
           ? _value.delivery
           : delivery // ignore: cast_nullable_to_non_nullable
@@ -2233,10 +2247,10 @@ class __$$SelectPaymentOrderEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SelectPaymentOrderEvent
+class _$SelectPaymentOrderEventImpl
     with DiagnosticableTreeMixin
     implements SelectPaymentOrderEvent {
-  const _$SelectPaymentOrderEvent({this.delivery, required this.payment});
+  const _$SelectPaymentOrderEventImpl({this.delivery, required this.payment});
 
   @override
   final Delivery? delivery;
@@ -2261,7 +2275,7 @@ class _$SelectPaymentOrderEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SelectPaymentOrderEvent &&
+            other is _$SelectPaymentOrderEventImpl &&
             (identical(other.delivery, delivery) ||
                 other.delivery == delivery) &&
             (identical(other.payment, payment) || other.payment == payment));
@@ -2273,9 +2287,9 @@ class _$SelectPaymentOrderEvent
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SelectPaymentOrderEventCopyWith<_$SelectPaymentOrderEvent> get copyWith =>
-      __$$SelectPaymentOrderEventCopyWithImpl<_$SelectPaymentOrderEvent>(
-          this, _$identity);
+  _$$SelectPaymentOrderEventImplCopyWith<_$SelectPaymentOrderEventImpl>
+      get copyWith => __$$SelectPaymentOrderEventImplCopyWithImpl<
+          _$SelectPaymentOrderEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2362,20 +2376,21 @@ class _$SelectPaymentOrderEvent
 abstract class SelectPaymentOrderEvent implements OrderEvent {
   const factory SelectPaymentOrderEvent(
       {final Delivery? delivery,
-      required final Payment payment}) = _$SelectPaymentOrderEvent;
+      required final Payment payment}) = _$SelectPaymentOrderEventImpl;
 
   Delivery? get delivery;
   Payment get payment;
   @JsonKey(ignore: true)
-  _$$SelectPaymentOrderEventCopyWith<_$SelectPaymentOrderEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SelectPaymentOrderEventImplCopyWith<_$SelectPaymentOrderEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$OrderCreateOrderEventCopyWith<$Res> {
-  factory _$$OrderCreateOrderEventCopyWith(_$OrderCreateOrderEvent value,
-          $Res Function(_$OrderCreateOrderEvent) then) =
-      __$$OrderCreateOrderEventCopyWithImpl<$Res>;
+abstract class _$$OrderCreateOrderEventImplCopyWith<$Res> {
+  factory _$$OrderCreateOrderEventImplCopyWith(
+          _$OrderCreateOrderEventImpl value,
+          $Res Function(_$OrderCreateOrderEventImpl) then) =
+      __$$OrderCreateOrderEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {List<ProductWithCount> products,
@@ -2386,11 +2401,11 @@ abstract class _$$OrderCreateOrderEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$OrderCreateOrderEventCopyWithImpl<$Res>
-    extends _$OrderEventCopyWithImpl<$Res, _$OrderCreateOrderEvent>
-    implements _$$OrderCreateOrderEventCopyWith<$Res> {
-  __$$OrderCreateOrderEventCopyWithImpl(_$OrderCreateOrderEvent _value,
-      $Res Function(_$OrderCreateOrderEvent) _then)
+class __$$OrderCreateOrderEventImplCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res, _$OrderCreateOrderEventImpl>
+    implements _$$OrderCreateOrderEventImplCopyWith<$Res> {
+  __$$OrderCreateOrderEventImplCopyWithImpl(_$OrderCreateOrderEventImpl _value,
+      $Res Function(_$OrderCreateOrderEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2402,7 +2417,7 @@ class __$$OrderCreateOrderEventCopyWithImpl<$Res>
     Object? userEmail = null,
     Object? comment = freezed,
   }) {
-    return _then(_$OrderCreateOrderEvent(
+    return _then(_$OrderCreateOrderEventImpl(
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -2429,10 +2444,10 @@ class __$$OrderCreateOrderEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OrderCreateOrderEvent
+class _$OrderCreateOrderEventImpl
     with DiagnosticableTreeMixin
     implements OrderCreateOrderEvent {
-  const _$OrderCreateOrderEvent(
+  const _$OrderCreateOrderEventImpl(
       {required final List<ProductWithCount> products,
       required this.userName,
       required this.userPhone,
@@ -2478,7 +2493,7 @@ class _$OrderCreateOrderEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderCreateOrderEvent &&
+            other is _$OrderCreateOrderEventImpl &&
             const DeepCollectionEquality().equals(other._products, _products) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
@@ -2501,9 +2516,9 @@ class _$OrderCreateOrderEvent
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderCreateOrderEventCopyWith<_$OrderCreateOrderEvent> get copyWith =>
-      __$$OrderCreateOrderEventCopyWithImpl<_$OrderCreateOrderEvent>(
-          this, _$identity);
+  _$$OrderCreateOrderEventImplCopyWith<_$OrderCreateOrderEventImpl>
+      get copyWith => __$$OrderCreateOrderEventImplCopyWithImpl<
+          _$OrderCreateOrderEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2593,7 +2608,7 @@ abstract class OrderCreateOrderEvent implements OrderEvent {
       required final String userName,
       required final String userPhone,
       required final String userEmail,
-      final String? comment}) = _$OrderCreateOrderEvent;
+      final String? comment}) = _$OrderCreateOrderEventImpl;
 
   List<ProductWithCount> get products;
   String get userName;
@@ -2601,6 +2616,6 @@ abstract class OrderCreateOrderEvent implements OrderEvent {
   String get userEmail;
   String? get comment;
   @JsonKey(ignore: true)
-  _$$OrderCreateOrderEventCopyWith<_$OrderCreateOrderEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OrderCreateOrderEventImplCopyWith<_$OrderCreateOrderEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

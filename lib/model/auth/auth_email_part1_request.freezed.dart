@@ -70,22 +70,24 @@ class _$AuthEmailPart1RequestCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AuthEmailPart1RequestCopyWith<$Res>
+abstract class _$$AuthEmailPart1RequestImplCopyWith<$Res>
     implements $AuthEmailPart1RequestCopyWith<$Res> {
-  factory _$$_AuthEmailPart1RequestCopyWith(_$_AuthEmailPart1Request value,
-          $Res Function(_$_AuthEmailPart1Request) then) =
-      __$$_AuthEmailPart1RequestCopyWithImpl<$Res>;
+  factory _$$AuthEmailPart1RequestImplCopyWith(
+          _$AuthEmailPart1RequestImpl value,
+          $Res Function(_$AuthEmailPart1RequestImpl) then) =
+      __$$AuthEmailPart1RequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String email, int digits});
 }
 
 /// @nodoc
-class __$$_AuthEmailPart1RequestCopyWithImpl<$Res>
-    extends _$AuthEmailPart1RequestCopyWithImpl<$Res, _$_AuthEmailPart1Request>
-    implements _$$_AuthEmailPart1RequestCopyWith<$Res> {
-  __$$_AuthEmailPart1RequestCopyWithImpl(_$_AuthEmailPart1Request _value,
-      $Res Function(_$_AuthEmailPart1Request) _then)
+class __$$AuthEmailPart1RequestImplCopyWithImpl<$Res>
+    extends _$AuthEmailPart1RequestCopyWithImpl<$Res,
+        _$AuthEmailPart1RequestImpl>
+    implements _$$AuthEmailPart1RequestImplCopyWith<$Res> {
+  __$$AuthEmailPart1RequestImplCopyWithImpl(_$AuthEmailPart1RequestImpl _value,
+      $Res Function(_$AuthEmailPart1RequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +96,7 @@ class __$$_AuthEmailPart1RequestCopyWithImpl<$Res>
     Object? email = null,
     Object? digits = null,
   }) {
-    return _then(_$_AuthEmailPart1Request(
+    return _then(_$AuthEmailPart1RequestImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -110,11 +112,12 @@ class __$$_AuthEmailPart1RequestCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class _$_AuthEmailPart1Request implements _AuthEmailPart1Request {
-  const _$_AuthEmailPart1Request({required this.email, required this.digits});
+class _$AuthEmailPart1RequestImpl implements _AuthEmailPart1Request {
+  const _$AuthEmailPart1RequestImpl(
+      {required this.email, required this.digits});
 
-  factory _$_AuthEmailPart1Request.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthEmailPart1RequestFromJson(json);
+  factory _$AuthEmailPart1RequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthEmailPart1RequestImplFromJson(json);
 
   @override
   final String email;
@@ -130,7 +133,7 @@ class _$_AuthEmailPart1Request implements _AuthEmailPart1Request {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthEmailPart1Request &&
+            other is _$AuthEmailPart1RequestImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.digits, digits) || other.digits == digits));
   }
@@ -142,13 +145,13 @@ class _$_AuthEmailPart1Request implements _AuthEmailPart1Request {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthEmailPart1RequestCopyWith<_$_AuthEmailPart1Request> get copyWith =>
-      __$$_AuthEmailPart1RequestCopyWithImpl<_$_AuthEmailPart1Request>(
-          this, _$identity);
+  _$$AuthEmailPart1RequestImplCopyWith<_$AuthEmailPart1RequestImpl>
+      get copyWith => __$$AuthEmailPart1RequestImplCopyWithImpl<
+          _$AuthEmailPart1RequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthEmailPart1RequestToJson(
+    return _$$AuthEmailPart1RequestImplToJson(
       this,
     );
   }
@@ -157,10 +160,10 @@ class _$_AuthEmailPart1Request implements _AuthEmailPart1Request {
 abstract class _AuthEmailPart1Request implements AuthEmailPart1Request {
   const factory _AuthEmailPart1Request(
       {required final String email,
-      required final int digits}) = _$_AuthEmailPart1Request;
+      required final int digits}) = _$AuthEmailPart1RequestImpl;
 
   factory _AuthEmailPart1Request.fromJson(Map<String, dynamic> json) =
-      _$_AuthEmailPart1Request.fromJson;
+      _$AuthEmailPart1RequestImpl.fromJson;
 
   @override
   String get email;
@@ -168,6 +171,6 @@ abstract class _AuthEmailPart1Request implements AuthEmailPart1Request {
   int get digits;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthEmailPart1RequestCopyWith<_$_AuthEmailPart1Request> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AuthEmailPart1RequestImplCopyWith<_$AuthEmailPart1RequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

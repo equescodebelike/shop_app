@@ -239,9 +239,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
 }
 
 /// @nodoc
-abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
-  factory _$$_OrderCopyWith(_$_Order value, $Res Function(_$_Order) then) =
-      __$$_OrderCopyWithImpl<$Res>;
+abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
+  factory _$$OrderImplCopyWith(
+          _$OrderImpl value, $Res Function(_$OrderImpl) then) =
+      __$$OrderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -272,9 +273,11 @@ abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
-    implements _$$_OrderCopyWith<$Res> {
-  __$$_OrderCopyWithImpl(_$_Order _value, $Res Function(_$_Order) _then)
+class __$$OrderImplCopyWithImpl<$Res>
+    extends _$OrderCopyWithImpl<$Res, _$OrderImpl>
+    implements _$$OrderImplCopyWith<$Res> {
+  __$$OrderImplCopyWithImpl(
+      _$OrderImpl _value, $Res Function(_$OrderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -305,7 +308,7 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
     Object? status = freezed,
     Object? repeatedDays = freezed,
   }) {
-    return _then(_$_Order(
+    return _then(_$OrderImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -408,8 +411,8 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Order implements _Order {
-  const _$_Order(
+class _$OrderImpl implements _Order {
+  const _$OrderImpl(
       {this.id,
       required final List<OrderItem> items,
       @JsonKey(name: 'user_id') required this.userId,
@@ -436,8 +439,8 @@ class _$_Order implements _Order {
       @JsonKey(name: 'repeated_days', defaultValue: 0) this.repeatedDays})
       : _items = items;
 
-  factory _$_Order.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderFromJson(json);
+  factory _$OrderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderImplFromJson(json);
 
   @override
   final int? id;
@@ -520,7 +523,7 @@ class _$_Order implements _Order {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Order &&
+            other is _$OrderImpl &&
             (identical(other.id, id) || other.id == id) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.userId, userId) || other.userId == userId) &&
@@ -597,12 +600,12 @@ class _$_Order implements _Order {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderCopyWith<_$_Order> get copyWith =>
-      __$$_OrderCopyWithImpl<_$_Order>(this, _$identity);
+  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
+      __$$OrderImplCopyWithImpl<_$OrderImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderToJson(
+    return _$$OrderImplToJson(
       this,
     );
   }
@@ -635,9 +638,9 @@ abstract class _Order implements Order {
       final String? brand,
       @JsonKey(defaultValue: 0) final int? status,
       @JsonKey(name: 'repeated_days', defaultValue: 0)
-      final int? repeatedDays}) = _$_Order;
+      final int? repeatedDays}) = _$OrderImpl;
 
-  factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
+  factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
 
   @override
   int? get id;
@@ -706,7 +709,7 @@ abstract class _Order implements Order {
   int? get repeatedDays;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderCopyWith<_$_Order> get copyWith =>
+  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -808,10 +811,11 @@ class _$OrderItemCopyWithImpl<$Res, $Val extends OrderItem>
 }
 
 /// @nodoc
-abstract class _$$_OrderItemCopyWith<$Res> implements $OrderItemCopyWith<$Res> {
-  factory _$$_OrderItemCopyWith(
-          _$_OrderItem value, $Res Function(_$_OrderItem) then) =
-      __$$_OrderItemCopyWithImpl<$Res>;
+abstract class _$$OrderItemImplCopyWith<$Res>
+    implements $OrderItemCopyWith<$Res> {
+  factory _$$OrderItemImplCopyWith(
+          _$OrderItemImpl value, $Res Function(_$OrderItemImpl) then) =
+      __$$OrderItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -826,11 +830,11 @@ abstract class _$$_OrderItemCopyWith<$Res> implements $OrderItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OrderItemCopyWithImpl<$Res>
-    extends _$OrderItemCopyWithImpl<$Res, _$_OrderItem>
-    implements _$$_OrderItemCopyWith<$Res> {
-  __$$_OrderItemCopyWithImpl(
-      _$_OrderItem _value, $Res Function(_$_OrderItem) _then)
+class __$$OrderItemImplCopyWithImpl<$Res>
+    extends _$OrderItemCopyWithImpl<$Res, _$OrderItemImpl>
+    implements _$$OrderItemImplCopyWith<$Res> {
+  __$$OrderItemImplCopyWithImpl(
+      _$OrderItemImpl _value, $Res Function(_$OrderItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -845,7 +849,7 @@ class __$$_OrderItemCopyWithImpl<$Res>
     Object? order = freezed,
     Object? product = freezed,
   }) {
-    return _then(_$_OrderItem(
+    return _then(_$OrderItemImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -884,8 +888,8 @@ class __$$_OrderItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderItem implements _OrderItem {
-  const _$_OrderItem(
+class _$OrderItemImpl implements _OrderItem {
+  const _$OrderItemImpl(
       {this.id,
       required this.name,
       required this.picture,
@@ -895,8 +899,8 @@ class _$_OrderItem implements _OrderItem {
       this.order,
       this.product});
 
-  factory _$_OrderItem.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderItemFromJson(json);
+  factory _$OrderItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderItemImplFromJson(json);
 
   @override
   final int? id;
@@ -925,7 +929,7 @@ class _$_OrderItem implements _OrderItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderItem &&
+            other is _$OrderItemImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.picture, picture) || other.picture == picture) &&
@@ -945,12 +949,12 @@ class _$_OrderItem implements _OrderItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderItemCopyWith<_$_OrderItem> get copyWith =>
-      __$$_OrderItemCopyWithImpl<_$_OrderItem>(this, _$identity);
+  _$$OrderItemImplCopyWith<_$OrderItemImpl> get copyWith =>
+      __$$OrderItemImplCopyWithImpl<_$OrderItemImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderItemToJson(
+    return _$$OrderItemImplToJson(
       this,
     );
   }
@@ -965,10 +969,10 @@ abstract class _OrderItem implements OrderItem {
       required final String price,
       @JsonKey(defaultValue: 0) final int? discount,
       final int? order,
-      final int? product}) = _$_OrderItem;
+      final int? product}) = _$OrderItemImpl;
 
   factory _OrderItem.fromJson(Map<String, dynamic> json) =
-      _$_OrderItem.fromJson;
+      _$OrderItemImpl.fromJson;
 
   @override
   int? get id;
@@ -989,6 +993,6 @@ abstract class _OrderItem implements OrderItem {
   int? get product;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderItemCopyWith<_$_OrderItem> get copyWith =>
+  _$$OrderItemImplCopyWith<_$OrderItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

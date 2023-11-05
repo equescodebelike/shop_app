@@ -98,10 +98,11 @@ class _$DeliveryCopyWithImpl<$Res, $Val extends Delivery>
 }
 
 /// @nodoc
-abstract class _$$_DeliveryCopyWith<$Res> implements $DeliveryCopyWith<$Res> {
-  factory _$$_DeliveryCopyWith(
-          _$_Delivery value, $Res Function(_$_Delivery) then) =
-      __$$_DeliveryCopyWithImpl<$Res>;
+abstract class _$$DeliveryImplCopyWith<$Res>
+    implements $DeliveryCopyWith<$Res> {
+  factory _$$DeliveryImplCopyWith(
+          _$DeliveryImpl value, $Res Function(_$DeliveryImpl) then) =
+      __$$DeliveryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -114,11 +115,11 @@ abstract class _$$_DeliveryCopyWith<$Res> implements $DeliveryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_DeliveryCopyWithImpl<$Res>
-    extends _$DeliveryCopyWithImpl<$Res, _$_Delivery>
-    implements _$$_DeliveryCopyWith<$Res> {
-  __$$_DeliveryCopyWithImpl(
-      _$_Delivery _value, $Res Function(_$_Delivery) _then)
+class __$$DeliveryImplCopyWithImpl<$Res>
+    extends _$DeliveryCopyWithImpl<$Res, _$DeliveryImpl>
+    implements _$$DeliveryImplCopyWith<$Res> {
+  __$$DeliveryImplCopyWithImpl(
+      _$DeliveryImpl _value, $Res Function(_$DeliveryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -131,7 +132,7 @@ class __$$_DeliveryCopyWithImpl<$Res>
     Object? icon = null,
     Object? farmAddress = freezed,
   }) {
-    return _then(_$_Delivery(
+    return _then(_$DeliveryImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -162,8 +163,8 @@ class __$$_DeliveryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Delivery implements _Delivery {
-  const _$_Delivery(
+class _$DeliveryImpl implements _Delivery {
+  const _$DeliveryImpl(
       {required this.id,
       required this.title,
       required this.description,
@@ -171,8 +172,8 @@ class _$_Delivery implements _Delivery {
       required this.icon,
       @JsonKey(name: 'farm_address') this.farmAddress});
 
-  factory _$_Delivery.fromJson(Map<String, dynamic> json) =>
-      _$$_DeliveryFromJson(json);
+  factory _$DeliveryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeliveryImplFromJson(json);
 
   @override
   final String id;
@@ -197,7 +198,7 @@ class _$_Delivery implements _Delivery {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Delivery &&
+            other is _$DeliveryImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -216,12 +217,12 @@ class _$_Delivery implements _Delivery {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeliveryCopyWith<_$_Delivery> get copyWith =>
-      __$$_DeliveryCopyWithImpl<_$_Delivery>(this, _$identity);
+  _$$DeliveryImplCopyWith<_$DeliveryImpl> get copyWith =>
+      __$$DeliveryImplCopyWithImpl<_$DeliveryImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeliveryToJson(
+    return _$$DeliveryImplToJson(
       this,
     );
   }
@@ -229,14 +230,16 @@ class _$_Delivery implements _Delivery {
 
 abstract class _Delivery implements Delivery {
   const factory _Delivery(
-      {required final String id,
-      required final String title,
-      required final String description,
-      required final String type,
-      required final String icon,
-      @JsonKey(name: 'farm_address') final String? farmAddress}) = _$_Delivery;
+          {required final String id,
+          required final String title,
+          required final String description,
+          required final String type,
+          required final String icon,
+          @JsonKey(name: 'farm_address') final String? farmAddress}) =
+      _$DeliveryImpl;
 
-  factory _Delivery.fromJson(Map<String, dynamic> json) = _$_Delivery.fromJson;
+  factory _Delivery.fromJson(Map<String, dynamic> json) =
+      _$DeliveryImpl.fromJson;
 
   @override
   String get id;
@@ -253,6 +256,6 @@ abstract class _Delivery implements Delivery {
   String? get farmAddress;
   @override
   @JsonKey(ignore: true)
-  _$$_DeliveryCopyWith<_$_Delivery> get copyWith =>
+  _$$DeliveryImplCopyWith<_$DeliveryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

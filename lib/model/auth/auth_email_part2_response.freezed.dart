@@ -74,11 +74,12 @@ class _$AuthEmailPart2ResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AuthEmailPart2ResponseCopyWith<$Res>
+abstract class _$$AuthEmailPart2ResponseImplCopyWith<$Res>
     implements $AuthEmailPart2ResponseCopyWith<$Res> {
-  factory _$$_AuthEmailPart2ResponseCopyWith(_$_AuthEmailPart2Response value,
-          $Res Function(_$_AuthEmailPart2Response) then) =
-      __$$_AuthEmailPart2ResponseCopyWithImpl<$Res>;
+  factory _$$AuthEmailPart2ResponseImplCopyWith(
+          _$AuthEmailPart2ResponseImpl value,
+          $Res Function(_$AuthEmailPart2ResponseImpl) then) =
+      __$$AuthEmailPart2ResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -87,12 +88,13 @@ abstract class _$$_AuthEmailPart2ResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AuthEmailPart2ResponseCopyWithImpl<$Res>
+class __$$AuthEmailPart2ResponseImplCopyWithImpl<$Res>
     extends _$AuthEmailPart2ResponseCopyWithImpl<$Res,
-        _$_AuthEmailPart2Response>
-    implements _$$_AuthEmailPart2ResponseCopyWith<$Res> {
-  __$$_AuthEmailPart2ResponseCopyWithImpl(_$_AuthEmailPart2Response _value,
-      $Res Function(_$_AuthEmailPart2Response) _then)
+        _$AuthEmailPart2ResponseImpl>
+    implements _$$AuthEmailPart2ResponseImplCopyWith<$Res> {
+  __$$AuthEmailPart2ResponseImplCopyWithImpl(
+      _$AuthEmailPart2ResponseImpl _value,
+      $Res Function(_$AuthEmailPart2ResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +103,7 @@ class __$$_AuthEmailPart2ResponseCopyWithImpl<$Res>
     Object? refreshToken = null,
     Object? accessToken = null,
   }) {
-    return _then(_$_AuthEmailPart2Response(
+    return _then(_$AuthEmailPart2ResponseImpl(
       refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
@@ -117,13 +119,13 @@ class __$$_AuthEmailPart2ResponseCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class _$_AuthEmailPart2Response implements _AuthEmailPart2Response {
-  const _$_AuthEmailPart2Response(
+class _$AuthEmailPart2ResponseImpl implements _AuthEmailPart2Response {
+  const _$AuthEmailPart2ResponseImpl(
       {@JsonKey(name: "refresh_token") required this.refreshToken,
       @JsonKey(name: "access_token") required this.accessToken});
 
-  factory _$_AuthEmailPart2Response.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthEmailPart2ResponseFromJson(json);
+  factory _$AuthEmailPart2ResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthEmailPart2ResponseImplFromJson(json);
 
   @override
   @JsonKey(name: "refresh_token")
@@ -141,7 +143,7 @@ class _$_AuthEmailPart2Response implements _AuthEmailPart2Response {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthEmailPart2Response &&
+            other is _$AuthEmailPart2ResponseImpl &&
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken) &&
             (identical(other.accessToken, accessToken) ||
@@ -155,13 +157,13 @@ class _$_AuthEmailPart2Response implements _AuthEmailPart2Response {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthEmailPart2ResponseCopyWith<_$_AuthEmailPart2Response> get copyWith =>
-      __$$_AuthEmailPart2ResponseCopyWithImpl<_$_AuthEmailPart2Response>(
-          this, _$identity);
+  _$$AuthEmailPart2ResponseImplCopyWith<_$AuthEmailPart2ResponseImpl>
+      get copyWith => __$$AuthEmailPart2ResponseImplCopyWithImpl<
+          _$AuthEmailPart2ResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthEmailPart2ResponseToJson(
+    return _$$AuthEmailPart2ResponseImplToJson(
       this,
     );
   }
@@ -171,10 +173,10 @@ abstract class _AuthEmailPart2Response implements AuthEmailPart2Response {
   const factory _AuthEmailPart2Response(
           {@JsonKey(name: "refresh_token") required final String refreshToken,
           @JsonKey(name: "access_token") required final String accessToken}) =
-      _$_AuthEmailPart2Response;
+      _$AuthEmailPart2ResponseImpl;
 
   factory _AuthEmailPart2Response.fromJson(Map<String, dynamic> json) =
-      _$_AuthEmailPart2Response.fromJson;
+      _$AuthEmailPart2ResponseImpl.fromJson;
 
   @override
   @JsonKey(name: "refresh_token")
@@ -184,6 +186,6 @@ abstract class _AuthEmailPart2Response implements AuthEmailPart2Response {
   String get accessToken;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthEmailPart2ResponseCopyWith<_$_AuthEmailPart2Response> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AuthEmailPart2ResponseImplCopyWith<_$AuthEmailPart2ResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

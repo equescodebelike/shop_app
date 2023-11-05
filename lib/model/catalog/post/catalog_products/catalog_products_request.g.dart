@@ -6,9 +6,9 @@ part of 'catalog_products_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CatalogProductsRequest _$$_CatalogProductsRequestFromJson(
+_$CatalogProductsRequestImpl _$$CatalogProductsRequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CatalogProductsRequest(
+    _$CatalogProductsRequestImpl(
       cityFias: json['city_fias'] as String?,
       sortBy: json['sort_by'] as String?,
       search: json['search'] as String?,
@@ -17,8 +17,8 @@ _$_CatalogProductsRequest _$$_CatalogProductsRequestFromJson(
       productIds: json['product_ids'] as List<dynamic>?,
     );
 
-Map<String, dynamic> _$$_CatalogProductsRequestToJson(
-    _$_CatalogProductsRequest instance) {
+Map<String, dynamic> _$$CatalogProductsRequestImplToJson(
+    _$CatalogProductsRequestImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
