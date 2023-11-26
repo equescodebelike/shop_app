@@ -3,6 +3,9 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:shop_app/data_source/db_repository.dart';
+import 'package:shop_app/model/db_model/clothes_model.dart';
+import 'package:shop_app/model/db_model/material_model.dart';
 import 'package:shop_app/pages/catalog_page/catalog_page_wm.dart';
 import 'package:shop_app/pages/favorites_page/favorites_redux.dart';
 import 'package:shop_app/pages/widgets/catalog_card_widget.dart';
@@ -23,20 +26,36 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
 
   @override
   Widget build(ICatalogPageWidgetModel wm) {
+    final db = DatabaseRepository();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Каталог'),
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(
+              onPressed: () {
+                wm.addProduct();
+              },
+              icon: const Icon(Icons.add),
+            ),
+          )
+        ],
       ),
-      body: EntityStateNotifierBuilder(
-        listenableEntityState: wm.productsState,
-        loadingBuilder: (_, __) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
-        builder: (context, data) {
-          final products = data ?? [];
+      body: FutureBuilder(
+        future: db.getAllClothes(),
+        builder:
+            (BuildContext context, AsyncSnapshot<List<ClothesModel>> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (snapshot.hasError) {
+            throw Exception(snapshot.error);
+          }
+          final products = snapshot.data ?? [];
 
           if (products.isEmpty) {
             return Center(
@@ -93,16 +112,18 @@ class CatalogPageWidget extends ElementaryWidget<ICatalogPageWidgetModel> {
                       );
                     },
                     converter: (store) => () {
-                      final favorite = store.state.contains(products[index].id);
+                      final favorite =
+                          store.state.contains(products[index].modelId);
                       if (favorite) {
-                        store.dispatch(RemoveAction(products[index].id));
+                        store.dispatch(RemoveAction(products[index].modelId));
                       } else {
-                        store.dispatch(AddAction(products[index].id));
+                        store.dispatch(AddAction(products[index].modelId));
                       }
                     },
                   );
                 },
-                converter: (store) => store.state.contains(products[index].id),
+                converter: (store) =>
+                    store.state.contains(products[index].modelId),
               );
             },
           );

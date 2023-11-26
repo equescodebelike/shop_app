@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/data/service/catalog_service.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/catalog/post/catalog_products/catalog_products_request.dart';
+import 'package:shop_app/model/db_model/clothes_model.dart';
 import 'package:shop_app/navigation/app_router.dart';
 import 'package:shop_app/pages/catalog_page/catalog_page_model.dart';
 import 'package:shop_app/pages/catalog_page/catalog_page_widget.dart';
@@ -17,7 +18,8 @@ abstract class ICatalogPageWidgetModel extends IWidgetModel
 
   ScrollController get scrollController;
 
-  void openProduct({required Product product});
+  void openProduct({required ClothesModel product});
+  void addProduct();
 }
 
 CatalogPageWidgetModel defaultCatalogPageWidgetModelFactory(
@@ -59,8 +61,6 @@ class CatalogPageWidgetModel
   }
 
   Future<void> loadProducts() async {
-    
-
     final List<Product> currentProducts = productsState.value?.data ?? [];
     try {
       final products = await catalogService.getProducts(
@@ -89,13 +89,20 @@ class CatalogPageWidgetModel
 
   @override
   void openProduct({
-    required Product product,
+    required ClothesModel product,
   }) {
     context.router.navigate(
       ProductRoute(
-        productId: product.id,
+        productId: product.modelId,
         product: product,
       ),
+    );
+  }
+
+  @override
+  void addProduct() {
+    context.router.navigate(
+      AddClothesModelRoute(),
     );
   }
 }

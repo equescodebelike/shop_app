@@ -104,12 +104,12 @@ class CartPageWidget extends ElementaryWidget<ICartPageWidgetModel> {
               return ListView.builder(
                 itemCount: products.length,
                 itemBuilder: (context, index) {
-                  return BasketCard(
-                    cartProduct: products[index],
-                    onTap: () => wm.openProduct(
-                      product: products[index].product,
-                    ),
-                  );
+                  // return BasketCard(
+                  //   cartProduct: products[index],
+                  //   onTap: () => wm.openProduct(
+                  //     product: products[index].product,
+                  //   ),
+                  // );
                 },
               );
             },

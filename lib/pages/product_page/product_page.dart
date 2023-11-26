@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
+import 'package:shop_app/model/db_model/clothes_model.dart';
 import 'package:shop_app/pages/widgets/add_to_basket_widget.dart';
 import 'package:shop_app/pages/widgets/extensions/money_extension.dart';
 
@@ -13,7 +14,7 @@ class ProductPage extends StatefulWidget {
     @pathParam required this.productId,
   });
 
-  final Product product;
+  final ClothesModel product;
   final int productId;
 
   @override
@@ -77,7 +78,7 @@ class _ProductPageState extends State<ProductPage> {
                   width: 250,
                   child: CachedNetworkImage(
                     fit: BoxFit.fill,
-                    imageUrl: widget.product.picture,
+                    imageUrl: 'assets/images/empty_photo.png ',
                     progressIndicatorBuilder: (_, __, ___) {
                       return const Center(
                         child: CircularProgressIndicator(),
@@ -95,14 +96,14 @@ class _ProductPageState extends State<ProductPage> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  widget.product.name,
+                  widget.product.modelName,
                   style: theme.textTheme.bodyLarge?.copyWith(fontSize: 20),
                 ),
               ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  widget.product.price.formatMoney(),
+                  r'$0',
                   style: theme.textTheme.bodyLarge?.copyWith(fontSize: 20),
                 ),
               ),

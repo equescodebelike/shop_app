@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/model/cart/cart_update_model.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
+import 'package:shop_app/model/db_model/clothes_model.dart';
 import 'package:shop_app/navigation/app_router.dart';
 import 'package:shop_app/pages/widgets/auth_bottom_sheet.dart';
 import 'package:shop_app/pages/widgets/filled_button_widget.dart';
@@ -13,7 +14,7 @@ class AddToBasket extends StatelessWidget {
     required this.product,
   });
 
-  final Product product;
+  final ClothesModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class AddToBasket extends StatelessWidget {
       stream: cartRepository.cart.stream,
       builder: (context, snapshot) {
         final products = snapshot.data?.products ?? [];
-        final id = product.id;
+        final id = product.modelId;
         final cartProduct =
             products.where((p) => p.product.id == id).firstOrNull;
 
@@ -48,7 +49,7 @@ class AddToBasket extends StatelessWidget {
 
               cartRepository.postCart(
                 request: CartUpdateModel(
-                  productId: product.id,
+                  productId: product.modelId,
                 ),
               );
             },
@@ -63,14 +64,14 @@ class AddToBasket extends StatelessWidget {
                   if (cartProduct.count != 1) {
                     cartRepository.addProductCount(
                       request: CartUpdateModel(
-                        productId: product.id,
+                        productId: product.modelId,
                         count: cartProduct.count - 1,
                       ),
                     );
                   } else {
                     cartRepository.deleteCart(
                       request: CartUpdateModel(
-                        productId: product.id,
+                        productId: product.modelId,
                       ),
                     );
                   }
@@ -95,7 +96,7 @@ class AddToBasket extends StatelessWidget {
               child: IconButton(
                 onPressed: () => cartRepository.addProductCount(
                   request: CartUpdateModel(
-                    productId: product.id,
+                    productId: product.modelId,
                     count: cartProduct.count + 1,
                   ),
                 ),

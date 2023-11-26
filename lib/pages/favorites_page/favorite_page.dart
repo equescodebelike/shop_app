@@ -5,8 +5,10 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/data/service/catalog_service.dart';
 import 'package:shop_app/data/service/favorite_service.dart';
+import 'package:shop_app/data_source/db_repository.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/catalog/post/catalog_products/catalog_products_request.dart';
+import 'package:shop_app/model/db_model/clothes_model.dart';
 import 'package:shop_app/pages/favorites_page/favorites_redux.dart';
 import 'package:shop_app/pages/widgets/catalog_card_widget.dart';
 
@@ -19,26 +21,27 @@ class FavoritePageUpdate extends StatefulWidget {
 }
 
 class _FavoritePageUpdateState extends State<FavoritePageUpdate> {
-  CatalogService get catalogClient => context.read();
-  FavoriteService get favoriteClient => context.read();
+  // CatalogService get catalogClient => context.read();
+  // FavoriteService get favoriteClient => context.read();
 
-  Future<List<Product>> _loadFavorites(List<int> favorites) async {
-    final ids = favorites;
-    try {
-      final favorites = await catalogClient.getProducts(
-        request: CatalogProductsRequest(
-          productIds: ids,
-        ),
-      );
-      return favorites.results;
-    } catch (e) {
-      debugPrint(e.toString());
-      rethrow;
-    }
-  }
+  // Future<List<Product>> _loadFavorites(List<int> favorites) async {
+  //   final ids = favorites;
+  //   try {
+  //     final favorites = await catalogClient.getProducts(
+  //       request: CatalogProductsRequest(
+  //         productIds: ids,
+  //       ),
+  //     );
+  //     return favorites.results;
+  //   } catch (e) {
+  //     debugPrint(e.toString());
+  //     rethrow;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final db = DatabaseRepository();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Избранное'),
@@ -47,13 +50,22 @@ class _FavoritePageUpdateState extends State<FavoritePageUpdate> {
       body: StoreConnector<Set<int>, Set<int>>(
         builder: (context, state) {
           return FutureBuilder(
-            future: _loadFavorites(state.toList()),
-            builder: (context, snapshot) {
-              final favorites = snapshot.data;
-
-              if (favorites == null) {
+            future: db.getClothesByIds(state.toList()),
+            builder: (BuildContext context,
+                AsyncSnapshot<List<ClothesModel>> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(
                   child: CircularProgressIndicator(),
+                );
+              }
+              if (snapshot.hasError) {
+                throw Exception(snapshot.error);
+              }
+              final favorites = snapshot.data;
+
+              if (favorites == null || favorites.isEmpty) {
+                return const Center(
+                  child: Text('You do not have any favorites'),
                 );
               }
 
@@ -87,17 +99,17 @@ class _FavoritePageUpdateState extends State<FavoritePageUpdate> {
                         },
                         converter: (store) => () {
                           final favorite =
-                              store.state.contains(favProduct.id);
+                              store.state.contains(favProduct.modelId);
                           if (favorite) {
-                            store.dispatch(RemoveAction(favProduct.id));
+                            store.dispatch(RemoveAction(favProduct.modelId));
                           } else {
-                            store.dispatch(AddAction(favProduct.id));
+                            store.dispatch(AddAction(favProduct.modelId));
                           }
                         },
                       );
                     },
                     converter: (store) =>
-                        store.state.contains(favProduct.id),
+                        store.state.contains(favProduct.modelId),
                   );
                 },
               );

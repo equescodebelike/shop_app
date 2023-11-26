@@ -8,6 +8,7 @@ import 'package:shop_app/model/cart/cart_calculated_model.dart';
 import 'package:shop_app/model/cart/cart_model.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/catalog/get/product/product_count.dart';
+import 'package:shop_app/model/db_model/clothes_model.dart';
 import 'package:shop_app/navigation/app_router.dart';
 import 'package:shop_app/util/dio_util.dart';
 import 'package:shop_app/util/wm_extensions.dart';
@@ -25,7 +26,7 @@ abstract class ICartPageWidgetModel extends IWidgetModel
 
   CartRepository get cartRepository;
 
-  void openProduct({required Product product});
+  void openProduct({required ClothesModel product});
 
   void order();
 }
@@ -82,11 +83,11 @@ class CartPageWidgetModel extends WidgetModel<CartPageWidget, CartPageModel>
 
   @override
   void openProduct({
-    required Product product,
+    required ClothesModel product,
   }) {
     context.router.navigate(
       ProductRoute(
-        productId: product.id,
+        productId: product.modelId,
         product: product,
       ),
     );

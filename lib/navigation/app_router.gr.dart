@@ -15,6 +15,14 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AddClothesModelRoute.name: (routeData) {
+      final args = routeData.argsAs<AddClothesModelRouteArgs>(
+          orElse: () => const AddClothesModelRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: AddClothesModelPage(key: args.key),
+      );
+    },
     AuthCodeRouteWidget.name: (routeData) {
       final args = routeData.argsAs<AuthCodeRouteWidgetArgs>();
       return AutoRoutePage<dynamic>(
@@ -157,6 +165,35 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [AddClothesModelPage]
+class AddClothesModelRoute extends PageRouteInfo<AddClothesModelRouteArgs> {
+  AddClothesModelRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          AddClothesModelRoute.name,
+          args: AddClothesModelRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'AddClothesModelRoute';
+
+  static const PageInfo<AddClothesModelRouteArgs> page =
+      PageInfo<AddClothesModelRouteArgs>(name);
+}
+
+class AddClothesModelRouteArgs {
+  const AddClothesModelRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'AddClothesModelRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -474,7 +511,7 @@ class OrderRouteArgs {
 class ProductRoute extends PageRouteInfo<ProductRouteArgs> {
   ProductRoute({
     Key? key,
-    required Product product,
+    required ClothesModel product,
     required int productId,
     List<PageRouteInfo>? children,
   }) : super(
@@ -503,7 +540,7 @@ class ProductRouteArgs {
 
   final Key? key;
 
-  final Product product;
+  final ClothesModel product;
 
   final int productId;
 

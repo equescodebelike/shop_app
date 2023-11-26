@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
+import 'package:shop_app/model/db_model/clothes_model.dart';
 import 'package:shop_app/pages/widgets/extensions/money_extension.dart';
 
 class CatalogCardWidget extends StatefulWidget {
@@ -16,7 +17,7 @@ class CatalogCardWidget extends StatefulWidget {
   final bool isFavorite;
   final VoidCallback? onTap;
   final VoidCallback? onFavoriteTap;
-  final Product product;
+  final ClothesModel product;
 
   @override
   State<CatalogCardWidget> createState() => _CatalogCardWidgetState();
@@ -46,7 +47,8 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
                   children: [
                     CachedNetworkImage(
                       fit: BoxFit.fill,
-                      imageUrl: widget.product.picture,
+                      //TODO
+                      imageUrl: 'assets/images/empty_photo.png',
                       progressIndicatorBuilder: (_, __, ___) {
                         return const Center(
                           child: CircularProgressIndicator(),
@@ -65,7 +67,8 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
                         splashColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         icon: widget.isFavorite
-                            ? Icon(Icons.favorite, color: Theme.of(context).colorScheme.error)
+                            ? Icon(Icons.favorite,
+                                color: Theme.of(context).colorScheme.error)
                             : Icon(Icons.favorite_border,
                                 color: Theme.of(context).colorScheme.onSurface),
                         onPressed: widget.onFavoriteTap,
@@ -91,7 +94,7 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
                   width: _width,
                   height: 38,
                   child: Text(
-                    widget.product.name,
+                    widget.product.modelName,
                     style: Theme.of(context).textTheme.bodyMedium,
                     textAlign: TextAlign.left,
                   ),
@@ -101,17 +104,17 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
                   height: 48,
                   child: CupertinoListTile(
                     padding: EdgeInsets.zero,
-                    title: Text(
-                      widget.product.price.formatMoney(),
+                    title: const Text(
+                      r'$0',
                       textAlign: TextAlign.start,
                     ),
-                    subtitle: Text(
-                      widget.product.oldPrice?.formatMoney() ?? '',
-                      style: const TextStyle(
-                        decoration: TextDecoration.lineThrough,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
+                    // subtitle: Text(
+                    //   widget.product.oldPrice?.formatMoney() ?? '',
+                    //   style: const TextStyle(
+                    //     decoration: TextDecoration.lineThrough,
+                    //   ),
+                    //   textAlign: TextAlign.start,
+                    // ),
                     trailing: SizedBox(
                       width: 48,
                       height: 48,
@@ -119,8 +122,7 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
                         icon: const Icon(
                           Icons.shopping_bag_outlined,
                         ),
-                        onPressed: () {
-                        },
+                        onPressed: () {},
                       ),
                     ),
                   ),
