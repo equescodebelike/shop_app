@@ -29,20 +29,20 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     List<Widget> pages = [
       OnboardingPage(
           text:
-              "Покупайте продукты не выходя из дома или получайте бонусы за прогулку за ними.",
+              "Представьте, что Вы создаёте электронный каталог моделей одежды.",
           controller: controller,
           onTap: () => controller.nextPage(
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeIn)),
       OnboardingPage(
           text:
-              "Удобная навигация внутри магазина не позволит вам потеряться или что то забыть.",
+              "Предусмотрите многовариантную структурированность каталога.",
           controller: controller,
           onTap: () => controller.nextPage(
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeIn)),
       OnboardingPage(
-          text: "Делитесь корзиной с близкими и друзьями.",
+          text: "Каждая модель должна содержать информацию о выкройке, её размерах.",
           controller: controller,
           onTap: () => controller.nextPage(
               duration: const Duration(milliseconds: 300),

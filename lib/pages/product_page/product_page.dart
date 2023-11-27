@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/data_source/db_repository.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/db_model/clothes_model.dart';
 import 'package:shop_app/pages/widgets/add_to_basket_widget.dart';
@@ -23,6 +24,7 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   bool checked = false;
+  final db = DatabaseRepository();
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -52,22 +54,11 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                   const Spacer(),
                   IconButton(
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    icon: checked
-                        ? Icon(
-                            Icons.favorite,
-                            color: Theme.of(context).colorScheme.error,
-                          )
-                        : Icon(
-                            Icons.favorite_border,
-                            color: Theme.of(context).colorScheme.onSurface,
-                          ),
-                    onPressed: () {
-                      setState(() {
-                        checked = !checked;
-                      });
+                    onPressed: () async {
+                      await db.deleteClothesModel(widget.productId);
+                      context.router.pop();
                     },
+                    icon: const Icon(Icons.delete),
                   ),
                 ],
               ),

@@ -122,4 +122,19 @@ class DatabaseRepository {
       await connection.close();
     }
   }
+
+  Future<void> deleteClothesModel(int modelId) async {
+    await connection.open();
+
+    try {
+      await connection.query('''
+      DELETE FROM catalog.clothes_models
+      WHERE model_id = @modelId
+      ''', substitutionValues: {
+        'modelId': modelId,
+      });
+    } finally {
+      await connection.close();
+    }
+  }
 }

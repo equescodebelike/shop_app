@@ -65,7 +65,7 @@ class _FavoritePageUpdateState extends State<FavoritePageUpdate> {
 
               if (favorites == null || favorites.isEmpty) {
                 return const Center(
-                  child: Text('You do not have any favorites'),
+                  child: Text('Вы ничего не добавили в Избранное'),
                 );
               }
 
