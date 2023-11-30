@@ -55,7 +55,8 @@ class _ProductPageState extends State<ProductPage> {
                   const Spacer(),
                   IconButton(
                     onPressed: () async {
-                      await db.deleteClothesModel(widget.productId);
+                      //TODO edit page
+                      db.deleteClothesModel(widget.productId);
                       context.router.pop();
                     },
                     icon: const Icon(Icons.delete),
@@ -96,6 +97,16 @@ class _ProductPageState extends State<ProductPage> {
                 child: Text(
                   r'$0',
                   style: theme.textTheme.bodyLarge?.copyWith(fontSize: 20),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8, bottom: 8),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    widget.product.description,
+                    style: theme.textTheme.bodySmall?.copyWith(fontSize: 16),
+                  ),
                 ),
               ),
               const SizedBox(height: 10),

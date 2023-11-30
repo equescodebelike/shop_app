@@ -124,11 +124,18 @@ class DatabaseRepository {
   }
 
   Future<void> deleteClothesModel(int modelId) async {
+    //TODO add media
     await connection.open();
 
     try {
       await connection.query('''
       DELETE FROM catalog.clothes_models
+      WHERE model_id = @modelId
+      ''', substitutionValues: {
+        'modelId': modelId,
+      });
+      await connection.query('''
+      DELETE FROM catalog.clothes_media
       WHERE model_id = @modelId
       ''', substitutionValues: {
         'modelId': modelId,
