@@ -10,6 +10,7 @@ import 'package:shop_app/util/dio_util.dart';
 void main() async {
   final store = Store<Set<int>>(appReducer, initialState: {});
   final db = DatabaseRepository();
+  // db.insertSampleData();
   // db.connect();
 
   WidgetsFlutterBinding.ensureInitialized();

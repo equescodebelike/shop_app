@@ -105,6 +105,24 @@ class DatabaseRepository {
     return clothesList;
   }
 
+  Future<void> insertSampleData() async {
+    await connection.open();
+
+    try {
+      for (int i = 33; i <= 1000; i++) {
+        await connection.query('''
+        INSERT INTO catalog.clothes_models (model_name, description)
+        VALUES (@modelName, @description)
+      ''', substitutionValues: {
+          'modelName': 'Model_$i',
+          'description': 'Description for Model $i',
+        });
+      }
+    } finally {
+      await connection.close();
+    }
+  }
+
   Future<void> insertClothesModel(ClothesModel model) async {
     await connection.open();
 
@@ -124,18 +142,23 @@ class DatabaseRepository {
   }
 
   Future<void> deleteClothesModel(int modelId) async {
-    //TODO add media
     await connection.open();
 
     try {
       await connection.query('''
-      DELETE FROM catalog.clothes_models
+      DELETE FROM catalog.clothes_media
       WHERE model_id = @modelId
       ''', substitutionValues: {
         'modelId': modelId,
       });
       await connection.query('''
-      DELETE FROM catalog.clothes_media
+      DELETE FROM catalog.clothes_patterns
+      WHERE model_id = @modelId
+      ''', substitutionValues: {
+        'modelId': modelId,
+      });
+      await connection.query('''
+      DELETE FROM catalog.clothes_models
       WHERE model_id = @modelId
       ''', substitutionValues: {
         'modelId': modelId,
