@@ -1,6 +1,8 @@
 import 'package:postgres/postgres.dart';
 import 'package:shop_app/model/db_model/clothes_model.dart';
 import 'package:shop_app/model/db_model/material_model.dart';
+import 'package:shop_app/model/db_model/media_model.dart';
+import 'package:shop_app/model/db_model/pattern_model.dart';
 
 class DatabaseRepository {
   final connection = PostgreSQLConnection(
@@ -33,6 +35,13 @@ class DatabaseRepository {
   // );
 
   Future<List<MaterialModel>> getAllMaterials() async {
+    final connection = PostgreSQLConnection(
+      '192.168.32.1',
+      5435,
+      'dart_test',
+      username: 'postgres',
+      password: 'password',
+    );
     List<MaterialModel> materialList = [];
     await connection.open();
     try {
@@ -53,6 +62,13 @@ class DatabaseRepository {
   }
 
   Future<List<ClothesModel>> getAllClothes() async {
+    final connection = PostgreSQLConnection(
+      '192.168.32.1',
+      5435,
+      'dart_test',
+      username: 'postgres',
+      password: 'password',
+    );
     List<ClothesModel> clothesList = [];
     await connection.open();
     try {
@@ -73,7 +89,96 @@ class DatabaseRepository {
     return clothesList;
   }
 
+  Future<PatternModel?> getPatternByModelId(int modelId) async {
+    final connection = PostgreSQLConnection(
+      '192.168.32.1',
+      5435,
+      'dart_test',
+      username: 'postgres',
+      password: 'password',
+    );
+    PatternModel? pattern;
+
+    await connection.open();
+
+    try {
+      var results = await connection.query('''
+      SELECT * FROM catalog.clothes_patterns
+      WHERE model_id = @modelId
+      LIMIT 1
+      ''', substitutionValues: {
+        'modelId': modelId,
+      });
+
+      if (results.isNotEmpty) {
+        var result = results.first;
+        int patternId = result[0] as int;
+        String size = result[1] as String;
+        double patternUsage = result[2] as double;
+        String tutorial = result[3] as String;
+        int materialId = result[4] as int;
+
+        pattern = PatternModel(
+          patternId: patternId,
+          size: size,
+          patternUsage: patternUsage,
+          tutorial: tutorial,
+          materialId: materialId,
+          modelId: modelId,
+        );
+      }
+    } finally {
+      await connection.close();
+    }
+
+    return pattern;
+  }
+
+  Future<MediaModel?> getMediaByModelId(int modelId) async {
+    final connection = PostgreSQLConnection(
+      '192.168.32.1',
+      5435,
+      'dart_test',
+      username: 'postgres',
+      password: 'password',
+    );
+    MediaModel? media;
+
+    await connection.open();
+
+    try {
+      var results = await connection.query('''
+      SELECT * FROM catalog.clothes_media
+      WHERE model_id = @modelId
+      LIMIT 1
+      ''', substitutionValues: {
+        'modelId': modelId,
+      });
+
+      if (results.isNotEmpty) {
+        var result = results.first;
+        int photoId = result[0] as int;
+        int modelId = result[1] as int;
+        String photoUrl = result[2] as String;
+
+        media =
+            MediaModel(photoId: photoId, modelId: modelId, photoUrl: photoUrl);
+      }
+    } finally {
+      await connection.close();
+    }
+
+    return media;
+  }
+
   Future<List<ClothesModel>> getClothesByIds(List<int> ids) async {
+    final connection = PostgreSQLConnection(
+      '192.168.32.1',
+      5435,
+      'dart_test',
+      username: 'postgres',
+      password: 'password',
+    );
     List<ClothesModel> clothesList = [];
 
     if (ids.isEmpty) {
@@ -106,6 +211,13 @@ class DatabaseRepository {
   }
 
   Future<void> insertSampleData() async {
+    final connection = PostgreSQLConnection(
+      '192.168.32.1',
+      5435,
+      'dart_test',
+      username: 'postgres',
+      password: 'password',
+    );
     await connection.open();
 
     try {
@@ -123,7 +235,42 @@ class DatabaseRepository {
     }
   }
 
+  Future<void> insertClothesPattern(PatternModel pattern) async {
+    final connection = PostgreSQLConnection(
+      '192.168.32.1',
+      5435,
+      'dart_test',
+      username: 'postgres',
+      password: 'password',
+    );
+
+    await connection.open();
+
+    try {
+      await connection.query('''
+      INSERT INTO catalog.clothes_patterns (pattern_id, size, pattern_usage, tutorial, material_id, model_id)
+      VALUES (@patternId, @size, @patternUsage, @tutorial, @materialId, @modelId)
+      ''', substitutionValues: {
+        'patternId': pattern.patternId,
+        'size': pattern.size,
+        'patternUsage': pattern.patternUsage,
+        'tutorial': pattern.tutorial,
+        'materialId': pattern.materialId,
+        'modelId': pattern.modelId,
+      });
+    } finally {
+      await connection.close();
+    }
+  }
+
   Future<void> insertClothesModel(ClothesModel model) async {
+    final connection = PostgreSQLConnection(
+      '192.168.32.1',
+      5435,
+      'dart_test',
+      username: 'postgres',
+      password: 'password',
+    );
     await connection.open();
 
     try {
@@ -142,6 +289,13 @@ class DatabaseRepository {
   }
 
   Future<void> deleteClothesModel(int modelId) async {
+    final connection = PostgreSQLConnection(
+      '192.168.32.1',
+      5435,
+      'dart_test',
+      username: 'postgres',
+      password: 'password',
+    );
     await connection.open();
 
     try {

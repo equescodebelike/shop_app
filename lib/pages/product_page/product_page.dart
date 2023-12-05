@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/data_source/db_repository.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/db_model/clothes_model.dart';
+import 'package:shop_app/model/db_model/media_model.dart';
+import 'package:shop_app/model/db_model/pattern_model.dart';
 import 'package:shop_app/pages/widgets/add_to_basket_widget.dart';
 import 'package:shop_app/pages/widgets/extensions/money_extension.dart';
 
@@ -54,8 +56,11 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                   const Spacer(),
                   IconButton(
+                    onPressed: () async {},
+                    icon: const Icon(Icons.edit),
+                  ),
+                  IconButton(
                     onPressed: () async {
-                      //TODO edit page
                       db.deleteClothesModel(widget.productId);
                       context.router.pop();
                     },
@@ -63,27 +68,42 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: SizedBox(
-                  height: 250,
-                  width: 250,
-                  child: CachedNetworkImage(
-                    fit: BoxFit.fill,
-                    imageUrl: 'assets/images/empty_photo.png ',
-                    progressIndicatorBuilder: (_, __, ___) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    },
-                    errorWidget: (_, __, ___) {
-                      return Image.asset(
-                        'assets/images/empty_photo.png',
+              FutureBuilder(
+                future: db.getMediaByModelId(widget.productId),
+                builder: (BuildContext context,
+                    AsyncSnapshot<MediaModel?> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (snapshot.hasError) {
+                    throw Exception(snapshot.error);
+                  }
+                  return Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: SizedBox(
+                      height: 250,
+                      width: 250,
+                      child: CachedNetworkImage(
                         fit: BoxFit.fill,
-                      );
-                    },
-                  ),
-                ),
+                        imageUrl: snapshot.data?.photoUrl ??
+                            'assets/images/empty_photo.png',
+                        progressIndicatorBuilder: (_, __, ___) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
+                        errorWidget: (_, __, ___) {
+                          return Image.asset(
+                            'assets/images/empty_photo.png',
+                            fit: BoxFit.fill,
+                          );
+                        },
+                      ),
+                    ),
+                  );
+                },
               ),
               Align(
                 alignment: Alignment.centerLeft,
@@ -108,6 +128,43 @@ class _ProductPageState extends State<ProductPage> {
                     style: theme.textTheme.bodySmall?.copyWith(fontSize: 16),
                   ),
                 ),
+              ),
+              FutureBuilder(
+                future: db.getPatternByModelId(widget.productId),
+                builder: (BuildContext context,
+                    AsyncSnapshot<PatternModel?> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (snapshot.hasError) {
+                    throw Exception(snapshot.error);
+                  }
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 8, bottom: 8),
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            snapshot.data?.tutorial ?? 'DIY',
+                            style: theme.textTheme.bodySmall
+                                ?.copyWith(fontSize: 16),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            snapshot.data?.size ?? 'S',
+                            style: theme.textTheme.bodySmall
+                                ?.copyWith(fontSize: 16),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
               const SizedBox(height: 10),
               AddToBasket(

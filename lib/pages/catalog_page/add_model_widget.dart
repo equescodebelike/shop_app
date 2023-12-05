@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/data_source/db_repository.dart';
 import 'package:shop_app/model/db_model/clothes_model.dart';
+import 'package:shop_app/model/db_model/pattern_model.dart';
 import 'package:shop_app/pages/widgets/filled_button_widget.dart';
 
 @RoutePage()
@@ -9,6 +10,8 @@ class AddClothesModelPage extends StatelessWidget {
   final TextEditingController modelIdController = TextEditingController();
   final TextEditingController modelNameController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController tutorialController = TextEditingController();
+  final TextEditingController sizeController = TextEditingController();
 
   AddClothesModelPage({super.key});
 
@@ -36,6 +39,14 @@ class AddClothesModelPage extends StatelessWidget {
               controller: descriptionController,
               decoration: const InputDecoration(labelText: 'Описание'),
             ),
+            TextField(
+              controller: tutorialController,
+              decoration: const InputDecoration(labelText: 'Процесс создания'),
+            ),
+            TextField(
+              controller: sizeController,
+              decoration: const InputDecoration(labelText: 'Размер'),
+            ),
             const SizedBox(height: 16),
             CustomFilledButton(
               onTap: () {
@@ -45,8 +56,17 @@ class AddClothesModelPage extends StatelessWidget {
                   modelNameController.text,
                   descriptionController.text,
                 );
+                final pattern = PatternModel(
+                  patternId: model.modelId,
+                  patternUsage: 0,
+                  modelId: model.modelId,
+                  size: sizeController.text,
+                  tutorial: tutorialController.text,
+                  materialId: 1,
+                );
                 databaseRepo.insertClothesModel(model);
-                context.router.pop(); // Navigate back after insertion
+                databaseRepo.insertClothesPattern(pattern);
+                context.router.pop();
               },
               text: 'Добавить',
             ),
