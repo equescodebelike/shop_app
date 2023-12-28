@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/data_source/db_repository.dart';
 import 'package:shop_app/model/db_model/clothes_model.dart';
+import 'package:shop_app/model/db_model/media_model.dart';
 import 'package:shop_app/model/db_model/pattern_model.dart';
 import 'package:shop_app/pages/widgets/filled_button_widget.dart';
 
@@ -12,6 +13,7 @@ class AddClothesModelPage extends StatelessWidget {
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController tutorialController = TextEditingController();
   final TextEditingController sizeController = TextEditingController();
+  final TextEditingController imageController = TextEditingController();
 
   AddClothesModelPage({super.key});
 
@@ -47,6 +49,11 @@ class AddClothesModelPage extends StatelessWidget {
               controller: sizeController,
               decoration: const InputDecoration(labelText: 'Размер'),
             ),
+            TextField(
+              controller: sizeController,
+              decoration:
+                  const InputDecoration(labelText: 'Ссылка на изображение'),
+            ),
             const SizedBox(height: 16),
             CustomFilledButton(
               onTap: () {
@@ -64,6 +71,10 @@ class AddClothesModelPage extends StatelessWidget {
                   tutorial: tutorialController.text,
                   materialId: 1,
                 );
+                final media = MediaModel(
+                    photoId: model.modelId,
+                    modelId: model.modelId,
+                    photoUrl: imageController.text);
                 databaseRepo.insertClothesModel(model);
                 databaseRepo.insertClothesPattern(pattern);
                 context.router.pop();

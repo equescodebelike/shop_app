@@ -83,7 +83,7 @@ class _ProductPageState extends State<ProductPage> {
                   return Padding(
                     padding: const EdgeInsets.all(16),
                     child: SizedBox(
-                      height: 250,
+                      height: 295,
                       width: 250,
                       child: CachedNetworkImage(
                         fit: BoxFit.fill,

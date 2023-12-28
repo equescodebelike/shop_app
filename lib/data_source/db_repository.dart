@@ -5,13 +5,16 @@ import 'package:shop_app/model/db_model/media_model.dart';
 import 'package:shop_app/model/db_model/pattern_model.dart';
 
 class DatabaseRepository {
-  final connection = PostgreSQLConnection(
-    '192.168.32.1',
-    5435,
-    'dart_test',
-    username: 'postgres',
-    password: 'password',
-  );
+  PostgreSQLConnection connect() {
+    final connection = PostgreSQLConnection(
+      '192.168.32.1',
+      5435,
+      'dart_test',
+      username: 'postgres',
+      password: 'password',
+    );
+    return connection;
+  }
 
   // final PgEndpoint endpoint = PgEndpoint(
   //   host: '192.168.32.1',
@@ -35,13 +38,7 @@ class DatabaseRepository {
   // );
 
   Future<List<MaterialModel>> getAllMaterials() async {
-    final connection = PostgreSQLConnection(
-      '192.168.32.1',
-      5435,
-      'dart_test',
-      username: 'postgres',
-      password: 'password',
-    );
+    final connection = connect();
     List<MaterialModel> materialList = [];
     await connection.open();
     try {
@@ -62,13 +59,7 @@ class DatabaseRepository {
   }
 
   Future<List<ClothesModel>> getAllClothes() async {
-    final connection = PostgreSQLConnection(
-      '192.168.32.1',
-      5435,
-      'dart_test',
-      username: 'postgres',
-      password: 'password',
-    );
+    final connection = connect();
     List<ClothesModel> clothesList = [];
     await connection.open();
     try {
@@ -90,13 +81,7 @@ class DatabaseRepository {
   }
 
   Future<PatternModel?> getPatternByModelId(int modelId) async {
-    final connection = PostgreSQLConnection(
-      '192.168.32.1',
-      5435,
-      'dart_test',
-      username: 'postgres',
-      password: 'password',
-    );
+    final connection = connect();
     PatternModel? pattern;
 
     await connection.open();
@@ -135,13 +120,7 @@ class DatabaseRepository {
   }
 
   Future<MediaModel?> getMediaByModelId(int modelId) async {
-    final connection = PostgreSQLConnection(
-      '192.168.32.1',
-      5435,
-      'dart_test',
-      username: 'postgres',
-      password: 'password',
-    );
+    final connection = connect();
     MediaModel? media;
 
     await connection.open();
@@ -172,13 +151,7 @@ class DatabaseRepository {
   }
 
   Future<List<ClothesModel>> getClothesByIds(List<int> ids) async {
-    final connection = PostgreSQLConnection(
-      '192.168.32.1',
-      5435,
-      'dart_test',
-      username: 'postgres',
-      password: 'password',
-    );
+    final connection = connect();
     List<ClothesModel> clothesList = [];
 
     if (ids.isEmpty) {
@@ -211,13 +184,7 @@ class DatabaseRepository {
   }
 
   Future<void> insertSampleData() async {
-    final connection = PostgreSQLConnection(
-      '192.168.32.1',
-      5435,
-      'dart_test',
-      username: 'postgres',
-      password: 'password',
-    );
+    final connection = connect();
     await connection.open();
 
     try {
@@ -236,13 +203,7 @@ class DatabaseRepository {
   }
 
   Future<void> insertClothesPattern(PatternModel pattern) async {
-    final connection = PostgreSQLConnection(
-      '192.168.32.1',
-      5435,
-      'dart_test',
-      username: 'postgres',
-      password: 'password',
-    );
+    final connection = connect();
 
     await connection.open();
 
@@ -264,13 +225,7 @@ class DatabaseRepository {
   }
 
   Future<void> insertClothesModel(ClothesModel model) async {
-    final connection = PostgreSQLConnection(
-      '192.168.32.1',
-      5435,
-      'dart_test',
-      username: 'postgres',
-      password: 'password',
-    );
+    final connection = connect();
     await connection.open();
 
     try {
@@ -289,13 +244,7 @@ class DatabaseRepository {
   }
 
   Future<void> deleteClothesModel(int modelId) async {
-    final connection = PostgreSQLConnection(
-      '192.168.32.1',
-      5435,
-      'dart_test',
-      username: 'postgres',
-      password: 'password',
-    );
+    final connection = connect();
     await connection.open();
 
     try {

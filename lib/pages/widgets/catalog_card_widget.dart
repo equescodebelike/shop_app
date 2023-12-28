@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/data_source/db_repository.dart';
 import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/db_model/clothes_model.dart';
+import 'package:shop_app/model/db_model/media_model.dart';
 import 'package:shop_app/pages/widgets/extensions/money_extension.dart';
 
 class CatalogCardWidget extends StatefulWidget {
@@ -30,6 +32,8 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
 
   bool checked = false;
 
+  final db = DatabaseRepository();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,19 +49,47 @@ class _CatalogCardWidgetState extends State<CatalogCardWidget> {
                 aspectRatio: 1,
                 child: Stack(
                   children: [
-                    CachedNetworkImage(
-                      fit: BoxFit.fill,
-                      //TODO
-                      imageUrl: 'assets/images/empty_photo.png',
-                      progressIndicatorBuilder: (_, __, ___) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      },
-                      errorWidget: (_, __, ___) {
-                        return Image.asset(
-                          'assets/images/empty_photo.png',
+                    //     FutureBuilder(
+                    // future: db.getMediaByModelId(widget.productId),
+                    // builder: (BuildContext context,
+                    //     AsyncSnapshot<MediaModel?> snapshot) {
+                    //   if (snapshot.connectionState == ConnectionState.waiting) {
+                    //     return const Center(
+                    //       child: CircularProgressIndicator(),
+                    //     );
+                    //   }
+                    //   if (snapshot.hasError) {
+                    //     throw Exception(snapshot.error);
+                    //   }
+                    FutureBuilder(
+                      future: db.getMediaByModelId(widget.product.modelId),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<MediaModel?> snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if (snapshot.hasError) {
+                          throw Exception(snapshot.error);
+                        }
+                        return CachedNetworkImage(
                           fit: BoxFit.fill,
+                          //TODO
+                          imageUrl: snapshot.data?.photoUrl ??
+                            'assets/images/empty_photo.png',
+                          progressIndicatorBuilder: (_, __, ___) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          },
+                          errorWidget: (_, __, ___) {
+                            return Image.asset(
+                              'assets/images/empty_photo.png',
+                              fit: BoxFit.fill,
+                            );
+                          },
                         );
                       },
                     ),
