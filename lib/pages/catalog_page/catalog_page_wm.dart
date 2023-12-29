@@ -9,6 +9,7 @@ import 'package:shop_app/model/db_model/clothes_model.dart';
 import 'package:shop_app/navigation/app_router.dart';
 import 'package:shop_app/pages/catalog_page/catalog_page_model.dart';
 import 'package:shop_app/pages/catalog_page/catalog_page_widget.dart';
+import 'package:shop_app/pages/catalog_page/clothes_sort_option.dart';
 import 'package:shop_app/util/dio_util.dart';
 import 'package:shop_app/util/wm_extensions.dart';
 
@@ -20,6 +21,11 @@ abstract class ICatalogPageWidgetModel extends IWidgetModel
 
   void openProduct({required ClothesModel product});
   void addProduct();
+  String getOrderByClause(ClothesSortOption option);
+  ClothesSortOption get selectedSortOption;
+  void updateSortOption(ClothesSortOption newSortOption);
+  List<ClothesModel> sortClothes(
+      List<ClothesModel> clothes, ClothesSortOption sortOption);
 }
 
 CatalogPageWidgetModel defaultCatalogPageWidgetModelFactory(
@@ -104,5 +110,40 @@ class CatalogPageWidgetModel
     context.router.navigate(
       AddClothesModelRoute(),
     );
+  }
+
+  @override
+  List<ClothesModel> sortClothes(
+      List<ClothesModel> clothes, ClothesSortOption sortOption) {
+    switch (sortOption) {
+      case ClothesSortOption.alphabetical:
+        // Sort clothes alphabetically based on the model name
+        clothes.sort((a, b) => a.modelName.compareTo(b.modelName));
+        break;
+      case ClothesSortOption.none:
+        break;
+      // Add cases for more sorting options
+    }
+    return clothes;
+  }
+
+  @override
+  ClothesSortOption selectedSortOption =
+      ClothesSortOption.none; // Add this line
+
+  @override
+  void updateSortOption(ClothesSortOption newSortOption) {
+    selectedSortOption = newSortOption;
+  }
+
+  @override
+  String getOrderByClause(ClothesSortOption sortOption) {
+    switch (sortOption) {
+      case ClothesSortOption.alphabetical:
+        return 'model_name ASC';
+      case ClothesSortOption.none:
+        return 'model_name DESC'; // No sorting
+      // Add cases for more sorting options
+    }
   }
 }

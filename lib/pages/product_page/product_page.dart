@@ -6,6 +6,7 @@ import 'package:shop_app/model/catalog/get/product/product.dart';
 import 'package:shop_app/model/db_model/clothes_model.dart';
 import 'package:shop_app/model/db_model/media_model.dart';
 import 'package:shop_app/model/db_model/pattern_model.dart';
+import 'package:shop_app/navigation/app_router.dart';
 import 'package:shop_app/pages/widgets/add_to_basket_widget.dart';
 import 'package:shop_app/pages/widgets/extensions/money_extension.dart';
 
@@ -56,7 +57,10 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                   const Spacer(),
                   IconButton(
-                    onPressed: () async {},
+                    onPressed: () async {
+                      context.router
+                          .push(EditProductRoute(product: widget.product));
+                    },
                     icon: const Icon(Icons.edit),
                   ),
                   IconButton(
@@ -124,7 +128,7 @@ class _ProductPageState extends State<ProductPage> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    widget.product.description,
+                    'Description:\n${widget.product.description}',
                     style: theme.textTheme.bodySmall?.copyWith(fontSize: 16),
                   ),
                 ),
@@ -149,8 +153,9 @@ class _ProductPageState extends State<ProductPage> {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             snapshot.data?.tutorial ?? 'DIY',
-                            style: theme.textTheme.bodySmall
-                                ?.copyWith(fontSize: 16),
+                            style: theme.textTheme.bodySmall?.copyWith(
+                                fontSize: 16,
+                                decoration: TextDecoration.underline),
                           ),
                         ),
                         Align(

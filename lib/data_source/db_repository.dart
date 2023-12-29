@@ -58,13 +58,14 @@ class DatabaseRepository {
     return materialList;
   }
 
-  Future<List<ClothesModel>> getAllClothes() async {
+  Future<List<ClothesModel>> getAllClothes(String orderBy) async {
     final connection = connect();
     List<ClothesModel> clothesList = [];
     await connection.open();
     try {
-      var results =
-          await connection.query('SELECT * FROM catalog.clothes_models');
+      var results = await connection.query(
+        'SELECT * FROM catalog.clothes_models ORDER BY $orderBy',
+      );
 
       for (var result in results) {
         int modelId = result[0] as int;
@@ -218,6 +219,25 @@ class DatabaseRepository {
         'tutorial': pattern.tutorial,
         'materialId': pattern.materialId,
         'modelId': pattern.modelId,
+      });
+    } finally {
+      await connection.close();
+    }
+  }
+
+  Future<void> updateClothesModel(ClothesModel updatedModel) async {
+    final connection = connect();
+    await connection.open();
+
+    try {
+      await connection.query('''
+      UPDATE catalog.clothes_models
+      SET model_name = @modelName, description = @description
+      WHERE model_id = @modelId
+    ''', substitutionValues: {
+        'modelId': updatedModel.modelId,
+        'modelName': updatedModel.modelName,
+        'description': updatedModel.description,
       });
     } finally {
       await connection.close();

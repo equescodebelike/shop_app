@@ -25,7 +25,7 @@ class AddClothesModelPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -55,31 +55,33 @@ class AddClothesModelPage extends StatelessWidget {
                   const InputDecoration(labelText: 'Ссылка на изображение'),
             ),
             const SizedBox(height: 16),
-            CustomFilledButton(
-              onTap: () {
-                final databaseRepo = DatabaseRepository();
-                final model = ClothesModel(
-                  int.parse(modelIdController.text),
-                  modelNameController.text,
-                  descriptionController.text,
-                );
-                final pattern = PatternModel(
-                  patternId: model.modelId,
-                  patternUsage: 0,
-                  modelId: model.modelId,
-                  size: sizeController.text,
-                  tutorial: tutorialController.text,
-                  materialId: 1,
-                );
-                final media = MediaModel(
-                    photoId: model.modelId,
+            Center(
+              child: CustomFilledButton(
+                onTap: () {
+                  final databaseRepo = DatabaseRepository();
+                  final model = ClothesModel(
+                    int.parse(modelIdController.text),
+                    modelNameController.text,
+                    descriptionController.text,
+                  );
+                  final pattern = PatternModel(
+                    patternId: model.modelId,
+                    patternUsage: 0,
                     modelId: model.modelId,
-                    photoUrl: imageController.text);
-                databaseRepo.insertClothesModel(model);
-                databaseRepo.insertClothesPattern(pattern);
-                context.router.pop();
-              },
-              text: 'Добавить',
+                    size: sizeController.text,
+                    tutorial: tutorialController.text,
+                    materialId: 1,
+                  );
+                  final media = MediaModel(
+                      photoId: model.modelId,
+                      modelId: model.modelId,
+                      photoUrl: imageController.text);
+                  databaseRepo.insertClothesModel(model);
+                  databaseRepo.insertClothesPattern(pattern);
+                  context.router.pop();
+                },
+                text: 'Добавить',
+              ),
             ),
           ],
         ),

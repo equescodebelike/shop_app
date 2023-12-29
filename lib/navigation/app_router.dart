@@ -10,6 +10,7 @@ import 'package:shop_app/pages/auth_page/auth_page_wm.dart';
 import 'package:shop_app/pages/catalog_page/add_model_widget.dart';
 import 'package:shop_app/pages/catalog_page/catalog_page_widget.dart';
 import 'package:shop_app/pages/catalog_page/catalog_page_wm.dart';
+import 'package:shop_app/pages/catalog_page/update_model_widget.dart';
 import 'package:shop_app/pages/favorites_page/favorite_page.dart';
 import 'package:shop_app/pages/home_page/home_page.dart';
 import 'package:shop_app/pages/onboarding_page/onboarding_page.dart';
@@ -57,6 +58,9 @@ class AppRouter extends _$AppRouter {
                 ),
                 AutoRoute(
                   page: AddClothesModelRoute.page,
+                ),
+                AutoRoute(
+                  page: EditProductRoute.page,
                 ),
               ],
             ),

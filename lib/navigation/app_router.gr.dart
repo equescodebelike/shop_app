@@ -90,6 +90,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CatalogTabPage(),
       );
     },
+    EditProductRoute.name: (routeData) {
+      final args = routeData.argsAs<EditProductRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: EditProductPage(
+          key: args.key,
+          product: args.product,
+        ),
+      );
+    },
     FavoriteRouteUpdate.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -411,6 +421,44 @@ class CatalogTab extends PageRouteInfo<void> {
   static const String name = 'CatalogTab';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EditProductPage]
+class EditProductRoute extends PageRouteInfo<EditProductRouteArgs> {
+  EditProductRoute({
+    Key? key,
+    required ClothesModel product,
+    List<PageRouteInfo>? children,
+  }) : super(
+          EditProductRoute.name,
+          args: EditProductRouteArgs(
+            key: key,
+            product: product,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'EditProductRoute';
+
+  static const PageInfo<EditProductRouteArgs> page =
+      PageInfo<EditProductRouteArgs>(name);
+}
+
+class EditProductRouteArgs {
+  const EditProductRouteArgs({
+    this.key,
+    required this.product,
+  });
+
+  final Key? key;
+
+  final ClothesModel product;
+
+  @override
+  String toString() {
+    return 'EditProductRouteArgs{key: $key, product: $product}';
+  }
 }
 
 /// generated route for
