@@ -24,7 +24,7 @@ class EditProductPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Product'),
+        title: const Text('Изменить модель'),
         centerTitle: true,
       ),
       body: Padding(

@@ -290,4 +290,48 @@ class DatabaseRepository {
       await connection.close();
     }
   }
+
+  Future<void> insertClothesMedia(MediaModel media) async {
+    final connection = connect();
+
+    await connection.open();
+
+    try {
+      await connection.query('''
+      INSERT INTO catalog.clothes_media (photo_id, model_id, photo_url)
+      VALUES (@photoId, @modelId, @photoUrl)
+    ''', substitutionValues: {
+        'photoId': media.photoId,
+        'modelId': media.modelId,
+        'photoUrl': media.photoUrl,
+      });
+    } finally {
+      await connection.close();
+    }
+  }
+
+  Future<bool> doesModelExist(String modelId) async {
+    final connection = connect();
+
+    try {
+      final intModelId = int.tryParse(modelId);
+
+      if (intModelId == null) {
+        return false;
+      }
+
+      final result = await connection.query(
+        '''
+      SELECT COUNT(*) AS count
+      FROM catalog.clothes_models
+      WHERE model_id = $modelId
+      ''',
+        substitutionValues: {'modelId': intModelId},
+      );
+
+      return result.isEmpty;
+    } finally {
+      await connection.close();
+    }
+  }
 }

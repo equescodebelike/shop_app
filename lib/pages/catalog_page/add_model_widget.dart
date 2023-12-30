@@ -59,6 +59,9 @@ class AddClothesModelPage extends StatelessWidget {
               child: CustomFilledButton(
                 onTap: () {
                   final databaseRepo = DatabaseRepository();
+                  final modelId = int.parse(modelIdController.text);
+                  final modelExists =
+                      databaseRepo.doesModelExist(modelIdController.text);
                   final model = ClothesModel(
                     int.parse(modelIdController.text),
                     modelNameController.text,
@@ -78,6 +81,7 @@ class AddClothesModelPage extends StatelessWidget {
                       photoUrl: imageController.text);
                   databaseRepo.insertClothesModel(model);
                   databaseRepo.insertClothesPattern(pattern);
+                  databaseRepo.insertClothesMedia(media);
                   context.router.pop();
                 },
                 text: 'Добавить',
