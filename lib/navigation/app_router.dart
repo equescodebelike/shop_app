@@ -3,6 +3,8 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/model/catalog/get/product/product_count.dart';
 import 'package:shop_app/model/db_model/clothes_model.dart';
+import 'package:shop_app/model/db_model/media_model.dart';
+import 'package:shop_app/model/db_model/pattern_model.dart';
 import 'package:shop_app/pages/auth_code_page/auth_code_page_widget.dart';
 import 'package:shop_app/pages/auth_code_page/auth_code_page_wm.dart';
 import 'package:shop_app/pages/auth_page/auth_page_widget.dart';

@@ -56,12 +56,38 @@ class _ProductPageState extends State<ProductPage> {
                     style: theme.textTheme.bodySmall?.copyWith(fontSize: 18),
                   ),
                   const Spacer(),
-                  IconButton(
-                    onPressed: () async {
-                      context.router
-                          .push(EditProductRoute(product: widget.product));
+                  FutureBuilder(
+                    future: Future.wait([
+                      db.getMediaByModelId(widget.productId),
+                      db.getPatternByModelId(widget.productId),
+                    ]),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<dynamic>> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      if (snapshot.hasError) {
+                        throw Exception(snapshot.error);
+                      }
+
+                      final media = snapshot.data?[0] as MediaModel?;
+                      final pattern = snapshot.data?[1] as PatternModel?;
+
+                      return IconButton(
+                        onPressed: () {
+                          context.router.push(
+                            EditProductRoute(
+                              product: widget.product,
+                              media: media!,
+                              pattern: pattern!,
+                            ),
+                          );
+                        },
+                        icon: const Icon(Icons.edit),
+                      );
                     },
-                    icon: const Icon(Icons.edit),
                   ),
                   IconButton(
                     onPressed: () async {

@@ -1,30 +1,51 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:pinput/pinput.dart';
 import 'package:shop_app/data_source/db_repository.dart';
 import 'package:shop_app/model/db_model/clothes_model.dart';
+import 'package:shop_app/model/db_model/media_model.dart';
+import 'package:shop_app/model/db_model/pattern_model.dart';
 import 'package:shop_app/pages/widgets/filled_button_widget.dart';
 
 @RoutePage()
-class EditProductPage extends StatelessWidget {
+class EditProductPage extends StatefulWidget {
+  final ClothesModel product;
+  final MediaModel media;
+  final PatternModel pattern;
+
+  const EditProductPage({
+    Key? key,
+    required this.product,
+    required this.media,
+    required this.pattern,
+  }) : super(key: key);
+
+  @override
+  _EditProductPageState createState() => _EditProductPageState();
+}
+
+class _EditProductPageState extends State<EditProductPage> {
   final TextEditingController modelNameController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController tutorialController = TextEditingController();
   final TextEditingController sizeController = TextEditingController();
   final TextEditingController imageController = TextEditingController();
-  final ClothesModel product;
 
-  EditProductPage({Key? key, required this.product}) : super(key: key);
+  @override
+  void initState() {
+    super.initState();
+    // Initialize controllers with existing data
+    modelNameController.text = widget.product.modelName;
+    descriptionController.text = widget.product.description;
+    tutorialController.text = widget.pattern.tutorial;
+    sizeController.text = widget.pattern.size;
+    imageController.text = widget.media.photoUrl;
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Set the initial values of the controllers to the product details
-    modelNameController.text = product.modelName;
-    descriptionController.text = product.description;
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Изменить модель'),
+        title: const Text('Edit Product'),
         centerTitle: true,
       ),
       body: Padding(
@@ -32,37 +53,60 @@ class EditProductPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // TextField for editing the product name
             TextField(
               controller: modelNameController,
-              decoration: const InputDecoration(labelText: 'Название'),
+              decoration: const InputDecoration(labelText: 'Model Name'),
             ),
-            // TextField for editing the product description
             TextField(
               controller: descriptionController,
-              decoration: const InputDecoration(labelText: 'Описание'),
+              decoration: const InputDecoration(labelText: 'Description'),
             ),
-            // You can add more TextFields for other details like tutorial, size, and image
-
+            TextField(
+              controller: tutorialController,
+              decoration: const InputDecoration(labelText: 'Tutorial'),
+            ),
+            TextField(
+              controller: sizeController,
+              decoration: const InputDecoration(labelText: 'Size'),
+            ),
+            TextField(
+              controller: imageController,
+              decoration: const InputDecoration(labelText: 'Image URL'),
+            ),
             const SizedBox(height: 16),
             Center(
               child: CustomFilledButton(
                 onTap: () async {
-                  // Save the changes to the database
                   final databaseRepo = DatabaseRepository();
 
                   final editedModel = ClothesModel(
-                    product.modelId,
+                    widget.product.modelId,
                     modelNameController.text,
                     descriptionController.text,
-                    // Add other properties as needed
+                  );
+
+                  final editedMedia = MediaModel(
+                    photoId: widget.media.photoId,
+                    modelId: widget.media.modelId,
+                    photoUrl: imageController.text,
+                  );
+
+                  final editedPattern = PatternModel(
+                    patternId: widget.pattern.patternId,
+                    size: sizeController.text,
+                    patternUsage: widget.pattern.patternUsage,
+                    tutorial: tutorialController.text,
+                    materialId: widget.pattern.materialId,
+                    modelId: widget.pattern.modelId,
                   );
 
                   await databaseRepo.updateClothesModel(editedModel);
+                  await databaseRepo.updateMediaModel(editedMedia);
+                  await databaseRepo.updatePatternModel(editedPattern);
 
                   context.router.pop();
                 },
-                text: 'Сохранить изменения',
+                text: 'Save Changes',
               ),
             ),
           ],

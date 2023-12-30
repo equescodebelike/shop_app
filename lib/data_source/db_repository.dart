@@ -313,11 +313,13 @@ class DatabaseRepository {
   Future<bool> doesModelExist(String modelId) async {
     final connection = connect();
 
+    await connection.open();
+
     try {
       final intModelId = int.tryParse(modelId);
 
       if (intModelId == null) {
-        return false;
+        return true;
       }
 
       final result = await connection.query(
@@ -330,6 +332,47 @@ class DatabaseRepository {
       );
 
       return result.isEmpty;
+    } finally {
+      await connection.close();
+    }
+  }
+
+  Future<void> updateMediaModel(MediaModel media) async {
+    final connection = connect();
+
+    await connection.open();
+
+    try {
+      await connection.query('''
+      UPDATE catalog.clothes_media
+      SET photo = @photo
+      WHERE photo_id = @photoId AND model_id = @modelId
+    ''', substitutionValues: {
+        'photoId': media.photoId,
+        'modelId': media.modelId,
+        'photo': media.photoUrl,
+      });
+    } finally {
+      await connection.close();
+    }
+  }
+
+  Future<void> updatePatternModel(PatternModel pattern) async {
+    final connection = connect();
+
+    await connection.open();
+
+    try {
+      await connection.query('''
+      UPDATE catalog.clothes_patterns
+      SET size = @size, tutorial = @tutorial
+      WHERE pattern_id = @patternId AND model_id = @modelId
+    ''', substitutionValues: {
+        'patternId': pattern.patternId,
+        'modelId': pattern.modelId,
+        'size': pattern.size,
+        'tutorial': pattern.tutorial,
+      });
     } finally {
       await connection.close();
     }

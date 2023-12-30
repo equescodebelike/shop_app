@@ -50,39 +50,60 @@ class AddClothesModelPage extends StatelessWidget {
               decoration: const InputDecoration(labelText: 'Размер'),
             ),
             TextField(
-              controller: sizeController,
+              controller: imageController,
               decoration:
                   const InputDecoration(labelText: 'Ссылка на изображение'),
             ),
             const SizedBox(height: 16),
             Center(
               child: CustomFilledButton(
-                onTap: () {
+                onTap: () async {
                   final databaseRepo = DatabaseRepository();
                   final modelId = int.parse(modelIdController.text);
-                  final modelExists =
-                      databaseRepo.doesModelExist(modelIdController.text);
-                  final model = ClothesModel(
-                    int.parse(modelIdController.text),
-                    modelNameController.text,
-                    descriptionController.text,
-                  );
-                  final pattern = PatternModel(
-                    patternId: model.modelId,
-                    patternUsage: 0,
-                    modelId: model.modelId,
-                    size: sizeController.text,
-                    tutorial: tutorialController.text,
-                    materialId: 1,
-                  );
-                  final media = MediaModel(
-                      photoId: model.modelId,
+                  // final modelExists =
+                  //     databaseRepo.doesModelExist(modelIdController.text);
+                  if (await databaseRepo
+                      .doesModelExist(modelIdController.text)) {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Ошибка'),
+                          content: Text('Модель с $modelId ID уже существует или вы ввели неверные данные'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  } else {
+                    final model = ClothesModel(
+                      int.parse(modelIdController.text),
+                      modelNameController.text,
+                      descriptionController.text,
+                    );
+                    final pattern = PatternModel(
+                      patternId: model.modelId,
+                      patternUsage: 0,
                       modelId: model.modelId,
-                      photoUrl: imageController.text);
-                  databaseRepo.insertClothesModel(model);
-                  databaseRepo.insertClothesPattern(pattern);
-                  databaseRepo.insertClothesMedia(media);
-                  context.router.pop();
+                      size: sizeController.text,
+                      tutorial: tutorialController.text,
+                      materialId: 1,
+                    );
+                    final media = MediaModel(
+                        photoId: model.modelId,
+                        modelId: model.modelId,
+                        photoUrl: imageController.text);
+                    databaseRepo.insertClothesModel(model);
+                    databaseRepo.insertClothesPattern(pattern);
+                    databaseRepo.insertClothesMedia(media);
+                    context.router.pop();
+                  }
                 },
                 text: 'Добавить',
               ),

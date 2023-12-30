@@ -97,6 +97,8 @@ abstract class _$AppRouter extends RootStackRouter {
         child: EditProductPage(
           key: args.key,
           product: args.product,
+          media: args.media,
+          pattern: args.pattern,
         ),
       );
     },
@@ -429,12 +431,16 @@ class EditProductRoute extends PageRouteInfo<EditProductRouteArgs> {
   EditProductRoute({
     Key? key,
     required ClothesModel product,
+    required MediaModel media,
+    required PatternModel pattern,
     List<PageRouteInfo>? children,
   }) : super(
           EditProductRoute.name,
           args: EditProductRouteArgs(
             key: key,
             product: product,
+            media: media,
+            pattern: pattern,
           ),
           initialChildren: children,
         );
@@ -449,15 +455,21 @@ class EditProductRouteArgs {
   const EditProductRouteArgs({
     this.key,
     required this.product,
+    required this.media,
+    required this.pattern,
   });
 
   final Key? key;
 
   final ClothesModel product;
 
+  final MediaModel media;
+
+  final PatternModel pattern;
+
   @override
   String toString() {
-    return 'EditProductRouteArgs{key: $key, product: $product}';
+    return 'EditProductRouteArgs{key: $key, product: $product, media: $media, pattern: $pattern}';
   }
 }
 

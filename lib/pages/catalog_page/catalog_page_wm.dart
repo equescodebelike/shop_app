@@ -24,8 +24,8 @@ abstract class ICatalogPageWidgetModel extends IWidgetModel
   String getOrderByClause(ClothesSortOption option);
   ClothesSortOption get selectedSortOption;
   void updateSortOption(ClothesSortOption newSortOption);
-  List<ClothesModel> sortClothes(
-      List<ClothesModel> clothes, ClothesSortOption sortOption);
+  // List<ClothesModel> sortClothes(
+  //     List<ClothesModel> clothes, ClothesSortOption sortOption);
 }
 
 CatalogPageWidgetModel defaultCatalogPageWidgetModelFactory(
@@ -112,24 +112,22 @@ class CatalogPageWidgetModel
     );
   }
 
-  @override
-  List<ClothesModel> sortClothes(
-      List<ClothesModel> clothes, ClothesSortOption sortOption) {
-    switch (sortOption) {
-      case ClothesSortOption.alphabetical:
-        // Sort clothes alphabetically based on the model name
-        clothes.sort((a, b) => a.modelName.compareTo(b.modelName));
-        break;
-      case ClothesSortOption.none:
-        break;
-      // Add cases for more sorting options
-    }
-    return clothes;
-  }
+  // @override
+  // List<ClothesModel> sortClothes(
+  //     List<ClothesModel> clothes, ClothesSortOption sortOption) {
+  //   switch (sortOption) {
+  //     case ClothesSortOption.alphabetical:
+  //       clothes.sort((a, b) => a.modelName.compareTo(b.modelName));
+  //       break;
+  //     case ClothesSortOption.none:
+  //       break;
+  //   }
+  //   return clothes;
+  // }
 
   @override
   ClothesSortOption selectedSortOption =
-      ClothesSortOption.none; // Add this line
+      ClothesSortOption.none; 
 
   @override
   void updateSortOption(ClothesSortOption newSortOption) {
@@ -143,7 +141,6 @@ class CatalogPageWidgetModel
         return 'model_name ASC';
       case ClothesSortOption.none:
         return 'model_name DESC'; // No sorting
-      // Add cases for more sorting options
     }
   }
 }
